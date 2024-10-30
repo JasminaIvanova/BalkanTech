@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BalkanTech.Common\BalkanTech.Common.csproj" />
+    <ProjectReference Include="..\BalkanTech.Data.Models\BalkanTech.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -21,3 +21,9 @@ C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewM
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\refint\BalkanTech.Web.ViewModels.dll
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTech.Web.ViewModels.pdb
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\ref\BalkanTech.Web.ViewModels.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\bin\Debug\net8.0\BalkanTech.Common.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\bin\Debug\net8.0\BalkanTech.Data.Models.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\bin\Debug\net8.0\BalkanTech.Common.pdb
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\bin\Debug\net8.0\BalkanTech.Data.Models.pdb
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTech.Web.ViewModels.csproj.AssemblyReference.cache
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTe.6E72CC9A.Up2Date

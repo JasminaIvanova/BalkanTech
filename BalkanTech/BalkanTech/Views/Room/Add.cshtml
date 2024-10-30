@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BalkanTech.Web.ViewModels.RoomAddViewModel
 @{
+    ViewData["Title"] = "Add Room";
 }
+
+<h1 class="text-center">Add New Room</h1>
+
+<form asp-action="Add" method="post">
+    <div class="container mt-4">
+        <div class="row">
+            
+                <div class="form-group">
+                    <label asp-for="RoomNumber" class="control-label">Room Number</label>
+                    <input asp-for="RoomNumber" class="form-control" placeholder="Enter Room Number" />
+                    <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Floor" class="control-label"></label>
+                    <input asp-for="Floor" class="form-control" placeholder="Enter Floor Number" />
+                    <span asp-validation-for="Floor" class="text-danger"></span>
+                </div>
+
+           
+            <div class="form-group">
+                <label asp-for="RoomCategoryId" class="control-label">Room Category</label>
+                <select asp-for="RoomCategoryId" asp-items="Model.RoomCategories" class="form-control">
+                    <option value="">-- Select Room Category --</option>
+                </select>
+                <span asp-validation-for="RoomCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <label asp-for="isAvailable" class="control-label">Available</label>
+                <input asp-for="isAvailable" type="checkbox" />
+                <span asp-validation-for="isAvailable" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group mt-3">
+            <button type="submit" class="btn btn-primary btn-lg">Add Room</button>
+        </div>
+    </div>
+</form>

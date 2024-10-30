@@ -603,3 +603,5 @@ C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\obj\Debug
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\obj\Debug\net8.0\ref\BalkanTech.Web.dll
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\bin\Debug\net8.0\Datasets\roomCategories.json
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\bin\Debug\net8.0\Datasets\rooms.json
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
