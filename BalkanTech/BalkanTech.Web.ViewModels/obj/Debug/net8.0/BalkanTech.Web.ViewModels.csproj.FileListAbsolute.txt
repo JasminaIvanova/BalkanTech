@@ -9,3 +9,15 @@ C:\Users\juj4i\source\repos\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.
 C:\Users\juj4i\source\repos\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\refint\BalkanTech.Web.ViewModels.dll
 C:\Users\juj4i\source\repos\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTech.Web.ViewModels.pdb
 C:\Users\juj4i\source\repos\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\ref\BalkanTech.Web.ViewModels.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\bin\Debug\net8.0\BalkanTech.Web.ViewModels.deps.json
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\bin\Debug\net8.0\BalkanTech.Web.ViewModels.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\bin\Debug\net8.0\BalkanTech.Web.ViewModels.pdb
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTech.Web.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTech.Web.ViewModels.AssemblyInfoInputs.cache
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTech.Web.ViewModels.AssemblyInfo.cs
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTech.Web.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTech.Web.ViewModels.sourcelink.json
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTech.Web.ViewModels.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\refint\BalkanTech.Web.ViewModels.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\BalkanTech.Web.ViewModels.pdb
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Web.ViewModels\obj\Debug\net8.0\ref\BalkanTech.Web.ViewModels.dll

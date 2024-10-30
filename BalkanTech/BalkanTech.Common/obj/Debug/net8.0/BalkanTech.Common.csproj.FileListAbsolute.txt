@@ -9,3 +9,15 @@ C:\Users\juj4i\source\repos\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\Balkan
 C:\Users\juj4i\source\repos\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\refint\BalkanTech.Common.dll
 C:\Users\juj4i\source\repos\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\BalkanTech.Common.pdb
 C:\Users\juj4i\source\repos\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\ref\BalkanTech.Common.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\bin\Debug\net8.0\BalkanTech.Common.deps.json
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\bin\Debug\net8.0\BalkanTech.Common.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\bin\Debug\net8.0\BalkanTech.Common.pdb
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\BalkanTech.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\BalkanTech.Common.AssemblyInfoInputs.cache
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\BalkanTech.Common.AssemblyInfo.cs
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\BalkanTech.Common.csproj.CoreCompileInputs.cache
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\BalkanTech.Common.sourcelink.json
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\BalkanTech.Common.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\refint\BalkanTech.Common.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\BalkanTech.Common.pdb
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Common\obj\Debug\net8.0\ref\BalkanTech.Common.dll

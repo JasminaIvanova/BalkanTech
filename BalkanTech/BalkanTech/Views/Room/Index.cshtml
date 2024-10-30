@@ -1,0 +1,34 @@
+﻿@using BalkanTech.Web.ViewModels;
+@model IEnumerable<RoomsIndexViewModel> 
+
+@{
+    ViewData["Title"] = "Room List";
+}
+
+<h1 style="text-align: center">Rooms List</h1>
+
+<div class="container mt-4">
+    <div class="row">
+        @foreach (var room in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Room Number: @room.RoomNumber</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Floor: @room.Floor</h6>
+                        <p class="card-text">Category: @room.RoomCategory</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- Flex container for availability and button -->
+                            <p class="card-text mb-0">@room.isAvailable</p>
+                            <a href="@Url.Action("Details", "Rooms", new { roomNumber = room.RoomNumber })" class="btn btn-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+2a3mKk1z5/Q2b6B9QQ7R0gybU2Z4l4lq3JdG/Z" crossorigin="anonymous"></script>
+}

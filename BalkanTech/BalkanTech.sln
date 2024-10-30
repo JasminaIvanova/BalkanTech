@@ -3,22 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalkanTech.Web", "BalkanTech\BalkanTech.Web.csproj", "{9F3985C4-220B-49EC-9E98-EDB591384F2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalkanTech.Web", "BalkanTech\BalkanTech.Web.csproj", "{9F3985C4-220B-49EC-9E98-EDB591384F2D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D3930448-98EB-4572-AA0A-3C5A79FFF5CD} = {D3930448-98EB-4572-AA0A-3C5A79FFF5CD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalkanTech.Web.ViewModels", "BalkanTech.Web.ViewModels\BalkanTech.Web.ViewModels.csproj", "{D3930448-98EB-4572-AA0A-3C5A79FFF5CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalkanTech.Web.ViewModels", "BalkanTech.Web.ViewModels\BalkanTech.Web.ViewModels.csproj", "{D3930448-98EB-4572-AA0A-3C5A79FFF5CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalkanTech.Common", "BalkanTech.Common\BalkanTech.Common.csproj", "{34B83ED1-088B-46AD-ABB5-E413BAE36A40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalkanTech.Common", "BalkanTech.Common\BalkanTech.Common.csproj", "{34B83ED1-088B-46AD-ABB5-E413BAE36A40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalkanTech.Data.Models", "BalkanTech.Data.Models\BalkanTech.Data.Models.csproj", "{CE5E3E38-D672-4EB2-AFBA-E2E6E2D7B432}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalkanTech.Data.Models", "BalkanTech.Data.Models\BalkanTech.Data.Models.csproj", "{CE5E3E38-D672-4EB2-AFBA-E2E6E2D7B432}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F6C0B96E-AE6D-4B98-96CA-B9C51095BF61}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4AA4BF2F-8324-42BB-82F2-368042F3503C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalkanTech.Data", "BalkanTech.Data\BalkanTech.Data.csproj", "{829A731A-DBCD-4B04-9D60-F0E96F40E889}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalkanTech.Data", "BalkanTech.Data\BalkanTech.Data.csproj", "{829A731A-DBCD-4B04-9D60-F0E96F40E889}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

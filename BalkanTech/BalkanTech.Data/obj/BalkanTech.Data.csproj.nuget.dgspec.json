@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data\\BalkanTech.Data.csproj": {}
+    "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data\\BalkanTech.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj": {
+    "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj",
+        "projectUniqueName": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj",
         "projectName": "BalkanTech.Common",
-        "projectPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj",
+        "projectPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj",
         "packagesPath": "C:\\Users\\juj4i\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Common\\obj\\",
+        "outputPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\juj4i\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj": {
+    "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj",
+        "projectUniqueName": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj",
         "projectName": "BalkanTech.Data.Models",
-        "projectPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj",
+        "projectPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj",
         "packagesPath": "C:\\Users\\juj4i\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data.Models\\obj\\",
+        "outputPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\juj4i\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -90,8 +90,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj": {
-                "projectPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj"
+              "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj": {
+                "projectPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj"
               }
             }
           }
@@ -136,14 +136,14 @@
         }
       }
     },
-    "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data\\BalkanTech.Data.csproj": {
+    "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data\\BalkanTech.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data\\BalkanTech.Data.csproj",
+        "projectUniqueName": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data\\BalkanTech.Data.csproj",
         "projectName": "BalkanTech.Data",
-        "projectPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data\\BalkanTech.Data.csproj",
+        "projectPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data\\BalkanTech.Data.csproj",
         "packagesPath": "C:\\Users\\juj4i\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data\\obj\\",
+        "outputPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\juj4i\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -161,11 +161,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj": {
-                "projectPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj"
+              "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj": {
+                "projectPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\BalkanTech.Common.csproj"
               },
-              "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj": {
-                "projectPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj"
+              "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj"
               }
             }
           }
@@ -212,6 +212,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.10, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [

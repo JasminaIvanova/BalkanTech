@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jawZQIFUpZw=",
+  "dgSpecHash": "akdYqQGq73I=",
   "success": true,
-  "projectFilePath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj",
+  "projectFilePath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\juj4i\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.10\\microsoft.aspnetcore.cryptography.internal.8.0.10.nupkg.sha512",
     "C:\\Users\\juj4i\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.10\\microsoft.aspnetcore.cryptography.keyderivation.8.0.10.nupkg.sha512",

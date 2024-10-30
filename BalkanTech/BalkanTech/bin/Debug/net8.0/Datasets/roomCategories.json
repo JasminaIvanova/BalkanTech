@@ -1,0 +1,38 @@
+[
+  {
+    "Id": "d71f5618-f3e5-4938-9e36-17fa0e2ee17f",
+    "RoomType": "DoubleRoom"
+  },
+  {
+    "Id": "a25916a3-b06a-44c3-bd44-6d5e5600f78a",
+    "RoomType": "Suite"
+  },
+  {
+    "Id": "ecf802de-6578-4de6-8e9a-1f8d1a0e05b6",
+    "RoomType": "SingleRoom"
+  },
+  {
+    "Id": "f3e0b538-dcc6-4fa4-b448-9298f7f0a28f",
+    "RoomType": "KingRoom"
+  },
+  {
+    "Id": "c05c3b6b-9883-4481-8332-456f4c90b0ff",
+    "RoomType": "QueenRoom"
+  },
+  {
+    "Id": "f379c8e1-57d2-4593-8bc6-5e59cb4db3aa",
+    "RoomType": "PresidentalSuite"
+  },
+  {
+    "Id": "42c87ac0-733b-44c4-a9a4-36b86c85f99a",
+    "RoomType": "TwinRoom"
+  },
+  {
+    "Id": "dc2a36f5-4854-4f3f-8c65-1245af803bcf",
+    "RoomType": "TripleRoom"
+  },
+  {
+    "Id": "d77f0a2c-01a4-4696-bbb9-482c5a39b1a6",
+    "RoomType": "Quad"
+  }
+]

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9AY/zcbk01I=",
+  "dgSpecHash": "dtE6BOrmH/A=",
   "success": true,
-  "projectFilePath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech\\BalkanTech.Web.csproj",
+  "projectFilePath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\BalkanTech.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\juj4i\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\juj4i\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Web.ViewModels\\BalkanTech.Web.ViewModels.csproj",
+      "projectUniqueName": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\BalkanTech.Web.ViewModels.csproj",
       "projectName": "BalkanTech.Web.ViewModels",
-      "projectPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Web.ViewModels\\BalkanTech.Web.ViewModels.csproj",
+      "projectPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\BalkanTech.Web.ViewModels.csproj",
       "packagesPath": "C:\\Users\\juj4i\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\juj4i\\source\\repos\\BalkanTech\\BalkanTech.Web.ViewModels\\obj\\",
+      "outputPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\juj4i\\AppData\\Roaming\\NuGet\\NuGet.Config",
