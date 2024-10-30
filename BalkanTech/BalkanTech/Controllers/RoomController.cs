@@ -37,15 +37,40 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            var model = new RoomAddViewModel();
-            model.RoomCategories = Enum.GetValues(typeof(RoomType))
-             .Cast<RoomType>()
-             .Select(cat => new SelectListItem
-             {
-                 Value = cat.ToString(),
-                 Text = cat.ToString()
-             }).ToList();
+            var model = new RoomAddViewModel
+            {
+                RoomCategories =  await LoadRoomCategories()
+            };
             return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Add(RoomAddViewModel model)
+        {
+            if (!ModelState.IsValid) 
+            {
+                model.RoomCategories = await LoadRoomCategories();
+                return View(model);
+            }
+            Room newRoom = new Room
+            {
+                RoomNumber = model.RoomNumber,
+                Floor = model.Floor,
+                RoomCategoryId = model.RoomCategoryId,
+                isAvailable = model.isAvailable
+            };
+            context.Rooms.Add(newRoom);
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private async Task<IEnumerable<RoomCategoryViewModel>> LoadRoomCategories() 
+        {
+            return await context.RoomCategories
+                .Select(g => new RoomCategoryViewModel
+                {
+                    Id = g.Id,
+                    RoomType = g.RoomType.ToString()
+                }).AsNoTracking().ToListAsync();
         }
     }
 }

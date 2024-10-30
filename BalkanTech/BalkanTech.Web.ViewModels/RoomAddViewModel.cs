@@ -19,9 +19,9 @@ namespace BalkanTech.Web.ViewModels
         [Range(MinFloorRoomNumber, MaxFloorRoomNumber)]
         public int Floor { get; set; }
         [Required]
-        [ForeignKey(nameof(RoomCategoryId))]
+
         public Guid RoomCategoryId { get; set; }
-        public List<SelectListItem>? RoomCategories { get; set; }
+        public IEnumerable<RoomCategoryViewModel>? RoomCategories { get; set; }
         [Required]
         public bool isAvailable { get; set; }
 
