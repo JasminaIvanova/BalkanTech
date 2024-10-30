@@ -1,7 +1,9 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
+using BalkanTech.Data.Models.Enums;
 using BalkanTech.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace BalkanTech.Web.Controllers
@@ -29,7 +31,21 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {
+            //TODO
             return View();
         }
-     }
+        [HttpGet]
+        public async Task<IActionResult> Add()
+        {
+            var model = new RoomAddViewModel();
+            model.RoomCategories = Enum.GetValues(typeof(RoomType))
+             .Cast<RoomType>()
+             .Select(cat => new SelectListItem
+             {
+                 Value = cat.ToString(),
+                 Text = cat.ToString()
+             }).ToList();
+            return View(model);
+        }
+    }
 }

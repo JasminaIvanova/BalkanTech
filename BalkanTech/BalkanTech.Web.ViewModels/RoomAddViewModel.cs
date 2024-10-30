@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static BalkanTech.Common.Constants;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BalkanTech.Web.ViewModels
 {
@@ -20,7 +21,7 @@ namespace BalkanTech.Web.ViewModels
         [Required]
         [ForeignKey(nameof(RoomCategoryId))]
         public Guid RoomCategoryId { get; set; }
-        public IEnumerable<RoomCategoryViewModel>? RoomCategories { get; set; }
+        public List<SelectListItem>? RoomCategories { get; set; }
         [Required]
         public bool isAvailable { get; set; }
 
