@@ -1,8 +1,38 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<link rel="stylesheet" href="~/css/HomeStyle.css" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid">
+    <div class="container text-center mt-5">
+
+        <div class="mb-4">
+            <img src="~/images/sofia-balkan-hotel.png" class="img-fluid rounded shadow" alt="Hotel Technician" style="max-height: 300px;">
+        </div>
+
+        <!-- Welcome Heading -->
+        <h1 class="display-4 mb-3 font-weight-bold">Welcome to Balkan Tech</h1>
+        <p class="lead text-muted mb-4">Your platform for managing maintenance and repairs at the Balkan Hotel</p>
+
+        <!-- Welcome Message Card -->
+        <div class="card shadow-sm mx-auto mb-5" style="max-width: 700px;">
+            <div class="card-body">
+                <p class="text-muted">
+                    We're here to support your essential work at the Balkan Hotel. Use the options below to navigate the platform and access the tools you need for a smooth maintenance experience.
+                </p>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="d-flex justify-content-center">
+            <a asp-controller="Room" asp-action="Index" class="btn btn-primary mx-2">View Rooms</a>
+            <a href="/Tasks" class="btn btn-secondary mx-2">Maintenance Tasks</a>
+            <a href="/Reports" class="btn btn-info mx-2">Repair Reports</a>
+        </div>
+
+        <!-- Footer Section -->
+        <footer class="mt-5">
+            <p class="text-muted">Balkan Tech | Keeping the Balkan Hotel Running Smoothly</p>
+        </footer>
+    </div>
 </div>

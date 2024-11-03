@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HX8iNnL1BSX39nEa+man4nslqF5XZxeEWxk1zjgWenU=",
+  "Hash": "Li6xGgtlC8qbWAWTlTAUaanmw97n44nZhJFSsopsAIc=",
   "Source": "BalkanTech.Web",
   "BasePath": "_content/BalkanTech.Web",
   "Mode": "Default",
@@ -1231,6 +1231,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\images\\sofia-balkan-hotel.png",
+      "SourceId": "BalkanTech.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\",
+      "BasePath": "_content/BalkanTech.Web",
+      "RelativePath": "images/sofia-balkan-hotel.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\sofia-balkan-hotel.png"
     },
     {
       "Identity": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\js\\site.js",
