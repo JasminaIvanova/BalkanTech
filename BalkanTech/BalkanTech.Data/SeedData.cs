@@ -1,4 +1,5 @@
 ﻿using BalkanTech.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,43 +18,25 @@ namespace BalkanTech.Data
             _context = context;
         }
 
-        public void SeedCategories()
+        public void Seed<T>(string datasetFileName, DbSet<T> dbSet) where T : class
         {
-            
-            if (!_context.RoomCategories.Any())
+           
+            if (!dbSet.Any())
             {
-                var categoriesJsonPath = Path.Combine(AppContext.BaseDirectory, "Datasets/roomCategories.json");
+                var jsonFilePath = Path.Combine(AppContext.BaseDirectory, "Datasets", datasetFileName);
 
-                if (File.Exists(categoriesJsonPath))
+                if (File.Exists(jsonFilePath))
                 {
-                    var categoriesJsonFile = File.ReadAllText(categoriesJsonPath);
-                    var categories = JsonConvert.DeserializeObject<List<RoomCategory>>(categoriesJsonFile);
-                    _context.RoomCategories.AddRange(categories);
+
+                    var jsonData = File.ReadAllText(jsonFilePath);
+                    var data = JsonConvert.DeserializeObject<List<T>>(jsonData);
+
+                    dbSet.AddRange(data);
                     _context.SaveChanges();
                 }
                 else
                 {
-                    throw new FileNotFoundException("File not found");
-                }
-            }
-        }
-        public void SeedRooms()
-        {
-
-            if (!_context.Rooms.Any())
-            {
-                var roomsJsonPath = Path.Combine(AppContext.BaseDirectory, "Datasets/rooms.json");
-
-                if (File.Exists(roomsJsonPath))
-                {
-                    var roomsJsonFile = File.ReadAllText(roomsJsonPath);
-                    var rooms = JsonConvert.DeserializeObject<List<Room>>(roomsJsonFile);
-                    _context.Rooms.AddRange(rooms);
-                    _context.SaveChanges();
-                }
-                else
-                {
-                    throw new FileNotFoundException("File not found");
+                    throw new FileNotFoundException($"File {datasetFileName} not found");
                 }
             }
         }
