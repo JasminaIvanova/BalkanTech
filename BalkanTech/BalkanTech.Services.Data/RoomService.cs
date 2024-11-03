@@ -23,20 +23,39 @@ namespace BalkanTech.Services.Data
                     RoomType = g.RoomType.ToString()
                 }).AsNoTracking().ToListAsync();
         }
-        public async Task<RoomsIndexPagedModel<RoomsIndexViewModel>> IndexGetAllRoomsAsync(int page, int pageSize)
+        public async Task<IQueryable<Room>> LoadRoomsBySearch(string search)
         {
-            var allRooms = context.Rooms
-               .Select(r => new RoomsIndexViewModel
-               {
-                   RoomNumber = r.RoomNumber,
-                   Floor = r.Floor,
-                   isAvailable = r.isAvailable ? "Available" : "Not Available",
-                   RoomCategory = r.RoomCategory.RoomType.ToString()
-               });
-            
+            var allRooms =  context.Rooms.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                if (int.TryParse(search, out _))
+                {
+                    allRooms = allRooms.Where(r => r.RoomNumber.ToString().Contains(search));
+                }
+                else
+                {
+                    allRooms = allRooms.Where(r => r.RoomCategory.RoomType.ToLower().Contains(search));
+                }
+            }
+            return allRooms;
+        }
+        public async Task<RoomsIndexPagedModel<RoomsIndexViewModel>> IndexGetAllRoomsAsync(string search, int page, int pageSize)
+        {
+
+            //TODO - Fix for no results of search
+            var allRooms = await LoadRoomsBySearch(search);
+
             var roomsPerPage = await allRooms
-                .Skip((page - 1) * pageSize) 
-                .Take(pageSize) 
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .Select(r => new RoomsIndexViewModel
+                {
+                    RoomNumber = r.RoomNumber,
+                    Floor = r.Floor,
+                    isAvailable = r.isAvailable ? "Available" : "Not Available",
+                    RoomCategory = r.RoomCategory.RoomType.ToString()
+                })
                 .ToListAsync();
 
             var count = await allRooms.CountAsync();
@@ -68,6 +87,6 @@ namespace BalkanTech.Services.Data
             await context.SaveChangesAsync();
             return true;
         }
-     
+
     }
 }

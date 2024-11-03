@@ -17,9 +17,9 @@ namespace BalkanTech.Web.Controllers
             roomService = _roomService;
         }
         [HttpGet]
-        public async Task<IActionResult> Index(int page = 1, int pageSize = 9)
+        public async Task<IActionResult> Index(string search = "", int page = 1, int pageSize = 9)
         {
-            var model = await roomService.IndexGetAllRoomsAsync(page, pageSize);
+            var model = await roomService.IndexGetAllRoomsAsync(search, page, pageSize);
             return View(model);
         }
         [HttpGet]
