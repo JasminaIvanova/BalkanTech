@@ -10,6 +10,8 @@ namespace BalkanTech.Services.Data.Interfaces
     public interface IRoomService
     {
         Task<IEnumerable<RoomsIndexViewModel>> IndexGetAllRoomsAsync();
+        Task<IEnumerable<RoomCategoryViewModel>> LoadRoomCategoriesAsync();
 
+        Task AddRoomAsync(RoomAddViewModel model);
     }
 }

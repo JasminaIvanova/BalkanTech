@@ -20,7 +20,7 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var model = await this.roomService.IndexGetAllRoomsAsync();
+            var model = await roomService.IndexGetAllRoomsAsync();
             return View(model);
         }
         [HttpGet]
@@ -34,7 +34,7 @@ namespace BalkanTech.Web.Controllers
         {
             var model = new RoomAddViewModel
             {
-                RoomCategories =  await LoadRoomCategories()
+                RoomCategories = await roomService.LoadRoomCategoriesAsync()
             };
             return View(model);
         }
@@ -43,29 +43,13 @@ namespace BalkanTech.Web.Controllers
         {
             if (!ModelState.IsValid) 
             {
-                model.RoomCategories = await LoadRoomCategories();
+                model.RoomCategories = await roomService.LoadRoomCategoriesAsync();
                 return View(model);
             }
-            Room newRoom = new Room
-            {
-                RoomNumber = model.RoomNumber,
-                Floor = model.Floor,
-                RoomCategoryId = model.RoomCategoryId,
-                isAvailable = model.isAvailable
-            };
-            context.Rooms.Add(newRoom);
-            await context.SaveChangesAsync();
+            await roomService.AddRoomAsync(model);
             return RedirectToAction(nameof(Index));
         }
 
-        private async Task<IEnumerable<RoomCategoryViewModel>> LoadRoomCategories() 
-        {
-            return await context.RoomCategories
-                .Select(g => new RoomCategoryViewModel
-                {
-                    Id = g.Id,
-                    RoomType = g.RoomType.ToString()
-                }).AsNoTracking().ToListAsync();
-        }
+      
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BalkanTech.Data;
+using BalkanTech.Data.Models;
 using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,15 @@ namespace BalkanTech.Services.Data
             context = _context;
         }
 
+        public async Task<IEnumerable<RoomCategoryViewModel>> LoadRoomCategoriesAsync()
+        {
+            return await context.RoomCategories
+                .Select(g => new RoomCategoryViewModel
+                {
+                    Id = g.Id,
+                    RoomType = g.RoomType.ToString()
+                }).AsNoTracking().ToListAsync();
+        }
         public async Task<IEnumerable<RoomsIndexViewModel>> IndexGetAllRoomsAsync() 
         {
             return await context.Rooms
@@ -25,6 +35,18 @@ namespace BalkanTech.Services.Data
                 }).ToListAsync();
         }
 
-
+        public async Task AddRoomAsync(RoomAddViewModel model)
+        {
+            Room newRoom = new Room
+            {
+                RoomNumber = model.RoomNumber,
+                Floor = model.Floor,
+                RoomCategoryId = model.RoomCategoryId,
+                isAvailable = model.isAvailable
+            };
+            context.Rooms.Add(newRoom);
+            await context.SaveChangesAsync();
+        }
+     
     }
 }
