@@ -1,8 +1,17 @@
 ﻿@using BalkanTech.Web.ViewModels
-@model PagedResult<RoomsIndexViewModel>
+@model RoomsIndexPagedModel<RoomsIndexViewModel>
+@using static BalkanTech.Common.ErrorMessages.Rooms
 
 @{
     ViewData["Title"] = "Room List";
+}
+
+@if (TempData[nameof(AddRoomsErrorMessage)] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        @TempData[nameof(AddRoomsErrorMessage)]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 }
 <link rel="stylesheet" href="~/css/customThemeStyleSheet.css" />
 <h1 class="mt-3" style="text-align: center">Rooms List</h1>

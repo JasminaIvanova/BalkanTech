@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PnBNfzMYhgJtTFS6rDVVaVXniDNRZSNKRfNFCB3lGPg=",
+  "Hash": "HHqtQyBwDepwTE9zcV7R4MMSOwOAP4oG20sTbtL6Hzs=",
   "Source": "BalkanTech.Web",
   "BasePath": "_content/BalkanTech.Web",
   "Mode": "Default",
@@ -1271,6 +1271,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\images\\repair.ico",
+      "SourceId": "BalkanTech.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\",
+      "BasePath": "_content/BalkanTech.Web",
+      "RelativePath": "images/repair.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\repair.ico"
+    },
+    {
       "Identity": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\images\\sofia-balkan-hotel.png",
       "SourceId": "BalkanTech.Web",
       "SourceType": "Discovered",
@@ -1288,25 +1307,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\sofia-balkan-hotel.png"
-    },
-    {
-      "Identity": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\images\\techIcon.ico",
-      "SourceId": "BalkanTech.Web",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\",
-      "BasePath": "_content/BalkanTech.Web",
-      "RelativePath": "images/techIcon.ico",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\techIcon.ico"
     },
     {
       "Identity": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\js\\site.js",

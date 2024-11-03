@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BalkanTech.Web.ViewModels
 {
-    public class PagedResult<T>
+    public class RoomsIndexPagedModel<T>
     {
         public IEnumerable<T> Items { get; set; }
         public int TotalItems { get; set; }

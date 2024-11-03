@@ -23,39 +23,40 @@ namespace BalkanTech.Services.Data
                     RoomType = g.RoomType.ToString()
                 }).AsNoTracking().ToListAsync();
         }
-        public async Task<PagedResult<RoomsIndexViewModel>> IndexGetAllRoomsAsync(int page, int pageSize)
+        public async Task<RoomsIndexPagedModel<RoomsIndexViewModel>> IndexGetAllRoomsAsync(int page, int pageSize)
         {
-            var query = context.Rooms
-       .Select(r => new RoomsIndexViewModel
-       {
-           RoomNumber = r.RoomNumber,
-           Floor = r.Floor,
-           isAvailable = r.isAvailable ? "Available" : "Not Available",
-           RoomCategory = r.RoomCategory.RoomType.ToString()
-       });
-
-            // Count total items before pagination
-            var totalItems = await query.CountAsync();
-
-            // Paginate the results
-            var rooms = await query
-                .Skip((page - 1) * pageSize) // Calculate the starting point based on the current page
-                .Take(pageSize)               // Limit to the specified number of items
+            var allRooms = context.Rooms
+               .Select(r => new RoomsIndexViewModel
+               {
+                   RoomNumber = r.RoomNumber,
+                   Floor = r.Floor,
+                   isAvailable = r.isAvailable ? "Available" : "Not Available",
+                   RoomCategory = r.RoomCategory.RoomType.ToString()
+               });
+            
+            var roomsPerPage = await allRooms
+                .Skip((page - 1) * pageSize) 
+                .Take(pageSize) 
                 .ToListAsync();
 
-            // Return the paginated result
-            return new PagedResult<RoomsIndexViewModel>
+            var count = await allRooms.CountAsync();
+
+            return new RoomsIndexPagedModel<RoomsIndexViewModel>
             {
-                Items = rooms,
-                TotalItems = totalItems,
+                Items = roomsPerPage,
+                TotalItems = count,
                 CurrentPage = page,
                 PageSize = pageSize,
-                TotalPages = (int)Math.Ceiling((double)totalItems / pageSize)
+                TotalPages = (int)Math.Ceiling((double)count / pageSize)
             };
         }
 
-        public async Task AddRoomAsync(RoomAddViewModel model)
+        public async Task<bool> AddRoomAsync(RoomAddViewModel model)
         {
+            if (context.Rooms.Any(r => r.RoomNumber == model.RoomNumber)) 
+            {
+                return false;
+            }
             Room newRoom = new Room
             {
                 RoomNumber = model.RoomNumber,
@@ -65,6 +66,7 @@ namespace BalkanTech.Services.Data
             };
             context.Rooms.Add(newRoom);
             await context.SaveChangesAsync();
+            return true;
         }
      
     }

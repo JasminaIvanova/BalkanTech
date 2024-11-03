@@ -5,6 +5,7 @@ using BalkanTech.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using static BalkanTech.Common.ErrorMessages.Rooms;
 
 namespace BalkanTech.Web.Controllers
 {
@@ -44,7 +45,13 @@ namespace BalkanTech.Web.Controllers
                 model.RoomCategories = await roomService.LoadRoomCategoriesAsync();
                 return View(model);
             }
-            await roomService.AddRoomAsync(model);
+            bool resultAdding = await roomService.AddRoomAsync(model);
+            if (resultAdding == false)
+            {
+                TempData[nameof(AddRoomsErrorMessage)] = AddRoomsErrorMessage;
+                return this.RedirectToAction("Index", "Room");
+            }
+           
             return RedirectToAction(nameof(Index));
         }
 
