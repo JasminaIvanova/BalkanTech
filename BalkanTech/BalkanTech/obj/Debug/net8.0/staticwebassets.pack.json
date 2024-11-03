@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\BalkanTech.Web.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\css\\HomeStyle.css",
+      "PackagePath": "staticwebassets\\css\\HomeStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\css\\customThemeStyleSheet.css",
+      "PackagePath": "staticwebassets\\css\\customThemeStyleSheet.css"
+    },
+    {
       "Id": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -15,6 +23,10 @@
     {
       "Id": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\images\\sofia-balkan-hotel.png",
       "PackagePath": "staticwebassets\\images\\sofia-balkan-hotel.png"
+    },
+    {
+      "Id": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\images\\techIcon.ico",
+      "PackagePath": "staticwebassets\\images\\techIcon.ico"
     },
     {
       "Id": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\js\\site.js",

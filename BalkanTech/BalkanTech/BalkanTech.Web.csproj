@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BalkanTech.Common\BalkanTech.Common.csproj" />
     <ProjectReference Include="..\BalkanTech.Data\BalkanTech.Data.csproj" />
+    <ProjectReference Include="..\BalkanTech.Services.Data\BalkanTech.Services.Data.csproj" />
     <ProjectReference Include="..\BalkanTech.Web.ViewModels\BalkanTech.Web.ViewModels.csproj" />
   </ItemGroup>
 

@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4AA4BF2F-8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalkanTech.Data", "BalkanTech.Data\BalkanTech.Data.csproj", "{829A731A-DBCD-4B04-9D60-F0E96F40E889}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalkanTech.Services.Data", "BalkanTech.Services.Data\BalkanTech.Services.Data.csproj", "{84F8C35A-E75D-4B2C-B524-87548A2250A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5F4890A5-8E76-4E09-ACC2-B28A261F94C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,10 @@ Global
 		{829A731A-DBCD-4B04-9D60-F0E96F40E889}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{829A731A-DBCD-4B04-9D60-F0E96F40E889}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{829A731A-DBCD-4B04-9D60-F0E96F40E889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F8C35A-E75D-4B2C-B524-87548A2250A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F8C35A-E75D-4B2C-B524-87548A2250A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F8C35A-E75D-4B2C-B524-87548A2250A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F8C35A-E75D-4B2C-B524-87548A2250A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{D3930448-98EB-4572-AA0A-3C5A79FFF5CD} = {F6C0B96E-AE6D-4B98-96CA-B9C51095BF61}
 		{CE5E3E38-D672-4EB2-AFBA-E2E6E2D7B432} = {4AA4BF2F-8324-42BB-82F2-368042F3503C}
 		{829A731A-DBCD-4B04-9D60-F0E96F40E889} = {4AA4BF2F-8324-42BB-82F2-368042F3503C}
+		{84F8C35A-E75D-4B2C-B524-87548A2250A7} = {5F4890A5-8E76-4E09-ACC2-B28A261F94C4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CD703D1E-0CDF-400F-AF38-684CC1D0CC56}

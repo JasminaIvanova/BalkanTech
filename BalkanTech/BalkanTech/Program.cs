@@ -1,5 +1,7 @@
 using BalkanTech.Data;
 using BalkanTech.Data.Models;
+using BalkanTech.Services.Data;
+using BalkanTech.Services.Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +29,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>(cfg =>
     .AddDefaultUI();
 
 builder.Services.AddTransient<SeedData>();
+builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 

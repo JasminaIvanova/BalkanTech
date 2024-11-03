@@ -10,6 +10,7 @@
         "dependencies": {
           "BalkanTech.Common": "1.0.0",
           "BalkanTech.Data": "1.0.0",
+          "BalkanTech.Services.Data": "1.0.0",
           "BalkanTech.Web.ViewModels": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "8.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
@@ -3058,6 +3059,16 @@
           "BalkanTech.Data.Models.dll": {}
         }
       },
+      "BalkanTech.Services.Data/1.0.0": {
+        "dependencies": {
+          "BalkanTech.Common": "1.0.0",
+          "BalkanTech.Data": "1.0.0",
+          "BalkanTech.Web.ViewModels": "1.0.0"
+        },
+        "runtime": {
+          "BalkanTech.Services.Data.dll": {}
+        }
+      },
       "BalkanTech.Web.ViewModels/1.0.0": {
         "dependencies": {
           "BalkanTech.Common": "1.0.0",
@@ -5019,6 +5030,11 @@
       "sha512": ""
     },
     "BalkanTech.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BalkanTech.Services.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

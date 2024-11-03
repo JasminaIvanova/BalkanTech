@@ -1,6 +1,7 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
 using BalkanTech.Data.Models.Enums;
+using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,21 +12,16 @@ namespace BalkanTech.Web.Controllers
     public class RoomController : Controller
     {
         private readonly BalkanDbContext context;
-        public RoomController(BalkanDbContext _context)
+        private readonly IRoomService roomService;
+        public RoomController(BalkanDbContext _context, IRoomService _roomService)
         {
             context = _context;
+            roomService = _roomService;
         }
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var model = await context.Rooms
-                .Select(r => new RoomsIndexViewModel
-                {
-                    RoomNumber = r.RoomNumber,
-                    Floor = r.Floor,
-                    isAvailable = r.isAvailable ? "Available" : "Not Available",
-                    RoomCategory = r.RoomCategory.RoomType.ToString()
-                }).ToListAsync();
+            var model = await this.roomService.IndexGetAllRoomsAsync();
             return View(model);
         }
         [HttpGet]
