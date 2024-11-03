@@ -10,17 +10,15 @@ namespace BalkanTech.Web.Controllers
 {
     public class RoomController : Controller
     {
-        private readonly BalkanDbContext context;
         private readonly IRoomService roomService;
-        public RoomController(BalkanDbContext _context, IRoomService _roomService)
+        public RoomController( IRoomService _roomService)
         {
-            context = _context;
             roomService = _roomService;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 9)
         {
-            var model = await roomService.IndexGetAllRoomsAsync();
+            var model = await roomService.IndexGetAllRoomsAsync(page, pageSize);
             return View(model);
         }
         [HttpGet]

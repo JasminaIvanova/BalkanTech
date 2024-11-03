@@ -23,16 +23,35 @@ namespace BalkanTech.Services.Data
                     RoomType = g.RoomType.ToString()
                 }).AsNoTracking().ToListAsync();
         }
-        public async Task<IEnumerable<RoomsIndexViewModel>> IndexGetAllRoomsAsync() 
+        public async Task<PagedResult<RoomsIndexViewModel>> IndexGetAllRoomsAsync(int page, int pageSize)
         {
-            return await context.Rooms
-                .Select(r => new RoomsIndexViewModel
-                {
-                    RoomNumber = r.RoomNumber,
-                    Floor = r.Floor,
-                    isAvailable = r.isAvailable ? "Available" : "Not Available",
-                    RoomCategory = r.RoomCategory.RoomType.ToString()
-                }).ToListAsync();
+            var query = context.Rooms
+       .Select(r => new RoomsIndexViewModel
+       {
+           RoomNumber = r.RoomNumber,
+           Floor = r.Floor,
+           isAvailable = r.isAvailable ? "Available" : "Not Available",
+           RoomCategory = r.RoomCategory.RoomType.ToString()
+       });
+
+            // Count total items before pagination
+            var totalItems = await query.CountAsync();
+
+            // Paginate the results
+            var rooms = await query
+                .Skip((page - 1) * pageSize) // Calculate the starting point based on the current page
+                .Take(pageSize)               // Limit to the specified number of items
+                .ToListAsync();
+
+            // Return the paginated result
+            return new PagedResult<RoomsIndexViewModel>
+            {
+                Items = rooms,
+                TotalItems = totalItems,
+                CurrentPage = page,
+                PageSize = pageSize,
+                TotalPages = (int)Math.Ceiling((double)totalItems / pageSize)
+            };
         }
 
         public async Task AddRoomAsync(RoomAddViewModel model)

@@ -5325,7 +5325,7 @@ textarea.form-control-lg {
     --bs-pagination-padding-x: 0.75rem;
     --bs-pagination-padding-y: 1rem;
     --bs-pagination-font-size: 1rem;
-    --bs-pagination-color: #7b8ab8;
+    /*--bs-pagination-color: #7b8ab8;*/
     --bs-pagination-bg: transparent;
     --bs-pagination-border-width: var(--bs-border-width);
     --bs-pagination-border-color: var(--bs-border-color);
@@ -14300,21 +14300,21 @@ textarea.form-control-lg {
 }
 
 .pagination {
-    background-color: #d9e3f1;
-    border: none;
-    box-shadow: 5px 5px 10px rgba(55, 94, 148, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.4);
+    border: none;   
     transition: background-color 0.15s ease-in-out, border 0.15s ease-in-out, box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
     justify-content: center;
     border-radius: 0.375rem;
 }
 
+
+
 [data-bs-theme=dark] .nav-tabs,
 [data-bs-theme=dark] .nav-pills,
 [data-bs-theme=dark] .breadcrumb,
 [data-bs-theme=dark] .pagination {
-    background-color: #212529;
+    /*background-color: #212529;*/
     border: none;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.05);
+    /*box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.05);*/
     transition: background-color 0.15s ease-in-out, border 0.15s ease-in-out, box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
     color: rgba(255, 255, 255, 0.75);
 }
