@@ -1,6 +1,5 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
-using BalkanTech.Data.Models.Enums;
 using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
