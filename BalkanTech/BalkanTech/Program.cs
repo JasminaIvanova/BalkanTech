@@ -20,6 +20,10 @@ builder.Services.AddDbContext<BalkanDbContext>(options =>
 builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>(cfg =>
     {
         cfg.Password.RequiredLength = 0;
+        cfg.Password.RequireNonAlphanumeric = false;
+        cfg.Password.RequireUppercase = false;
+        cfg.Password.RequireLowercase = false;
+
     })
     .AddEntityFrameworkStores<BalkanDbContext>() 
     .AddUserManager<UserManager<AppUser>>()      
