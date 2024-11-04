@@ -22,6 +22,11 @@ namespace BalkanTech.Data.Models
         [ForeignKey(nameof(RoomId))]
         public Room Room { get; set; } = null!;
         [Required]
+        [ForeignKey(nameof(TaskCategoryId))]
+        public Guid TaskCategoryId { get; set; }
+        public TaskCategory TaskCategory { get; set; } = null!;
+
+        [Required]
         public DateTime DueDate { get; set; }
         public DateTime? CompletedDate { get; set; }
         public string Status { get; set; } = "Pending";

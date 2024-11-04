@@ -10,5 +10,7 @@
         public const int MaxRoomTypeLength = 20;
         public const int MinValueDescriptionLength = 5;
         public const int MaxValueDescriptionLength = 2500;
+        public const int MinValueCategoryNameLength = 3;
+        public const int MaxValueCategoryNameLength = 20;
     }
 }
