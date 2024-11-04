@@ -1,0 +1,96 @@
+﻿@model BalkanTech.Web.ViewModels.TaskViewModel
+@{
+    ViewData["Title"] = "Room Tasks Overview";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Tasks for Room: @Model.RoomNumber</h1>
+
+    <div class="task-section mb-5">
+        <h4 class="text-warning mb-3"><i class="bi bi-list-task"></i> To Be Completed Tasks</h4>
+        <table class="table table-hover shadow-sm">
+            <thead class="table-light">
+                <tr>
+                    <th>Description</th>
+                    <th>Due Date</th>
+                    <th>Assigned Technicians</th>
+                    <th>Status</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ToBeCompletedTasks.Any())
+                {
+                    @foreach (var task in Model.ToBeCompletedTasks)
+                    {
+                        <tr>
+                            <td>@task.Description</td>
+                            <td>@task.DueDate.ToString("d")</td>
+                            <td>
+                                @foreach (var tech in task.AssignedTechniciansTasks)
+                                {
+                                    <span class="badge bg-info me-1">@tech.AppUser.FirstName</span>
+                                }
+                            </td>
+                            <td><span class="badge bg-warning text-dark">@task.Status</span></td>
+                            <td class="text-center">
+                                <a asp-page="./TaskDetail" asp-route-id="@task.Id" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-eye"></i> View
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">No tasks to be completed.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Completed Tasks Section -->
+    <div class="task-section">
+        <h4 class="text-success mb-3"><i class="bi bi-check-circle"></i> Completed Tasks</h4>
+        <table class="table table-hover shadow-sm">
+            <thead class="table-light">
+                <tr>
+                    <th>Description</th>
+                    <th>Completed Date</th>
+                    <th>Technicians</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.CompletedTasks.Any())
+                {
+                    @foreach (var task in Model.CompletedTasks)
+                    {
+                        <tr>
+                            <td>@task.Description</td>
+                            <td>@task.CompletedDate?.ToString("d")</td>
+                            <td>
+                                @foreach (var tech in task.AssignedTechniciansTasks)
+                                {
+                                    <span class="badge bg-info me-1">@tech.AppUser.FirstName</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center text-muted">No completed tasks available.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Add Bootstrap Icons CDN for icons used in the view -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+}

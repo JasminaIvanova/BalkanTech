@@ -31,12 +31,6 @@ namespace BalkanTech.Web.Controllers
             return View(model);
         }
         [HttpGet]
-        public async Task<IActionResult> Details(Guid id)
-        {
-            //TODO
-            return View();
-        }
-        [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add()
         {

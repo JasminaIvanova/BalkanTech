@@ -23,6 +23,8 @@ namespace BalkanTech.Data.Models
         public Room Room { get; set; } = null!;
         [Required]
         public DateTime DueDate { get; set; }
+        public DateTime? CompletedDate { get; set; }
+        public string Status { get; set; } = "Pending";
         public ICollection<AssignedTechnicianTask> AssignedTechniciansTasks { get; set; } = new List<AssignedTechnicianTask>();
     }
 }
