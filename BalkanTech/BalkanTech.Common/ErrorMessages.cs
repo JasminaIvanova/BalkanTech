@@ -12,6 +12,8 @@ namespace BalkanTech.Common
         {
             public const string AddRoomsErrorMessage =
                 "Unexpected error occurred! Make sure this room is not already added!";
+            public const string NoResultFound =
+                "We couldn't find any matches for your search";
         }
     }
 }

@@ -20,6 +20,12 @@ namespace BalkanTech.Web.Controllers
         public async Task<IActionResult> Index(string search = "", int page = 1, int pageSize = 9)
         {
             var model = await roomService.IndexGetAllRoomsAsync(search, page, pageSize);
+            ViewBag.SearchQuery = search;
+            if (model.Items.Count() == 0) 
+            {
+                TempData[nameof(NoResultFound)] = NoResultFound;
+                return this.RedirectToAction("Index", "Room");
+            }
             return View(model);
         }
         [HttpGet]
