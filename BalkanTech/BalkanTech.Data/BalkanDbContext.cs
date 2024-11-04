@@ -15,8 +15,10 @@ namespace BalkanTech.Data
         {
         }
 
-        public virtual DbSet<Room> Rooms { get; set; }
-        public virtual DbSet<RoomCategory> RoomCategories { get; set; }
+        public  DbSet<Room> Rooms { get; set; }
+        public  DbSet<RoomCategory> RoomCategories { get; set; }
+        public  DbSet<MaintananceTask> MaintananceTasks { get; set; }
+        public DbSet<AssignedTechnicianTask> AssignedTechniciansTasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

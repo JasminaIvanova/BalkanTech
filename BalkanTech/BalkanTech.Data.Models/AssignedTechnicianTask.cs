@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 
 namespace BalkanTech.Data.Models
 {
-    [PrimaryKey(nameof(TechId), nameof(MaintananceTaskId))]
+    [PrimaryKey(nameof(AppUserId), nameof(MaintananceTaskId))]
     public class AssignedTechnicianTask
     {
         [Required]
-        [ForeignKey(nameof(TechId))]
-        public Guid TechId { get; set; }
-        public AppUser Technician { get; set; }
-        [ForeignKey(nameof(MaintananceTaskId))]
-
+        public Guid AppUserId { get; set; }
+        [ForeignKey(nameof(AppUserId))]
+        public AppUser AppUser { get; set; } = null!;
         public Guid MaintananceTaskId { get; set; }
+        [ForeignKey(nameof(MaintananceTaskId))]
         public MaintananceTask MaintananceTask { get; set; }
 
     }
