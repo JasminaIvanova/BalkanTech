@@ -1,0 +1,14 @@
+[
+  {
+    "Id": "b133e3e8-7634-4bfb-97e1-8c65a7b8b3c4",
+    "Name": "Electrical"
+  },
+  {
+    "Id": "6f3e5d38-5b63-4df8-bb92-2c59b9cf8f15",
+    "Name": "Plumbing"
+  },
+  {
+    "Id": "f6b9267e-13a3-40d7-a8f3-3e0d7e5d2b10",
+    "Name": "HVAC"
+  }
+]

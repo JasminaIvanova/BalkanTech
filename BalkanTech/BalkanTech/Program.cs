@@ -55,6 +55,7 @@ using (var scope = app.Services.CreateScope())
     var seeder = scope.ServiceProvider.GetRequiredService<SeedData>();
     seeder.Seed("roomCategories.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().RoomCategories);
     seeder.Seed("rooms.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().Rooms);
+    seeder.Seed("taskCategories.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().TaskCategories);
 }
 //roles
 using (var scope = app.Services.CreateScope())
