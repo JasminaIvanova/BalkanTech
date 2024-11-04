@@ -10,5 +10,17 @@
   {
     "Id": "f6b9267e-13a3-40d7-a8f3-3e0d7e5d2b10",
     "Name": "HVAC"
+  },
+  {
+    "Id": "e4e2d5d2-f4c5-4d28-89c3-713d9b2f173d",
+    "Name": "Carpentry"
+  },
+  {
+    "Id": "a72d2b1f-9318-41d7-bb7f-4e0b7b5a4c31",
+    "Name": "Appliances"
+  },
+  {
+    "Id": "9e7c5f0a-2fd8-4d6a-9c9e-4d3a2b9e7c9f",
+    "Name": "Fire Safety"
   }
 ]

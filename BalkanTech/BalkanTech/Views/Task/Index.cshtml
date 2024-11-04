@@ -4,7 +4,14 @@
 }
 
 <div class="container mt-5">
-    <h1 class="mb-4 text-center">Tasks for room @Model.RoomNumber</h1>
+    <h1 class="mb-4 text-center">Tasks for Room @Model.RoomNumber</h1>
+
+    <div class="btn-group mb-4 d-flex justify-content-center" role="group" aria-label="Category Filter">
+        @foreach (var category in Model.Categories)
+        {
+            <button type="button" class="btn btn-secondary btn-sm mx-1" style="min-width: 100px;">@category</button>
+        }
+    </div>
 
     <div class="task-section mb-5">
         <h4 class="text-warning mb-3"><i class="bi bi-list-task"></i> To Be Completed Tasks</h4>
@@ -13,6 +20,7 @@
                 <tr>
                     <th>Description</th>
                     <th>Due Date</th>
+                    <th>Category</th>
                     <th>Assigned Technicians</th>
                     <th>Status</th>
                     <th class="text-center">Actions</th>
@@ -26,6 +34,7 @@
                         <tr>
                             <td>@task.Description</td>
                             <td>@task.DueDate.ToString("d")</td>
+                            <td>@task.TaskCategory.Name</td>
                             <td>
                                 @foreach (var tech in task.AssignedTechniciansTasks)
                                 {
@@ -44,14 +53,13 @@
                 else
                 {
                     <tr>
-                        <td colspan="5" class="text-center text-muted">No tasks to be completed.</td>
+                        <td colspan="6" class="text-center text-muted">No tasks to be completed.</td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
 
-    <!-- Completed Tasks Section -->
     <div class="task-section">
         <h4 class="text-success mb-3"><i class="bi bi-check-circle"></i> Completed Tasks</h4>
         <table class="table table-hover shadow-sm">
@@ -59,6 +67,7 @@
                 <tr>
                     <th>Description</th>
                     <th>Completed Date</th>
+                    <th>Category</th>
                     <th>Technicians</th>
                 </tr>
             </thead>
@@ -70,6 +79,7 @@
                         <tr>
                             <td>@task.Description</td>
                             <td>@task.CompletedDate?.ToString("d")</td>
+                            <td>@task.TaskCategory.Name</td>
                             <td>
                                 @foreach (var tech in task.AssignedTechniciansTasks)
                                 {
@@ -82,15 +92,10 @@
                 else
                 {
                     <tr>
-                        <td colspan="3" class="text-center text-muted">No completed tasks available.</td>
+                        <td colspan="4" class="text-center text-muted">No completed tasks available.</td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
-
-@section Scripts {
-    <!-- Add Bootstrap Icons CDN for icons used in the view -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
-}
