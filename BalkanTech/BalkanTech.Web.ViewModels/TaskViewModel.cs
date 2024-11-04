@@ -12,7 +12,6 @@ namespace BalkanTech.Web.ViewModels
         public int RoomNumber { get; set; }
         public List<MaintananceTask> ToBeCompletedTasks { get; set; } = new List<MaintananceTask>();
         public List<MaintananceTask> CompletedTasks { get; set; } = new List<MaintananceTask>();
-        //public string SelectedCategory { get; set; } = "All"; 
         public List<string> Categories { get; set; } = new List<string>();
     }
 }
