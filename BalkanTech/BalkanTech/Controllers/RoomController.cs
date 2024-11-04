@@ -2,6 +2,7 @@
 using BalkanTech.Data.Models;
 using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using static BalkanTech.Common.ErrorMessages.Rooms;
 
 namespace BalkanTech.Web.Controllers
 {
+    [Authorize]
     public class RoomController : Controller
     {
         private readonly IRoomService roomService;
@@ -35,6 +37,7 @@ namespace BalkanTech.Web.Controllers
             return View();
         }
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add()
         {
             var model = new RoomAddViewModel

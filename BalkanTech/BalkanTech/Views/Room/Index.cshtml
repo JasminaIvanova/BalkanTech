@@ -26,11 +26,16 @@
 
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <a href="@Url.Action("Add", "Room")" class="btn btn-info">Add Room</a>
-        <form class="d-flex">
-            <input type = "text" name="search" class="form-control me-sm-2" type="search" placeholder="Search" value="@ViewBag.SearchQuery">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        @if (User.IsInRole("Admin"))
+        {
+            <a href="@Url.Action("Add", "Room")" class="btn btn-info">Add Room</a>
+         }
+        <div class="ms-auto">
+            <form class="d-flex">
+                <input type="text" name="search" class="form-control me-sm-2" placeholder="Search" value="@ViewBag.SearchQuery">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
     </div>
 
     <div class="row">

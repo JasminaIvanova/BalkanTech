@@ -16,5 +16,6 @@ namespace BalkanTech.Data.Models
             this.Id = Guid.NewGuid();
         }
         public string FirstName { get; set; }
+        public ICollection<AssignedTechnicianTask> AssignedTechniciansTasks { get; set; } = new List<AssignedTechnicianTask>();
     }
 }

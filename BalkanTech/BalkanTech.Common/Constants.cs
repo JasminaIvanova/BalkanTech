@@ -8,5 +8,7 @@
         public const int MaxFloorRoomNumber = 7;
         public const int MinRoomTypeLength = 4;
         public const int MaxRoomTypeLength = 20;
+        public const int MinValueDescriptionLength = 5;
+        public const int MaxValueDescriptionLength = 2500;
     }
 }

@@ -20,5 +20,7 @@ namespace BalkanTech.Data.Models
         public RoomCategory RoomCategory { get; set; } = null!;
         [Required]
         public bool isAvailable { get; set; }
+
+        public ICollection<MaintananceTask> MaintananceTasks { get; set; } = new List<MaintananceTask>();
     }
 }
