@@ -45,12 +45,27 @@ else
     
     app.UseHsts();
 }
-
+ //seeding
 using (var scope = app.Services.CreateScope())
 {
-    var seeder = scope.ServiceProvider.GetRequiredService<SeedData>();  // Retrieve the registered SeedData service
+    var seeder = scope.ServiceProvider.GetRequiredService<SeedData>();
     seeder.Seed("roomCategories.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().RoomCategories);
     seeder.Seed("rooms.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().Rooms);
+}
+//roles
+using (var scope = app.Services.CreateScope())
+{
+   
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+    var roles = new[] { "Admin", "Manager", "Technician" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole<Guid>(role));
+        }
+    }
 }
 
 app.UseHttpsRedirection();
