@@ -28,6 +28,7 @@
                         <select asp-for="RoomId" class="form-select">
                             @if (Model.RoomNumbers != null)
                             {
+                                <option value="">--Select Room Number--</option>
                                 @foreach (var room in Model.RoomNumbers)
                                 {
                                     <option value="@room">Room @room</option>
@@ -44,6 +45,7 @@
                         <select asp-for="TaskCategoryId" class="form-select">
                             @if (Model.TaskCategories != null)
                             {
+                                <option value="">--Select Category Type--</option>
                                 foreach (var category in Model.TaskCategories)
                                 {
                                     <option value="@category">@category</option>
@@ -64,14 +66,6 @@
                         <span asp-validation-for="DueDate" class="text-danger"></span>
                     </div>
                 </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label asp-for="CompletedDate" class="form-label fw-bold">Completed Date</label>
-                        <input asp-for="CompletedDate" type="date" class="form-control" />
-                        <span asp-validation-for="CompletedDate" class="text-danger"></span>
-                    </div>
-                </div>
             </div>
 
             <div class="row mb-3">
@@ -79,9 +73,9 @@
                     <div class="form-group">
                         <label class="form-label fw-bold">Assigned Technicians</label>
                         <div class="form-check">
-                            @if (Model.AssignedTechnicians != null)
+                            @if (Model.Technicians != null)
                             {
-                                foreach (var technician in Model.AssignedTechnicians)
+                                foreach (var technician in Model.Technicians)
                                 {
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="tech_@technician" name="AssignedTechnicians" value="@technician" />
@@ -90,7 +84,7 @@
                                 }
                             }
                         </div>
-                        <span asp-validation-for="AssignedTechnicians" class="text-danger"></span>
+                        <span asp-validation-for="Technicians" class="text-danger"></span>
                     </div>
                 </div>
             </div>

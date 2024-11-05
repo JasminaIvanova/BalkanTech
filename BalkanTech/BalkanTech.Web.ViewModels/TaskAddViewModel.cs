@@ -24,7 +24,6 @@ namespace BalkanTech.Web.ViewModels
 
         [Required]
         public string DueDate { get; set; }
-        public string? CompletedDate { get; set; }
-        public IEnumerable<string> AssignedTechnicians{ get; set; }
+        public IEnumerable<string> Technicians { get; set; }
     }
 }

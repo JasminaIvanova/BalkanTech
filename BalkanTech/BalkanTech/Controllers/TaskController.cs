@@ -43,7 +43,7 @@ namespace BalkanTech.Web.Controllers
         {
             var model = new TaskAddViewModel();
             model.RoomNumbers = context.Rooms.Select(r => r.RoomNumber).ToList();
-            model.AssignedTechnicians = (await _userManager.GetUsersInRoleAsync("Technician"))
+            model.Technicians = (await _userManager.GetUsersInRoleAsync("Technician"))
                             .Select(t => t.FirstName)
                             .ToList();
             model.TaskCategories = context.TaskCategories.Select(c => c.Name).ToList();
