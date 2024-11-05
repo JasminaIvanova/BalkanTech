@@ -26,8 +26,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>(cfg =>
 
     })
     .AddEntityFrameworkStores<BalkanDbContext>() 
-    .AddUserManager<UserManager<AppUser>>()      
     .AddRoles<IdentityRole<Guid>>()               
+    .AddUserManager<UserManager<AppUser>>()     
     .AddSignInManager<SignInManager<AppUser>>()
     .AddDefaultTokenProviders()
     .AddDefaultUI();

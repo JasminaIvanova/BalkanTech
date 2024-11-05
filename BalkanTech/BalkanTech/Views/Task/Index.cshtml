@@ -6,12 +6,17 @@
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Tasks for Room @Model.RoomNumber</h1>
 
-    <div class="btn-group mb-4 d-flex justify-content-center" role="group" aria-label="Category Filter">
-        @foreach (var category in Model.Categories)
-        {
-            <button type="button" class="btn btn-secondary btn-sm mx-1" style="min-width: 100px;">@category</button>
-        }
-    </div>
+    <form method="get" action="@Url.Action("Index", "Task")" id="categoryForm">
+        <input type="hidden" name="category" id="categoryInput" value="All" />
+
+        <div class="btn-group mb-4 d-flex justify-content-center" role="group" aria-label="Category Filter">
+            <button type="button" class="btn btn-secondary btn-sm mx-1" onclick="setCategory('All')">All</button>
+            @foreach (var category in Model.Categories)
+            {
+                <button type="button" class="btn btn-secondary btn-sm mx-1" onclick="setCategory('@category')">@category</button>
+            }
+        </div>
+    </form>
 
     <div class="task-section mb-5">
         <h4 class="text-warning mb-3"><i class="bi bi-list-task"></i> To Be Completed Tasks</h4>
@@ -104,3 +109,10 @@
 @section Scripts {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
 }
+
+<script>
+    function setCategory(category) {
+        document.getElementById("categoryInput").value = category;
+        document.getElementById("categoryForm").submit();
+    }
+</script>
