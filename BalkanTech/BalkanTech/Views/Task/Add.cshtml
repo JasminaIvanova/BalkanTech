@@ -8,7 +8,7 @@
 
 <div class="card shadow-sm mb-4">
     <div class="card-body">
-        <form asp-action="AddTask" method="post" class="needs-validation" novalidate>
+        <form asp-action="Add" method="post" class="needs-validation" novalidate>
             <div class="row mb-3">
       
                 <div class="col-md-12">
@@ -31,7 +31,7 @@
                                 <option value="">--Select Room Number--</option>
                                 @foreach (var room in Model.RoomNumbers)
                                 {
-                                    <option value="@room">Room @room</option>
+                                    <option value="@room.Id">Room @room.RoomNumber</option>
                                 }
                             }
                         </select>
@@ -43,18 +43,19 @@
                     <div class="form-group">
                         <label asp-for="TaskCategoryId" class="form-label fw-bold">Task Category</label>
                         <select asp-for="TaskCategoryId" class="form-select">
+                            <option value="" disabled selected>--Select Category Type--</option>
                             @if (Model.TaskCategories != null)
                             {
-                                <option value="">--Select Category Type--</option>
                                 foreach (var category in Model.TaskCategories)
                                 {
-                                    <option value="@category">@category</option>
+                                    <option value="@category.Id">@category.TaskCategoryName</option>
                                 }
                             }
                         </select>
                         <span asp-validation-for="TaskCategoryId" class="text-danger"></span>
                     </div>
                 </div>
+
             </div>
 
             <div class="row mb-3">
@@ -78,13 +79,17 @@
                                 foreach (var technician in Model.Technicians)
                                 {
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="tech_@technician" name="AssignedTechnicians" value="@technician" />
-                                        <label class="form-check-label" for="tech_@technician">@technician</label>
+                                        <input type="checkbox" class="form-check-input"
+                                               id="tech_@technician.Id"
+                                               name="AssignedTechniciansIDs"
+                                               value="@technician.Id" />
+                                        <label class="form-check-label" 
+                                         for="tech_@technician.Id">@technician.FirstName</label>
                                     </div>
                                 }
                             }
                         </div>
-                        <span asp-validation-for="Technicians" class="text-danger"></span>
+                        <span asp-validation-for="AssignedTechniciansIDs" class="text-danger"></span>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,10 @@ using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
+using System.Globalization;
+using static BalkanTech.Common.Constants;
 
 namespace BalkanTech.Web.Controllers
 {
@@ -24,11 +28,11 @@ namespace BalkanTech.Web.Controllers
             
             var model = new TaskViewModel();
             model.RoomNumber = roomNumber; 
-            var room = context.Rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+            var room = context.Rooms.Include(r => r.MaintananceTasks).FirstOrDefault(r => r.RoomNumber == roomNumber);
             model.Categories = context.TaskCategories.Select(c => c.Name).ToList();
-            if (category == "All")
+            if (category == null || category == "All")
             {
-                model.ToBeCompletedTasks = room.MaintananceTasks.Where(t => t.Status != "Completed").ToList();
+                model.ToBeCompletedTasks = room.MaintananceTasks.Where(t => t.Status == "Pending").ToList();
                 model.CompletedTasks = room.MaintananceTasks.Where(t => t.Status == "Completed").ToList(); ;
             }
             else
@@ -42,13 +46,75 @@ namespace BalkanTech.Web.Controllers
         public async Task<IActionResult> Add()
         {
             var model = new TaskAddViewModel();
-            model.RoomNumbers = context.Rooms.Select(r => r.RoomNumber).ToList();
+            model.RoomNumbers = context.Rooms.Select(r => new TaskAddRoomViewModel
+            {
+                Id = r.Id,
+                RoomNumber = r.RoomNumber,
+            });
             model.Technicians = (await _userManager.GetUsersInRoleAsync("Technician"))
-                            .Select(t => t.FirstName)
-                            .ToList();
-            model.TaskCategories = context.TaskCategories.Select(c => c.Name).ToList();
+                            .Select(t => new TaskAddTechnicianViewModel
+                            {
+                                Id = t.Id,
+                                FirstName = t.FirstName
+                            }).ToList();
+            model.TaskCategories = context.TaskCategories.Select(tc => new TaskCategoryViewModel
+            {
+                Id = tc.Id,
+                TaskCategoryName = tc.Name
+            });
             return View(model);
         }
 
-     }
+        [HttpPost]
+        public async Task<IActionResult> Add(TaskAddViewModel model)
+        {
+            if (!DateTime.TryParseExact(model.DueDate, dateFormat, CultureInfo.InvariantCulture,
+               DateTimeStyles.None, out DateTime parsedDueDate))
+            {
+                throw new InvalidOperationException("Invalid date format.");
+            }
+            if (!ModelState.IsValid) 
+            {
+                model.RoomNumbers = context.Rooms.Select(r => new TaskAddRoomViewModel
+                {
+                    Id = r.Id,
+                    RoomNumber = r.RoomNumber,
+                });
+                model.Technicians = (await _userManager.GetUsersInRoleAsync("Technician"))
+                           .Select(t => new TaskAddTechnicianViewModel
+                           {
+                               Id = t.Id,
+                               FirstName = t.FirstName
+                           }).ToList();
+                model.TaskCategories = context.TaskCategories.Select(tc => new TaskCategoryViewModel
+                {
+                    Id = tc.Id,
+                    TaskCategoryName = tc.Name
+                });
+                return View(model);
+            }
+            
+
+            MaintananceTask myTask = new MaintananceTask
+            {
+                Description = model.Description,
+                RoomId = model.RoomId,
+                TaskCategoryId = model.TaskCategoryId,
+                DueDate = parsedDueDate,
+            };
+            context.MaintananceTasks.Add(myTask);
+            var tasksAssigned = model.AssignedTechniciansIDs
+                              .Select(techId => new AssignedTechnicianTask
+                              {
+                                  AppUserId = techId,
+                                  MaintananceTaskId = myTask.Id
+                              })
+                              .ToList();
+            context.AssignedTechniciansTasks.AddRange(tasksAssigned);
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+        }
+
+    }
 }

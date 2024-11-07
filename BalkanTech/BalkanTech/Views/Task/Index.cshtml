@@ -25,8 +25,8 @@
                 <tr>
                     <th>Description</th>
                     <th>Due Date</th>
-                    <th>Category</th>
-                    <th>Assigned Technicians</th>
+                   @*  <th>Category</th>
+                    <th>Assigned Technicians</th> *@
                     <th>Status</th>
                     <th class="text-center">Actions</th>
                 </tr>
@@ -39,19 +39,20 @@
                         <tr>
                             <td>@task.Description</td>
                             <td>@task.DueDate.ToString("d")</td>
-                            <td>@task.TaskCategory.Name</td>
-                            <td>
+                            @* <td>@task.TaskCategory.Name</td> *@
+                            @* <td>
                                 @foreach (var tech in task.AssignedTechniciansTasks)
                                 {
                                     <span class="badge bg-info me-1">@tech.AppUser.FirstName</span>
                                 }
-                            </td>
+                            </td> *@
                             <td><span class="badge bg-warning text-dark">@task.Status</span></td>
                             <td class="text-center">
-                                <a asp-page="./TaskDetail" asp-route-id="@task.Id" class="btn btn-primary btn-sm">
+                                <a asp-action="TaskDetail" asp-controller="Task" asp-route-id="@task.Id" class="btn btn-primary btn-sm">
                                     <i class="bi bi-eye"></i> View
                                 </a>
                             </td>
+
                         </tr>
                     }
                 }
