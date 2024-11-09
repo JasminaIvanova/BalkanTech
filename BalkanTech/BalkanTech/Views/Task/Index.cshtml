@@ -51,6 +51,12 @@
                                 <a asp-action="TaskDetail" asp-controller="Task" asp-route-id="@task.Id" class="btn btn-primary btn-sm">
                                     <i class="bi bi-eye"></i> View
                                 </a>
+                                <a style="color:white" asp-action="ChangeTaskStatus" asp-controller="Task" asp-route-id="@task.Id" class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-check-all" ></i> Complete
+                                </a>
+                                <a style="color:white" asp-action="ChangeTaskStatus" asp-controller="Task" asp-route-id="@task.Id" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-gear"></i> In process
+                                </a>
                             </td>
 
                         </tr>

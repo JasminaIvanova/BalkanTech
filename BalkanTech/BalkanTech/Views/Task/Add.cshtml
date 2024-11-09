@@ -41,9 +41,9 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label asp-for="TaskCategoryId" class="form-label fw-bold">Task Category</label>
+                        <label asp-for="@Model.TaskCategoryId" class="form-label fw-bold">Task Category</label>
                         <select asp-for="TaskCategoryId" class="form-select">
-                            <option value="" disabled selected>--Select Category Type--</option>
+                            <option value="" selected>--Select Category Type--</option>
                             @if (Model.TaskCategories != null)
                             {
                                 foreach (var category in Model.TaskCategories)
@@ -52,7 +52,7 @@
                                 }
                             }
                         </select>
-                        <span asp-validation-for="TaskCategoryId" class="text-danger"></span>
+                        <span asp-validation-for="@Model.TaskCategoryId" class="text-danger"></span>
                     </div>
                 </div>
 
