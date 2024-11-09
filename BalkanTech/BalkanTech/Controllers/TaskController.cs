@@ -70,5 +70,24 @@ namespace BalkanTech.Web.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ChangeTaskStatus(Guid id, string newStatus)
+        {
+            var task = await context.MaintananceTasks.FindAsync(id);
+            if (task == null)
+            {
+                return Json(new { success = false, message = "Task not found" });
+            }
+            task.Status = newStatus;
+            if (newStatus == "Completed")
+            {
+                task.CompletedDate = DateTime.Now;
+            }
+
+            await context.SaveChangesAsync();
+
+            return Json(new { success = true, newStatus = newStatus, taskId = id });
+        }
+
     }
 }

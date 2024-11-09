@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Room Tasks Overview";
 }
-
+<div id="task-status-url" data-url="@Url.Action("ChangeTaskStatus", "Task")" style="display:none"></div>
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Tasks for Room @Model.RoomNumber</h1>
 
@@ -25,8 +25,6 @@
                 <tr>
                     <th>Description</th>
                     <th>Due Date</th>
-                   @*  <th>Category</th>
-                    <th>Assigned Technicians</th> *@
                     <th>Status</th>
                     <th class="text-center">Actions</th>
                 </tr>
@@ -36,29 +34,28 @@
                 {
                     @foreach (var task in Model.ToBeCompletedTasks)
                     {
-                        <tr>
+                        <tr id="task-@task.Id">
                             <td>@task.Description</td>
                             <td>@task.DueDate.ToString("d")</td>
-                            @* <td>@task.TaskCategory.Name</td> *@
-                            @* <td>
-                                @foreach (var tech in task.AssignedTechniciansTasks)
+                            <td>
+                                @if (@task.Status == "Pending")
                                 {
-                                    <span class="badge bg-info me-1">@tech.AppUser.FirstName</span>
-                                }
-                            </td> *@
-                            <td><span class="badge bg-warning text-dark">@task.Status</span></td>
-                            <td class="text-center">
-                                <a asp-action="TaskDetail" asp-controller="Task" asp-route-id="@task.Id" class="btn btn-primary btn-sm">
-                                    <i class="bi bi-eye"></i> View
-                                </a>
-                                <a style="color:white" asp-action="ChangeTaskStatus" asp-controller="Task" asp-route-id="@task.Id" class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-check-all" ></i> Complete
-                                </a>
-                                <a style="color:white" asp-action="ChangeTaskStatus" asp-controller="Task" asp-route-id="@task.Id" class="btn btn-outline-danger btn-sm">
-                                    <i class="bi bi-gear"></i> In process
-                                </a>
-                            </td>
+                                    <span id="task-status-@task.Id" class="badge bg-warning text-dark">@task.Status</span>
 
+                                }
+                                else if (@task.Status == "In Process")
+                                {
+                                <span id="task-status-@task.Id" class="badge bg-danger text-dark">@task.Status</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                <button onclick="changeTaskStatus('@task.Id', 'In Process')" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-gear"></i> In Process
+                                </button>
+                                <button onclick="changeTaskStatus('@task.Id', 'Completed')" class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-check-all"></i> Complete
+                                </button>
+                            </td>
                         </tr>
                     }
                 }
@@ -74,13 +71,12 @@
 
     <div class="task-section">
         <h4 class="text-success mb-3"><i class="bi bi-check-circle"></i> Completed Tasks</h4>
-        <table class="table table-hover shadow-sm">
+        <table id="completed-tasks-table" class="table table-hover shadow-sm">
             <thead class="table-light">
                 <tr>
                     <th>Description</th>
                     <th>Completed Date</th>
-                    <th>Category</th>
-                    <th>Technicians</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -88,16 +84,11 @@
                 {
                     @foreach (var task in Model.CompletedTasks)
                     {
-                        <tr>
+                        <tr id="task-@task.Id">
                             <td>@task.Description</td>
                             <td>@task.CompletedDate?.ToString("d")</td>
-                            <td>@task.TaskCategory.Name</td>
-                            <td>
-                                @foreach (var tech in task.AssignedTechniciansTasks)
-                                {
-                                    <span class="badge bg-info me-1">@tech.AppUser.FirstName</span>
-                                }
-                            </td>
+                            <td><span id="task-status-@task.Id" class="badge bg-success text-dark">@task.Status</span></td>
+                            
                         </tr>
                     }
                 }
@@ -112,14 +103,9 @@
     </div>
 </div>
 
-
 @section Scripts {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
 }
 
-<script>
-    function setCategory(category) {
-        document.getElementById("categoryInput").value = category;
-        document.getElementById("categoryForm").submit();
-    }
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
