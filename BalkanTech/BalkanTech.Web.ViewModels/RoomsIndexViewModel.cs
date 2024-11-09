@@ -10,7 +10,6 @@ namespace BalkanTech.Web.ViewModels
 {
     public class RoomsIndexViewModel
     {
-       
         public int RoomNumber { get; set; }
         public int Floor { get; set; }
         public required string RoomCategory { get; set; }

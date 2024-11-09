@@ -9,6 +9,7 @@ namespace BalkanTech.Web.ViewModels
 {
     public class TaskViewModel
     {
+        public Guid Id { get; set; }
         public int RoomNumber { get; set; }
         public List<MaintananceTask> ToBeCompletedTasks { get; set; } = new List<MaintananceTask>();
         public List<MaintananceTask> CompletedTasks { get; set; } = new List<MaintananceTask>();

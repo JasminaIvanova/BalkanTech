@@ -23,23 +23,39 @@ namespace BalkanTech.Web.Controllers
          
         }
         [HttpGet]
-        public IActionResult Index(Guid id, int roomNumber, string category)
+        public IActionResult Index( int roomNumber, string category = "All")
         {
-            
-            var model = new TaskViewModel();
-            model.RoomNumber = roomNumber; 
-            var room = context.Rooms.Include(r => r.MaintananceTasks).FirstOrDefault(r => r.RoomNumber == roomNumber);
-            model.Categories = context.TaskCategories.Select(c => c.Name).ToList();
-            if (category == null || category == "All")
+            var model = new TaskViewModel
+            {
+                RoomNumber = roomNumber,
+                Categories = context.TaskCategories.Select(c => c.Name).ToList()
+            };
+
+            var room = context.Rooms
+                .Include(r => r.MaintananceTasks)
+                .ThenInclude(t => t.TaskCategory)
+                .FirstOrDefault(r => r.RoomNumber == roomNumber);
+
+            if (room == null)
+            {
+                return NotFound("Room not found.");
+            }
+
+            if (string.IsNullOrEmpty(category) || category == "All")
             {
                 model.ToBeCompletedTasks = room.MaintananceTasks.Where(t => t.Status == "Pending").ToList();
-                model.CompletedTasks = room.MaintananceTasks.Where(t => t.Status == "Completed").ToList(); ;
+                model.CompletedTasks = room.MaintananceTasks.Where(t => t.Status == "Completed").ToList();
             }
             else
             {
-                model.ToBeCompletedTasks = room.MaintananceTasks.Where(t => t.Status != "Completed" && t.TaskCategory.Name == category).ToList();
-                model.CompletedTasks = room.MaintananceTasks.Where(t => t.Status == "Completed" && t.TaskCategory.Name == category).ToList(); ;
+                model.ToBeCompletedTasks = room.MaintananceTasks
+                    .Where(t => t.Status != "Completed" && t.TaskCategory != null && t.TaskCategory.Name == category)
+                    .ToList();
+                model.CompletedTasks = room.MaintananceTasks
+                    .Where(t => t.Status == "Completed" && t.TaskCategory != null && t.TaskCategory.Name == category)
+                    .ToList();
             }
+
             return View(model);
         }
         [HttpGet]
@@ -112,7 +128,7 @@ namespace BalkanTech.Web.Controllers
                               .ToList();
             context.AssignedTechniciansTasks.AddRange(tasksAssigned);
             await context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return View();
 
         }
 

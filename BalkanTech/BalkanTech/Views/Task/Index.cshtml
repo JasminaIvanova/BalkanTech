@@ -8,7 +8,7 @@
 
     <form method="get" action="@Url.Action("Index", "Task")" id="categoryForm">
         <input type="hidden" name="category" id="categoryInput" value="All" />
-
+        <input type="hidden" name="roomNumber" value="@Model.RoomNumber" />
         <div class="btn-group mb-4 d-flex justify-content-center" role="group" aria-label="Category Filter">
             <button type="button" class="btn btn-secondary btn-sm mx-1" onclick="setCategory('All')">All</button>
             @foreach (var category in Model.Categories)
