@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Room Tasks Overview";
 }
-<div id="task-status-url" data-url="@Url.Action("ChangeTaskStatus", "Task")" style="display:none"></div>
+
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Tasks for Room @Model.RoomNumber</h1>
 
@@ -25,6 +25,7 @@
                 <tr>
                     <th>Description</th>
                     <th>Due Date</th>
+                    <th>Category</th>
                     <th>Status</th>
                     <th class="text-center">Actions</th>
                 </tr>
@@ -37,6 +38,7 @@
                         <tr id="task-@task.Id">
                             <td>@task.Description</td>
                             <td>@task.DueDate.ToString("d")</td>
+                            <td>@task.TaskCategory.Name</td>
                             <td>
                                 @if (@task.Status == "Pending")
                                 {
@@ -76,6 +78,7 @@
                 <tr>
                     <th>Description</th>
                     <th>Completed Date</th>
+                    <th>Category</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -87,6 +90,7 @@
                         <tr id="task-@task.Id">
                             <td>@task.Description</td>
                             <td>@task.CompletedDate?.ToString("d")</td>
+                            <td>@task.TaskCategory.Name</td>
                             <td><span id="task-status-@task.Id" class="badge bg-success text-dark">@task.Status</span></td>
                             
                         </tr>
