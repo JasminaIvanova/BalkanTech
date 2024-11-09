@@ -14,6 +14,8 @@ namespace BalkanTech.Common
                 "Unexpected error occurred! Make sure this room is not already added!";
             public const string NoResultFound =
                 "We couldn't find any matches for your search";
+            public const string ErrorRoomNumber =
+                "Unexpected error occurred! Make sure room with this number exists!";
         }
     }
 }

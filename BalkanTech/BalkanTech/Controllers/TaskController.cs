@@ -1,16 +1,12 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
-using BalkanTech.Services.Data;
 using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
-using System;
 using System.Globalization;
 using static BalkanTech.Common.Constants;
-using static BalkanTech.Common.ErrorMessages;
+using static BalkanTech.Common.ErrorMessages.Rooms;
 
 namespace BalkanTech.Web.Controllers
 {
@@ -30,12 +26,22 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index( Guid roomId, int roomNumber,string category = "All")
         {
-            var model = await taskService.IndexGetAllTasksAsync( roomNumber, category);
-            if (model == null)
+            try
             {
-                return NotFound("Room not found.");
+                var model = await taskService.IndexGetAllTasksAsync(roomNumber, category);
+                if (model == null)
+                {
+                    return NotFound("Room not found.");
+                }
+                return View(model);
             }
-            return View(model);
+            catch (InvalidOperationException roomEx)
+            {
+               
+                TempData[nameof(ErrorRoomNumber)] = ErrorRoomNumber;
+                return RedirectToAction("Index", "Room");
+            }
+
         }
         [HttpGet]
         public async Task<IActionResult> Add()

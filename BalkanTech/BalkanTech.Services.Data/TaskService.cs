@@ -71,6 +71,11 @@ namespace BalkanTech.Services.Data
 
         public async Task<TaskViewModel> IndexGetAllTasksAsync(int roomNumber, string category = "All")
         {
+            if (!context.Rooms.Any(r => r.RoomNumber == roomNumber)) 
+            {
+                throw new InvalidOperationException();
+
+            }
             var model = new TaskViewModel
             {
                 RoomNumber = roomNumber,
