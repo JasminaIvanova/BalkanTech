@@ -12,6 +12,10 @@ namespace BalkanTech.Services.Data.Interfaces
     {
         Task<TaskViewModel> IndexGetAllTasksAsync(int roomNumber, string category = "All");
         
-        Task<bool> AddTaskAsync(TaskAddViewModel model);
+        Task AddTaskAsync(TaskAddViewModel model, DateTime parsedDate);
+        Task<IEnumerable<TaskAddTechnicianViewModel>> LoadTechniciansAsync();
+        Task<IEnumerable<TaskAddRoomViewModel>> LoadRoomsAsync();
+
+        Task<IEnumerable<TaskCategoryViewModel>> LoadTaskCategoriesAsync();
     }
 }

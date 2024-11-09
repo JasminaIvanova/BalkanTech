@@ -14,14 +14,59 @@ namespace BalkanTech.Services.Data
 {
     public class TaskService : ITaskService
     {
+        private readonly UserManager<AppUser> userManager;
         private readonly BalkanDbContext context;
-        public TaskService(BalkanDbContext _context)
+        public TaskService(BalkanDbContext _context, UserManager<AppUser> _userManager)
         {
             context = _context;
+            userManager = _userManager;
         }
-        public Task<bool> AddTaskAsync(TaskAddViewModel model)
+        public async Task<IEnumerable<TaskAddTechnicianViewModel>> LoadTechniciansAsync()
         {
-            throw new NotImplementedException();
+            var allTechs = await userManager.GetUsersInRoleAsync("Technician");
+            return allTechs.Select(t => new TaskAddTechnicianViewModel
+            {
+                Id = t.Id,
+                FirstName = t.FirstName
+            }).ToList();
+
+        }
+        public async Task<IEnumerable<TaskAddRoomViewModel>> LoadRoomsAsync()
+        {
+            return await context.Rooms.Select(r => new TaskAddRoomViewModel
+            {
+                Id = r.Id,
+                RoomNumber = r.RoomNumber,
+            }).ToListAsync();
+        }
+
+        public async Task<IEnumerable<TaskCategoryViewModel>> LoadTaskCategoriesAsync()
+        {
+            return await context.TaskCategories.Select(tc => new TaskCategoryViewModel
+            {
+                Id = tc.Id,
+                TaskCategoryName = tc.Name
+            }).ToListAsync();
+        }
+        public async Task AddTaskAsync(TaskAddViewModel model, DateTime parsedDueDate)
+        {
+            MaintananceTask myTask = new MaintananceTask
+            {
+                Description = model.Description,
+                RoomId = model.RoomId,
+                TaskCategoryId = model.TaskCategoryId,
+                DueDate = parsedDueDate,
+            };
+            await context.MaintananceTasks.AddAsync(myTask);
+            var tasksAssigned = model.AssignedTechniciansIDs
+                              .Select(techId => new AssignedTechnicianTask
+                              {
+                                  AppUserId = techId,
+                                  MaintananceTaskId = myTask.Id
+                              })
+                              .ToList();
+            await context.AssignedTechniciansTasks.AddRangeAsync(tasksAssigned);
+            await context.SaveChangesAsync();
         }
 
         public async Task<TaskViewModel> IndexGetAllTasksAsync(int roomNumber, string category = "All")
@@ -49,5 +94,7 @@ namespace BalkanTech.Services.Data
             }
             return model;
         }
+
+       
     }
 }

@@ -42,8 +42,6 @@ namespace BalkanTech.Services.Data
         }
         public async Task<RoomsIndexPagedModel<RoomsIndexViewModel>> IndexGetAllRoomsAsync(string search, int page, int pageSize)
         {
-
-            //TODO - Fix for no results of search
             var allRooms = await LoadRoomsBySearch(search);
 
             var roomsPerPage = await allRooms
