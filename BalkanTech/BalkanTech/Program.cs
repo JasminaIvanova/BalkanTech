@@ -34,6 +34,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>(cfg =>
 
 builder.Services.AddTransient<SeedData>();
 builder.Services.AddScoped<IRoomService, RoomService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 

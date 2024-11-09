@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using System.Globalization;
 using static BalkanTech.Common.Constants;
+using static BalkanTech.Common.ErrorMessages;
 
 namespace BalkanTech.Web.Controllers
 {
@@ -15,47 +16,23 @@ namespace BalkanTech.Web.Controllers
     public class TaskController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly ITaskService taskSerrvice;
         private readonly BalkanDbContext context;
-        public TaskController(BalkanDbContext _context, UserManager<AppUser> userManager)
+        public TaskController(BalkanDbContext _context, UserManager<AppUser> userManager, ITaskService _taskService)
         {
             context = _context;
             _userManager = userManager;
+            taskSerrvice = _taskService;
          
         }
         [HttpGet]
-        public IActionResult Index( int roomNumber, string category = "All")
+        public async Task<IActionResult> Index( int roomNumber, string category = "All")
         {
-            var model = new TaskViewModel
-            {
-                RoomNumber = roomNumber,
-                Categories = context.TaskCategories.Select(c => c.Name).ToList()
-            };
-
-            var room = context.Rooms
-                .Include(r => r.MaintananceTasks)
-                .ThenInclude(t => t.TaskCategory)
-                .FirstOrDefault(r => r.RoomNumber == roomNumber);
-
-            if (room == null)
+            var model = await taskSerrvice.IndexGetAllTasksAsync(roomNumber, category);
+            if (model == null)
             {
                 return NotFound("Room not found.");
             }
-
-            if (string.IsNullOrEmpty(category) || category == "All")
-            {
-                model.ToBeCompletedTasks = room.MaintananceTasks.Where(t => t.Status == "Pending").ToList();
-                model.CompletedTasks = room.MaintananceTasks.Where(t => t.Status == "Completed").ToList();
-            }
-            else
-            {
-                model.ToBeCompletedTasks = room.MaintananceTasks
-                    .Where(t => t.Status != "Completed" && t.TaskCategory != null && t.TaskCategory.Name == category)
-                    .ToList();
-                model.CompletedTasks = room.MaintananceTasks
-                    .Where(t => t.Status == "Completed" && t.TaskCategory != null && t.TaskCategory.Name == category)
-                    .ToList();
-            }
-
             return View(model);
         }
         [HttpGet]
