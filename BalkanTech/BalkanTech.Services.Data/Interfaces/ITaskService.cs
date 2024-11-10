@@ -17,5 +17,7 @@ namespace BalkanTech.Services.Data.Interfaces
         Task<IEnumerable<TaskAddRoomViewModel>> LoadRoomsAsync();
 
         Task<IEnumerable<TaskCategoryViewModel>> LoadTaskCategoriesAsync();
+
+        Task ChangeTaskStatus(Guid id, string newStatus);
     }
 }

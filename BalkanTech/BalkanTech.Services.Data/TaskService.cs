@@ -100,6 +100,9 @@ namespace BalkanTech.Services.Data
             return model;
         }
 
-       
+        public async Task ChangeTaskStatus(Guid id, string newStatus)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

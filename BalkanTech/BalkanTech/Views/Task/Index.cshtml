@@ -3,7 +3,7 @@
     ViewData["Title"] = "Room Tasks Overview";
 }
 
-
+<div id="task-status-url" data-url="@Url.Action("ChangeTaskStatus", "Task")" style="display:none"></div>
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Tasks for Room @Model.RoomNumber</h1>
 
@@ -38,7 +38,7 @@
                     {
                         <tr id="task-@task.Id">
                             <td>@task.Description</td>
-                            <td>@task.DueDate.ToString("d")</td>
+                            <td id="task-date-@task.Id">@task.DueDate.ToString("d")</td>
                             <td>@task.TaskCategory.Name</td>
                             <td>
                                 @if (@task.Status == "Pending")
@@ -52,10 +52,10 @@
                                 }
                             </td>
                             <td class="text-center">
-                                <button onclick="changeTaskStatus('@task.Id', 'In Process')" class="btn btn-outline-danger btn-sm">
+                                <button onclick="changeTaskStatus('@task.Id', 'In Process', '@task.CompletedDate')" class="btn btn-outline-danger btn-sm">
                                     <i class="bi bi-gear"></i> In Process
                                 </button>
-                                <button onclick="changeTaskStatus('@task.Id', 'Completed')" class="btn btn-outline-success btn-sm">
+                                <button onclick="changeTaskStatus('@task.Id', 'Completed', '@DateTime.Now')" class="btn btn-outline-success btn-sm">
                                     <i class="bi bi-check-all"></i> Complete
                                 </button>
                             </td>
@@ -90,7 +90,7 @@
                     {
                         <tr id="task-@task.Id">
                             <td>@task.Description</td>
-                            <td>@task.CompletedDate?.ToString("d")</td>
+                            <td id="task-date-@task.Id">@task.CompletedDate?.ToString("d")</td>
                             <td>@task.TaskCategory.Name</td>
                             <td><span id="task-status-@task.Id" class="badge bg-success text-dark">@task.Status</span></td>
                             
