@@ -21,6 +21,7 @@ namespace BalkanTech.Data
         public DbSet<AssignedTechnicianTask> AssignedTechniciansTasks { get; set; }
 
         public DbSet<TaskCategory> TaskCategories { get; set; }
+        public DbSet<Note> Notes { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

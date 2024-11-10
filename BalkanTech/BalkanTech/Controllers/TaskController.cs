@@ -84,5 +84,11 @@ namespace BalkanTech.Web.Controllers
             return await taskService.ChangeTaskStatus(id, newStatus, newDate);  
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            return View();
+        }
     }
 }

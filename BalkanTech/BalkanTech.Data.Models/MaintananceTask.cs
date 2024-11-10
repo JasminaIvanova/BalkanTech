@@ -17,7 +17,7 @@ namespace BalkanTech.Data.Models
         [Required]
         [MaxLength(MaxValueNameLength)]
         [MinLength(MinValueNameLength)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(MaxValueDescriptionLength)]
@@ -37,5 +37,6 @@ namespace BalkanTech.Data.Models
         public DateTime? CompletedDate { get; set; }
         public string Status { get; set; } = "Pending";
         public ICollection<AssignedTechnicianTask> AssignedTechniciansTasks { get; set; } = new List<AssignedTechnicianTask>();
+        public ICollection<Note> Notes { get; set; } = new List<Note>();
     }
 }

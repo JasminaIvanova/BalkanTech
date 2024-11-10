@@ -63,7 +63,7 @@
                                 <button onclick="changeTaskStatus('@task.Id', 'Completed', '@DateTime.Now')" class="btn btn-outline-success btn-sm">
                                     <i class="bi bi-check-all"></i> Complete
                                 </button>
-                                <a href="@Url.Action("Detail", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
+                                <a href="@Url.Action("Details", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
                                     Details
                                 </a>
                             </td>
@@ -89,6 +89,7 @@
                     <th>Completed Date</th>
                     <th>Category</th>
                     <th>Status</th>
+                    <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -101,8 +102,14 @@
                             <td id="task-date-@task.Id">@task.CompletedDate?.ToString("d")</td>
                             <td>@task.TaskCategory.Name</td>
                             <td><span id="task-status-@task.Id" class="badge bg-success text-dark">@task.Status</span></td>
+                            <td class="text-center">
+                                <a href="@Url.Action("Details", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
+                                    Details
+                                </a>
+                            </td>
                             
                         </tr>
+                      
                     }
                 }
                 else
