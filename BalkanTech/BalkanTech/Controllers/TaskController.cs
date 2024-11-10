@@ -5,6 +5,7 @@ using BalkanTech.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using static BalkanTech.Common.Constants;
 using static BalkanTech.Common.ErrorMessages.Rooms;
@@ -84,11 +85,27 @@ namespace BalkanTech.Web.Controllers
             return await taskService.ChangeTaskStatus(id, newStatus, newDate);  
         }
 
-
         [HttpGet]
-        public async Task<IActionResult> Details(Guid id)
+        public async Task<IActionResult> TaskDetails(Guid id)
         {
-            return View();
+            var task = await context.MaintananceTasks.Include(t => t.Room).Include(t => t.TaskCategory).FirstOrDefaultAsync(t => t.Id == id);
+            var model = new TaskDetailsViewModel()
+            {
+                Id = id,
+                Name = task.Name,
+                Description = task.Description,
+                RoomNumber = task.Room.RoomNumber,
+                DueDate = task.DueDate,
+                CompletedDate = task.CompletedDate,
+                Status = task.Status,
+                TaskCategory = task.TaskCategory.Name,
+                AssignedTechnicians = task.AssignedTechniciansTasks.Select(tt => new AppUser
+                {
+                    FirstName = tt.AppUser.FirstName,
+                    UserName = tt.AppUser.UserName,
+                }).ToList()
+            };
+            return View(model);
         }
     }
 }

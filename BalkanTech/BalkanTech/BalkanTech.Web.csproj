@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Task\Details.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.10" />
@@ -33,18 +29,6 @@
     <ProjectReference Include="..\BalkanTech.Data\BalkanTech.Data.csproj" />
     <ProjectReference Include="..\BalkanTech.Services.Data\BalkanTech.Services.Data.csproj" />
     <ProjectReference Include="..\BalkanTech.Web.ViewModels\BalkanTech.Web.ViewModels.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Task\Details.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Views\Task\Details.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\Task\Details.cshtml" />
   </ItemGroup>
 
 </Project>

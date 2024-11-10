@@ -1,0 +1,97 @@
+﻿@using BalkanTech.Web.ViewModels
+@model TaskDetailsViewModel
+
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">
+            <h5 class="card-title">Task Information</h5>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <strong>Task Name:</strong> <span class="text-muted">@Model.Name</span>
+            </div>
+            <div class="mb-3">
+                <strong>Task Category:</strong> <span class="text-muted">@Model.TaskCategory</span>
+            </div>
+            <div class="mb-3">
+                <strong>Description:</strong> <span>@Model.Description</span>
+            </div>
+            <div class="mb-3">
+                <strong>Room Number:</strong> <span>@Model.RoomNumber</span>
+            </div>
+            <div class="mb-3">
+                <strong>Due Date:</strong> <span class="text-muted">@Model.DueDate.ToString("d")</span>
+            </div>
+            @if (Model.CompletedDate.HasValue)
+            {
+                <div class="mb-3">
+                    <strong>Completed Date:</strong> <span class="text-success">@Model.CompletedDate.Value.ToString("d")</span>
+                </div>
+            }
+            else
+            {
+                <div class="mb-3">
+                    <strong>Status:</strong> <span class="badge bg-warning text-dark">@Model.Status</span>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">
+            <h5 class="card-title">Assigned Technicians</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                @foreach (var technician in Model.AssignedTechnicians)
+                {
+                    <li class="list-group-item">
+                        <strong>@technician.FirstName</strong> (@technician.UserName)
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">
+            <h5 class="card-title">Notes</h5>
+        </div>
+        <div class="card-body">
+            @if (Model.Notes.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var note in Model.Notes)
+                    {
+                        <li class="list-group-item">
+                            <strong>@note.AppUserName:</strong> @note.NoteComment
+                            <div class="text-muted small">(@note.NoteDate.ToString("g"))</div>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-muted">No notes available for this task.</p>
+            }
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">
+            <h5 class="card-title">Add a New Note</h5>
+        </div>
+        <div class="card-body">
+            <form asp-action="AddNote" method="post">
+                <div class="mb-3">
+                    <label for="NewNoteComment" class="form-label">Note Comment</label>
+                    <textarea id="NewNoteComment" name="NewNoteComment" class="form-control" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Note</button>
+            </form>
+        </div>
+    </div>
+</div>
