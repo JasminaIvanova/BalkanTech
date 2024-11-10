@@ -21,7 +21,7 @@
 
     <div class="task-section mb-5">
         <h4 class="text-warning mb-3"><i class="bi bi-list-task"></i> To Be Completed Tasks</h4>
-        <table class="table table-hover shadow-sm">
+        <table id="to-be-completed-tasks-table" class="table table-hover shadow-sm">
             <thead class="table-light">
                 <tr>
                     <th>Description</th>
@@ -37,10 +37,15 @@
                     @foreach (var task in Model.ToBeCompletedTasks)
                     {
                         <tr id="task-@task.Id">
+                           
                             <td>@task.Description</td>
                             <td id="task-date-@task.Id">@task.DueDate.ToString("d")</td>
                             <td>@task.TaskCategory.Name</td>
                             <td>
+                                @if (task.DueDate < DateTime.Now)
+                                {
+                                    <span id="task-passed-@task.Id"class="badge bg-danger text-dark">Due date passed</span>
+                                }
                                 @if (@task.Status == "Pending")
                                 {
                                     <span id="task-status-@task.Id" class="badge bg-warning text-dark">@task.Status</span>
@@ -48,23 +53,26 @@
                                 }
                                 else if (@task.Status == "In Process")
                                 {
-                                <span id="task-status-@task.Id" class="badge bg-danger text-dark">@task.Status</span>
+                                <span id="task-status-@task.Id" class="badge bg-primary text-dark">@task.Status</span>
                                 }
                             </td>
                             <td class="text-center">
-                                <button onclick="changeTaskStatus('@task.Id', 'In Process', '@task.CompletedDate')" class="btn btn-outline-danger btn-sm">
+                                <button onclick="changeTaskStatus('@task.Id', 'In Process', '@task.CompletedDate')" class="btn btn-outline-primary btn-sm">
                                     <i class="bi bi-gear"></i> In Process
                                 </button>
                                 <button onclick="changeTaskStatus('@task.Id', 'Completed', '@DateTime.Now')" class="btn btn-outline-success btn-sm">
                                     <i class="bi bi-check-all"></i> Complete
                                 </button>
+                                <a href="@Url.Action("Edit", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
+                                    <i class="bi bi-pencil-square"></i>Edit
+                                </a>
                             </td>
                         </tr>
                     }
                 }
                 else
                 {
-                    <tr>
+                    <tr class="text-attach">
                         <td colspan="6" class="text-center text-muted">No tasks to be completed.</td>
                     </tr>
                 }
@@ -99,8 +107,8 @@
                 }
                 else
                 {
-                    <tr>
-                        <td colspan="4" class="text-center text-muted">No completed tasks available.</td>
+                    <tr class="text-remove">
+                        <td colspan="4" class="text-center">No completed tasks available.</td>
                     </tr>
                 }
             </tbody>

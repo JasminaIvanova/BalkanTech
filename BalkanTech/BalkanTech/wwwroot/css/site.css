@@ -78,3 +78,7 @@ body {
     color: #0056b3;
     text-decoration: underline;
 }
+th, td {
+    text-align: center;
+    
+}
