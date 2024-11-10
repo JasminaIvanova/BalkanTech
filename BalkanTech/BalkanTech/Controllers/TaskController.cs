@@ -11,7 +11,7 @@ using static BalkanTech.Common.ErrorMessages.Rooms;
 
 namespace BalkanTech.Web.Controllers
 {
-    //TODO -> validations , redirect after adding task, service for changing status, validation for correct task
+    //TODO -> validations , redirect after adding task, validation for correct task, pages for tasks
     [Authorize]
     public class TaskController : Controller
     {
@@ -81,21 +81,7 @@ namespace BalkanTech.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangeTaskStatus(Guid id, string newStatus, DateTime? newDate)
         {
-            //TODO -> in service
-            var task = await context.MaintananceTasks.FindAsync(id);
-            if (task == null)
-            {
-                return Json(new { success = false, message = "Task not found" });
-            }
-            task.Status = newStatus;
-            if (newStatus == "Completed")
-            {
-                task.CompletedDate = newDate ?? DateTime.Now;
-            }
-
-            await context.SaveChangesAsync();
-
-            return Json(new { success = true, newStatus = newStatus, taskId = id, newDate = task.CompletedDate?.ToString("MM/dd/yyyy") });
+            return await taskService.ChangeTaskStatus(id, newStatus, newDate);  
         }
 
     }

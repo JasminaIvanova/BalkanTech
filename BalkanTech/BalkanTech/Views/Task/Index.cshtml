@@ -63,8 +63,8 @@
                                 <button onclick="changeTaskStatus('@task.Id', 'Completed', '@DateTime.Now')" class="btn btn-outline-success btn-sm">
                                     <i class="bi bi-check-all"></i> Complete
                                 </button>
-                                <a href="@Url.Action("Edit", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
-                                    <i class="bi bi-pencil-square"></i>Edit
+                                <a href="@Url.Action("Detail", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
+                                    Details
                                 </a>
                             </td>
                         </tr>

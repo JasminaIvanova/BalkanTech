@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BalkanTech.Services.Data
 {
@@ -100,9 +101,22 @@ namespace BalkanTech.Services.Data
             return model;
         }
 
-        public async Task ChangeTaskStatus(Guid id, string newStatus)
+        public async Task<JsonResult> ChangeTaskStatus(Guid id, string newStatus, DateTime? newDate)
         {
-            throw new NotImplementedException();
+            var task = await context.MaintananceTasks.FindAsync(id);
+            if (task == null)
+            {
+                return new JsonResult(new { success = false, message = "Task not found" });
+            }
+            task.Status = newStatus;
+            if (newStatus == "Completed")
+            {
+                task.CompletedDate = newDate ?? DateTime.Now;
+            }
+
+            await context.SaveChangesAsync();
+
+            return new JsonResult(new { success = true, newStatus = newStatus, taskId = id, newDate = task.CompletedDate?.ToString("MM/dd/yyyy") });
         }
     }
 }

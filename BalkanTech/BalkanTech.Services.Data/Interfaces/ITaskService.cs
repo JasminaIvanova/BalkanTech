@@ -1,5 +1,6 @@
 ﻿using BalkanTech.Data.Models;
 using BalkanTech.Web.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,6 @@ namespace BalkanTech.Services.Data.Interfaces
 
         Task<IEnumerable<TaskCategoryViewModel>> LoadTaskCategoriesAsync();
 
-        Task ChangeTaskStatus(Guid id, string newStatus);
+        Task<JsonResult> ChangeTaskStatus(Guid id, string newStatus, DateTime? newDate);
     }
 }
