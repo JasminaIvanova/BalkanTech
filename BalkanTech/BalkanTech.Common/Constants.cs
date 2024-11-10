@@ -13,5 +13,8 @@
         public const int MinValueCategoryNameLength = 3;
         public const int MaxValueCategoryNameLength = 20;
         public const string dateFormat = "yyyy-MM-dd";
+
+        public const int MinValueNameLength = 5;
+        public const int MaxValueNameLength = 50;
     }
 }

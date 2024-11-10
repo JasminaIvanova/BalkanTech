@@ -24,7 +24,7 @@
         <table id="to-be-completed-tasks-table" class="table table-hover shadow-sm">
             <thead class="table-light">
                 <tr>
-                    <th>Description</th>
+                    <th>Name</th>
                     <th>Due Date</th>
                     <th>Category</th>
                     <th>Status</th>
@@ -38,7 +38,7 @@
                     {
                         <tr id="task-@task.Id">
                            
-                            <td>@task.Description</td>
+                            <td>@task.Name</td>
                             <td id="task-date-@task.Id">@task.DueDate.ToString("d")</td>
                             <td>@task.TaskCategory.Name</td>
                             <td>
@@ -85,7 +85,7 @@
         <table id="completed-tasks-table" class="table table-hover shadow-sm">
             <thead class="table-light">
                 <tr>
-                    <th>Description</th>
+                    <th>Name</th>
                     <th>Completed Date</th>
                     <th>Category</th>
                     <th>Status</th>
@@ -97,7 +97,7 @@
                     @foreach (var task in Model.CompletedTasks)
                     {
                         <tr id="task-@task.Id">
-                            <td>@task.Description</td>
+                            <td>@task.Name</td>
                             <td id="task-date-@task.Id">@task.CompletedDate?.ToString("d")</td>
                             <td>@task.TaskCategory.Name</td>
                             <td><span id="task-status-@task.Id" class="badge bg-success text-dark">@task.Status</span></td>

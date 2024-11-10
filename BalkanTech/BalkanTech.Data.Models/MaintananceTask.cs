@@ -13,6 +13,12 @@ namespace BalkanTech.Data.Models
     {
         [Key]
         public Guid Id { get; set; }
+
+        [Required]
+        [MaxLength(MaxValueNameLength)]
+        [MinLength(MinValueNameLength)]
+        public string Name { get; set; }
+
         [Required]
         [MaxLength(MaxValueDescriptionLength)]
         [MinLength(MinValueDescriptionLength)]

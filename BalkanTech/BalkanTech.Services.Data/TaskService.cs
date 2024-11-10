@@ -53,6 +53,7 @@ namespace BalkanTech.Services.Data
         {
             MaintananceTask myTask = new MaintananceTask
             {
+                Name = model.Name,
                 Description = model.Description,
                 RoomId = model.RoomId,
                 TaskCategoryId = model.TaskCategoryId,

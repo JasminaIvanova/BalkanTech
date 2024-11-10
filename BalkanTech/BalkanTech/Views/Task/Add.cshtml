@@ -9,15 +9,20 @@
 <div class="card shadow-sm mb-4">
     <div class="card-body">
         <form asp-action="Add" method="post" class="needs-validation" novalidate>
-            <div class="row mb-3">
-      
+            <div class="form-group">
+                <label asp-for="@Model.Name" class="control-label fw-bold">Task Name</label>
+                <input asp-for="@Model.Name" class="form-control" placeholder="Enter Task Name" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <div class="row mb-3 mt-3">
                 <div class="col-md-12">
                     <div class="form-group">
                         <label asp-for="Description" class="form-label fw-bold">Task Description</label>
-                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                        <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter Task Description"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
+               
             </div>
 
             <div class="row mb-3">
