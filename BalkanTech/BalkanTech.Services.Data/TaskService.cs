@@ -28,7 +28,8 @@ namespace BalkanTech.Services.Data
             return allTechs.Select(t => new TaskAddTechnicianViewModel
             {
                 Id = t.Id,
-                FirstName = t.FirstName
+                FirstName = t.FirstName,
+                LastName = t.LastName,
             }).ToList();
 
         }

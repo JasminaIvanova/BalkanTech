@@ -9,6 +9,7 @@ namespace BalkanTech.Web.ViewModels
     public class TaskAddTechnicianViewModel
     {
         public Guid Id { get; set; }
-        public string FirstName { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
     }
 }
