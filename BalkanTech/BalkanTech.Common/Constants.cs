@@ -19,5 +19,10 @@
 
         public const int MinValueNoteLength = 2;
         public const int MaxValueNoteLength = 1000;
+
+        public const int MinValueNameUserLength = 2;
+        public const int MaxValueNameUserLength = 30;
+
+      
     }
 }
