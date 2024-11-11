@@ -49,7 +49,7 @@
                 @foreach (var technician in Model.AssignedTechnicians)
                 {
                     <li class="list-group-item">
-                        <strong>@technician.FirstName</strong> (@technician.UserName)
+                        <strong>@technician.FirstName @technician.LastName</strong>
                     </li>
                 }
             </ul>
@@ -90,7 +90,9 @@
                     <label for="NewNoteComment" class="form-label">Note Comment</label>
                     <textarea id="NewNoteComment" name="NewNoteComment" class="form-control" rows="4" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Add Note</button>
+                <a href="@Url.Action("Add", "Note", new { id = Model.Id })" class="btn btn-primary">
+                    Add Note
+                </a>
             </form>
         </div>
     </div>

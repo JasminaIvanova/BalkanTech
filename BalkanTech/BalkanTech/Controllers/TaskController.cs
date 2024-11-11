@@ -88,7 +88,12 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> TaskDetails(Guid id)
         {
-            var task = await context.MaintananceTasks.Include(t => t.Room).Include(t => t.TaskCategory).FirstOrDefaultAsync(t => t.Id == id);
+            var task = await context.MaintananceTasks
+                .Include(t => t.Room)
+                .Include(t => t.TaskCategory)
+                .Include(t => t.AssignedTechniciansTasks) 
+                    .ThenInclude(at => at.AppUser)
+                .FirstOrDefaultAsync(t => t.Id == id);
             var model = new TaskDetailsViewModel()
             {
                 Id = id,
@@ -99,10 +104,11 @@ namespace BalkanTech.Web.Controllers
                 CompletedDate = task.CompletedDate,
                 Status = task.Status,
                 TaskCategory = task.TaskCategory.Name,
-                AssignedTechnicians = task.AssignedTechniciansTasks.Select(tt => new AppUser
+                AssignedTechnicians = task.AssignedTechniciansTasks.Select(tt => new TaskAddTechnicianViewModel
                 {
+                    Id = tt.AppUserId,
                     FirstName = tt.AppUser.FirstName,
-                    UserName = tt.AppUser.UserName,
+                    LastName = tt.AppUser.LastName,
                 }).ToList()
             };
             return View(model);

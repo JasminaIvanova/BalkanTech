@@ -19,7 +19,7 @@ namespace BalkanTech.Web.ViewModels
         public required string Status { get; set; } 
         public required string TaskCategory { get; set; } 
         
-        public List<AppUser>? AssignedTechnicians { get; set; } = new List<AppUser>();
+        public List<TaskAddTechnicianViewModel>? AssignedTechnicians { get; set; } = new List<TaskAddTechnicianViewModel>();
         public List<NotesViewModel>? Notes { get; set; } = new List<NotesViewModel>();
     }
 }
