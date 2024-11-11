@@ -88,29 +88,11 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> TaskDetails(Guid id)
         {
-            var task = await context.MaintananceTasks
-                .Include(t => t.Room)
-                .Include(t => t.TaskCategory)
-                .Include(t => t.AssignedTechniciansTasks) 
-                    .ThenInclude(at => at.AppUser)
-                .FirstOrDefaultAsync(t => t.Id == id);
-            var model = new TaskDetailsViewModel()
+            var model = await taskService.LoadTaskDetailsAsync(id);
+            if (model == null) 
             {
-                Id = id,
-                Name = task.Name,
-                Description = task.Description,
-                RoomNumber = task.Room.RoomNumber,
-                DueDate = task.DueDate,
-                CompletedDate = task.CompletedDate,
-                Status = task.Status,
-                TaskCategory = task.TaskCategory.Name,
-                AssignedTechnicians = task.AssignedTechniciansTasks.Select(tt => new TaskAddTechnicianViewModel
-                {
-                    Id = tt.AppUserId,
-                    FirstName = tt.AppUser.FirstName,
-                    LastName = tt.AppUser.LastName,
-                }).ToList()
-            };
+                return NotFound("The task with the specified ID does not exist.");
+            }
             return View(model);
         }
     }

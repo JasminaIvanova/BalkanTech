@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BalkanTech.Web.ViewModels
 {
-    public class TaskAddTechnicianViewModel
+    public class TaskTechnicianViewModel
     {
         public Guid Id { get; set; }
         public required string FirstName { get; set; }

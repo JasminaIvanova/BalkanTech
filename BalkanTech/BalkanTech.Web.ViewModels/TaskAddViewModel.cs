@@ -28,7 +28,7 @@ namespace BalkanTech.Web.ViewModels
 
         [Required]
         public string DueDate { get; set; } = string.Empty;
-        public IEnumerable<TaskAddTechnicianViewModel> Technicians { get; set; } = new List<TaskAddTechnicianViewModel>();
+        public IEnumerable<TaskTechnicianViewModel> Technicians { get; set; } = new List<TaskTechnicianViewModel>();
 
         public List<Guid> AssignedTechniciansIDs { get; set; } = new();
     }

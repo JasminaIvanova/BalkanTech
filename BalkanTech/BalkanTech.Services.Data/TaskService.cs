@@ -22,10 +22,10 @@ namespace BalkanTech.Services.Data
             context = _context;
             userManager = _userManager;
         }
-        public async Task<IEnumerable<TaskAddTechnicianViewModel>> LoadTechniciansAsync()
+        public async Task<IEnumerable<TaskTechnicianViewModel>> LoadTechniciansAsync()
         {
             var allTechs = await userManager.GetUsersInRoleAsync("Technician");
-            return allTechs.Select(t => new TaskAddTechnicianViewModel
+            return allTechs.Select(t => new TaskTechnicianViewModel
             {
                 Id = t.Id,
                 FirstName = t.FirstName,
@@ -119,6 +119,39 @@ namespace BalkanTech.Services.Data
             await context.SaveChangesAsync();
 
             return new JsonResult(new { success = true, newStatus = newStatus, taskId = id, newDate = task.CompletedDate?.ToString("MM/dd/yyyy") });
+        }
+
+        public async Task<TaskDetailsViewModel> LoadTaskDetailsAsync(Guid id)
+        {
+            var task = await context.MaintananceTasks
+                 .Include(t => t.Room)
+                 .Include(t => t.TaskCategory)
+                 .Include(t => t.AssignedTechniciansTasks)
+                     .ThenInclude(at => at.AppUser)
+                 .FirstOrDefaultAsync(t => t.Id == id);
+
+            if (task == null)
+            {
+                return null;
+            }
+            var model = new TaskDetailsViewModel()
+            {
+                Id = id,
+                Name = task.Name,
+                Description = task.Description,
+                RoomNumber = task.Room.RoomNumber,
+                DueDate = task.DueDate,
+                CompletedDate = task.CompletedDate,
+                Status = task.Status,
+                TaskCategory = task.TaskCategory.Name,
+                AssignedTechnicians = task.AssignedTechniciansTasks.Select(tt => new TaskTechnicianViewModel
+                {
+                    Id = tt.AppUserId,
+                    FirstName = tt.AppUser.FirstName,
+                    LastName = tt.AppUser.LastName,
+                }).ToList()
+            };
+            return model;
         }
     }
 }
