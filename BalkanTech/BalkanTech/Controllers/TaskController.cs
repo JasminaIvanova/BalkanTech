@@ -95,5 +95,26 @@ namespace BalkanTech.Web.Controllers
             }
             return View(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+           
+            var task = await context.MaintananceTasks.Include(t => t.AssignedTechniciansTasks).FirstOrDefaultAsync(t => t.Id == id);
+
+            var model = new TaskAddViewModel
+            {
+                Name = task.Name,
+                Description = task.Description,
+                RoomId = task.RoomId,
+                TaskCategoryId = task.TaskCategoryId,
+                DueDate = task.DueDate.ToString(dateFormat),
+                RoomNumbers = await taskService.LoadRoomsAsync(),
+                Technicians = await taskService.LoadTechniciansAsync(),
+                TaskCategories = await taskService.LoadTaskCategoriesAsync(),
+                AssignedTechniciansIDs = task.AssignedTechniciansTasks.Select(at => at.AppUserId).ToList()
+            };
+            return View(model);
+        }
     }
 }
