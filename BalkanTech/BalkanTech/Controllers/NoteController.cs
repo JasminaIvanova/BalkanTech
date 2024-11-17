@@ -1,5 +1,7 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
+using BalkanTech.Services.Data;
+using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels.Note;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -8,32 +10,26 @@ namespace BalkanTech.Web.Controllers
 {
     public class NoteController : Controller
     {
-        private readonly BalkanDbContext context;
-        public NoteController(BalkanDbContext _context)
+        private readonly INoteService noteService;
+        public NoteController(INoteService _noteService)
         {
-            context = _context;
+            noteService = _noteService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(string NoteComment, Guid TaskId)
+        public async Task<IActionResult> Add(string noteComment, Guid taskId)
         {
-            if (string.IsNullOrWhiteSpace(NoteComment) || TaskId == Guid.Empty)
+            try
             {
-                TempData["Error"] = "Invalid note data.";
-                return RedirectToAction("TaskDetails", "Task", new { id = TaskId });
+                var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+                await noteService.AddNoteAsync(noteComment, taskId, userId);
+                return RedirectToAction("TaskDetails", "Task", new { id = taskId });
             }
-            var newNote = new Note
+            catch (ArgumentException ex)
             {
-                NoteComment = NoteComment,
-                MaintananceTaskId = TaskId,
-                AppUserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!),
-                NoteDate = DateTime.Now,
-            };
-
-            await context.Notes.AddAsync(newNote);
-            await context.SaveChangesAsync();
-            return RedirectToAction("TaskDetails", "Task", new { id = TaskId });
-
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("TaskDetails", "Task", new { id = taskId });
+            }
         }
     }
 }

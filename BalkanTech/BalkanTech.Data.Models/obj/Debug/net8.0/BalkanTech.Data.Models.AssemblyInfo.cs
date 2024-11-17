@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BalkanTech.Data.Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b6d6149f3fb101854754ef7d045e766e11ea80c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e33321683c6701c32b4fc7b6f1514eb4fdfc9f34")]
 [assembly: System.Reflection.AssemblyProductAttribute("BalkanTech.Data.Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BalkanTech.Data.Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
