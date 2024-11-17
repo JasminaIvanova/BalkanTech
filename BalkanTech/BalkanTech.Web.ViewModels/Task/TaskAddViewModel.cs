@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static BalkanTech.Common.Constants;
 
-namespace BalkanTech.Web.ViewModels
+namespace BalkanTech.Web.ViewModels.Task
 {
     public class TaskAddViewModel
     {

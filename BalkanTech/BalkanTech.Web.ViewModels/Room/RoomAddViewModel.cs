@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using static BalkanTech.Common.Constants;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace BalkanTech.Web.ViewModels
+namespace BalkanTech.Web.ViewModels.Room
 {
     public class RoomAddViewModel
     {

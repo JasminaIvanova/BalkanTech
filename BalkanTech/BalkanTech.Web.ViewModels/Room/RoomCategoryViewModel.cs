@@ -1,6 +1,4 @@
-﻿
-
-namespace BalkanTech.Web.ViewModels
+﻿namespace BalkanTech.Web.ViewModels.Room
 {
     public class RoomCategoryViewModel
     {

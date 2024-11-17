@@ -82,3 +82,15 @@ th, td {
     text-align: center;
     
 }
+
+.note-item {
+    position: relative;
+    padding-left: 20px; 
+    border-left: 4px solid #007bff; 
+    margin-bottom: 20px;
+}
+
+.note-item .d-flex {
+    font-weight: bold;
+}
+

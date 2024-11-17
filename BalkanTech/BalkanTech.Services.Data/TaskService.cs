@@ -1,7 +1,6 @@
 ﻿using BalkanTech.Data.Models;
 using BalkanTech.Data;
 using BalkanTech.Services.Data.Interfaces;
-using BalkanTech.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -10,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using BalkanTech.Web.ViewModels.Task;
+using BalkanTech.Web.ViewModels.Note;
 
 namespace BalkanTech.Services.Data
 {
@@ -125,6 +126,8 @@ namespace BalkanTech.Services.Data
         {
             var task = await context.MaintananceTasks
                  .Include(t => t.Room)
+                 .Include(t => t.Notes)
+                    .ThenInclude(n => n.AppUser)
                  .Include(t => t.TaskCategory)
                  .Include(t => t.AssignedTechniciansTasks)
                      .ThenInclude(at => at.AppUser)
@@ -149,7 +152,14 @@ namespace BalkanTech.Services.Data
                     Id = tt.AppUserId,
                     FirstName = tt.AppUser.FirstName,
                     LastName = tt.AppUser.LastName,
-                }).ToList()
+                }).ToList(),
+                Notes = task.Notes.Select(n => new NotesViewModel
+                {
+                    Id = n.Id,
+                    NoteComment = n.NoteComment,
+                    NoteDate = n.NoteDate,
+                    AppUserName = $"{n.AppUser?.FirstName} {n.AppUser?.LastName}"
+                }).OrderByDescending(n => n.NoteDate).ToList(),
             };
             return model;
         }

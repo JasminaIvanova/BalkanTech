@@ -1,4 +1,4 @@
-﻿@using BalkanTech.Web.ViewModels
+﻿@using BalkanTech.Web.ViewModels.Task
 @model TaskDetailsViewModel
 
 @{
@@ -34,27 +34,56 @@
             }
             else
             {
-                <div class="mb-3">
-                    <strong>Status:</strong> <span class="badge bg-warning text-dark">@Model.Status</span>
-                </div>
+               
+                @if (@Model.Status == "Pending")
+                {
+                    <div class="mb-3">
+                        <strong>Status:</strong> <span class="badge bg-warning text-dark">@Model.Status</span>
+                    </div>
+
+                }
+                else if (@Model.Status == "In Process")
+                {
+                    <div class="mb-3">
+                        <strong>Status:</strong> <span class="badge bg-primary text-dark">@Model.Status</span>
+                    </div>
+                }
             }
         </div>
     </div>
-    <div class="card shadow-sm mb-4">
+    <div class="card shadow-lg mb-4">
         <div class="card-header bg-light">
             <h5 class="card-title">Assigned Technicians</h5>
         </div>
         <div class="card-body">
-            <ul class="list-group">
-                @foreach (var technician in Model.AssignedTechnicians)
+            
+                @if (Model.AssignedTechnicians.Count > 0)
                 {
-                    <li class="list-group-item">
-                        <strong>@technician.FirstName @technician.LastName</strong>
-                    </li>
+                <ul class="list-unstyled">
+                    @foreach (var technician in Model.AssignedTechnicians)
+                    {
+                        <li class="d-flex justify-content-between align-items-center p-3 mb-2 rounded-3 border border-light shadow-sm">
+                            <div>
+                                <strong>@technician.FirstName @technician.LastName</strong>
+                            </div>
+                        </li>
+                    }
+                </ul>
                 }
-            </ul>
+                else
+                {
+                    <p class="text-muted">No technicians assigned.</p>
+
+                }
+
+          
         </div>
     </div>
+
+
+
+
+
 
     <div class="card shadow-sm mb-4">
         <div class="card-header bg-light">
@@ -63,15 +92,19 @@
         <div class="card-body">
             @if (Model.Notes.Any())
             {
-                <ul class="list-group">
+                <div class="notes-list">
                     @foreach (var note in Model.Notes)
                     {
-                        <li class="list-group-item">
-                            <strong>@note.AppUserName:</strong> @note.NoteComment
-                            <div class="text-muted small">(@note.NoteDate.ToString("g"))</div>
-                        </li>
+                        <div class="note-item mb-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <strong class="text-primary">@note.AppUserName</strong>
+                                <small class="text-muted">@note.NoteDate.ToString("g")</small>
+                            </div>
+                            <p class="mt-2">@note.NoteComment</p>
+                            <hr />
+                        </div>
                     }
-                </ul>
+                </div>
             }
             else
             {
@@ -80,20 +113,27 @@
         </div>
     </div>
 
-    <div class="card shadow-sm mb-4">
-        <div class="card-header bg-light">
-            <h5 class="card-title">Add a New Note</h5>
+
+
+
+    @if (Model.Status != "Completed")
+    {
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-light">
+                <h5 class="card-title">Add a New Note</h5>
+            </div>
+            <div class="card-body">
+                <form action="@Url.Action("Add", "Note")" method="post">
+                    <div class="mb-3">
+                        <label for="NewNoteComment" class="form-label">Note Comment</label>
+                        <textarea id="NewNoteComment" name="NoteComment" class="form-control" rows="4" required></textarea>
+                    </div>
+                    <input type="hidden" name="TaskId" value="@Model.Id" />
+                    <button type="submit" class="btn btn-primary">Add Note</button>
+                </form>
+            </div>
         </div>
-        <div class="card-body">
-            <form asp-action="AddNote" method="post">
-                <div class="mb-3">
-                    <label for="NewNoteComment" class="form-label">Note Comment</label>
-                    <textarea id="NewNoteComment" name="NewNoteComment" class="form-control" rows="4" required></textarea>
-                </div>
-                <a href="@Url.Action("Add", "Note", new { id = Model.Id })" class="btn btn-primary">
-                    Add Note
-                </a>
-            </form>
-        </div>
-    </div>
+    }
+
+    
 </div>

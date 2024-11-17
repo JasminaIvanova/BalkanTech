@@ -1,7 +1,7 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
 using BalkanTech.Services.Data.Interfaces;
-using BalkanTech.Web.ViewModels;
+using BalkanTech.Web.ViewModels.Task;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

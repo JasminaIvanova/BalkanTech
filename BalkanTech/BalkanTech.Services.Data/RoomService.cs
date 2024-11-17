@@ -1,7 +1,7 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
 using BalkanTech.Services.Data.Interfaces;
-using BalkanTech.Web.ViewModels;
+using BalkanTech.Web.ViewModels.Room;
 using Microsoft.EntityFrameworkCore;
 
 namespace BalkanTech.Services.Data

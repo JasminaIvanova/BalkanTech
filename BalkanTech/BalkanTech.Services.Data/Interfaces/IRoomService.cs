@@ -1,5 +1,5 @@
 ﻿using BalkanTech.Data.Models;
-using BalkanTech.Web.ViewModels;
+using BalkanTech.Web.ViewModels.Room;
 using System;
 using System.Collections.Generic;
 using System.Linq;

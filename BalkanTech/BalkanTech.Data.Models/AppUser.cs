@@ -26,5 +26,6 @@ namespace BalkanTech.Data.Models
         [MaxLength(MaxValueNameUserLength)]
         public string LastName { get; set; } = string.Empty ;
         public ICollection<AssignedTechnicianTask> AssignedTechniciansTasks { get; set; } = new List<AssignedTechnicianTask>();
+
     }
 }
