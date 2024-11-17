@@ -106,11 +106,10 @@
                             <td>@task.TaskCategory.Name</td>
                             <td><span id="task-status-@task.Id" class="badge bg-success text-dark">@task.Status</span></td>
                             <td class="text-center">
-                                <a href="@Url.Action("TaskDetails", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
+                                <a id="task-details-@task.Id" href="@Url.Action("TaskDetails", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
                                     Details
                                 </a>
                             </td>
-                            
                         </tr>
                       
                     }
@@ -118,7 +117,7 @@
                 else
                 {
                     <tr class="text-remove">
-                        <td colspan="4" class="text-center">No completed tasks available.</td>
+                        <td colspan="5" class="text-center text-muted">No completed tasks available.</td>
                     </tr>
                 }
             </tbody>
