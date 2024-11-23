@@ -38,5 +38,6 @@ namespace BalkanTech.Data.Models
         public string Status { get; set; } = "Pending";
         public ICollection<AssignedTechnicianTask> AssignedTechniciansTasks { get; set; } = new List<AssignedTechnicianTask>();
         public ICollection<Note> Notes { get; set; } = new List<Note>();
+        public bool IsDeleted { get; set; }
     }
 }

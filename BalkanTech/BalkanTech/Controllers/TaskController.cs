@@ -5,8 +5,10 @@ using BalkanTech.Web.ViewModels.Task;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Threading.Tasks;
 using static BalkanTech.Common.Constants;
 using static BalkanTech.Common.ErrorMessages.Rooms;
 
@@ -104,6 +106,7 @@ namespace BalkanTech.Web.Controllers
 
             var model = new TaskAddViewModel
             {
+                Id = id,
                 Name = task.Name,
                 Description = task.Description,
                 RoomId = task.RoomId,
@@ -116,5 +119,45 @@ namespace BalkanTech.Web.Controllers
             };
             return View(model);
         }
-    }
+        [HttpPost]
+        public async Task<IActionResult> Edit(TaskAddViewModel model)
+        {
+            var task = await context.MaintananceTasks.Include(t => t.AssignedTechniciansTasks).FirstOrDefaultAsync(t => t.Id == model.Id);
+            if (task == null)
+            {
+                return NotFound(); 
+            }
+            if (!DateTime.TryParseExact(model.DueDate, dateFormat, CultureInfo.InvariantCulture,
+              DateTimeStyles.None, out DateTime parsedDueDate))
+            {
+                throw new InvalidOperationException("Invalid date format.");
+            }
+           
+            task.Name = model.Name;
+            task.Description = model.Description;
+            task.RoomId = model.RoomId;
+            task.TaskCategoryId = model.TaskCategoryId;
+            task.DueDate = parsedDueDate;
+
+            var assignedTechsBeforeEdit = task.AssignedTechniciansTasks.Select(at => at.AppUserId).ToList();
+            var techsToRemoveAfterEdit = assignedTechsBeforeEdit.Except(model.AssignedTechniciansIDs).ToList();
+            var techsToAdd = model.AssignedTechniciansIDs.Except(assignedTechsBeforeEdit).ToList();
+
+            var removeTechsAssigned = task.AssignedTechniciansTasks
+                .Where(t => techsToRemoveAfterEdit.Contains(t.AppUserId)).ToList();
+            context.AssignedTechniciansTasks.RemoveRange(removeTechsAssigned);
+
+            var techsAssignedAdd = techsToAdd
+                            .Select(techId => new AssignedTechnicianTask
+                            {
+                                AppUserId = techId,
+                                MaintananceTaskId = task.Id
+                            })
+                            .ToList();
+            await context.AssignedTechniciansTasks.AddRangeAsync(techsAssignedAdd);
+            await context.SaveChangesAsync();
+            return RedirectToAction("TaskDetails", new { id = task.Id });
+            
+        }
+     }
 }

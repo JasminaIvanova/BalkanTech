@@ -12,6 +12,7 @@ namespace BalkanTech.Web.ViewModels.Task
 {
     public class TaskAddViewModel
     {
+        public Guid Id { get; set; }
         [Required]
         [MaxLength(MaxValueNameLength)]
         [MinLength(MinValueNameLength)]
