@@ -1,19 +1,17 @@
-﻿using BalkanTech.Data.Models;
-using BalkanTech.Data;
+﻿using BalkanTech.Data;
+using BalkanTech.Data.Models;
 using BalkanTech.Services.Data.Interfaces;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using BalkanTech.Web.ViewModels.Task;
 using BalkanTech.Web.ViewModels.Note;
+using BalkanTech.Web.ViewModels.Task;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Globalization;
+using static BalkanTech.Common.Constants;
 
 namespace BalkanTech.Services.Data
 {
+    //fix validations, errors, handle exceptions
     public class TaskService : ITaskService
     {
         private readonly UserManager<AppUser> userManager;
@@ -162,6 +160,79 @@ namespace BalkanTech.Services.Data
                 }).OrderByDescending(n => n.NoteDate).ToList(),
             };
             return model;
+        }
+
+        public async Task<MaintananceTask> LoadMaintananceTaskAsync(Guid id)
+        {
+           var task = await context.MaintananceTasks.Include(t => t.AssignedTechniciansTasks).FirstOrDefaultAsync(t => t.Id == id);
+            if (task != null) 
+            {
+                return task;
+            }
+            throw new InvalidOperationException();
+        }
+
+        public async Task<TaskAddViewModel> LoadEditTaskAsync(Guid id)
+        {
+            var task = await LoadMaintananceTaskAsync(id);
+
+            var model = new TaskAddViewModel
+            {
+                Id = id,
+                Name = task.Name,
+                Description = task.Description,
+                RoomId = task.RoomId,
+                TaskCategoryId = task.TaskCategoryId,
+                DueDate = task.DueDate.ToString(dateFormat),
+                RoomNumbers = await LoadRoomsAsync(),
+                Technicians = await LoadTechniciansAsync(),
+                TaskCategories = await LoadTaskCategoriesAsync(),
+                AssignedTechniciansIDs = task.AssignedTechniciansTasks.Select(at => at.AppUserId).ToList()
+            };  
+            return model;
+        }
+
+        public async Task<TaskAddViewModel> LoadTaskAddModel()
+        {
+           return new TaskAddViewModel()
+           {
+               RoomNumbers = await LoadRoomsAsync(),
+               Technicians = await LoadTechniciansAsync(),
+               TaskCategories = await LoadTaskCategoriesAsync(),
+           };
+        }
+
+        public async Task EditTaskAsync(TaskAddViewModel model, DateTime parsedDate)
+        {
+            var task = await LoadMaintananceTaskAsync(model.Id);
+            if (task == null)
+            {
+                throw new InvalidOperationException();
+            }
+     
+            task.Name = model.Name;
+            task.Description = model.Description;
+            task.RoomId = model.RoomId;
+            task.TaskCategoryId = model.TaskCategoryId;
+            task.DueDate = parsedDate;
+
+            var assignedTechsBeforeEdit = task.AssignedTechniciansTasks.Select(at => at.AppUserId).ToList();
+            var techsToRemoveAfterEdit = assignedTechsBeforeEdit.Except(model.AssignedTechniciansIDs).ToList();
+            var techsToAdd = model.AssignedTechniciansIDs.Except(assignedTechsBeforeEdit).ToList();
+
+            var removeTechsAssigned = task.AssignedTechniciansTasks
+                .Where(t => techsToRemoveAfterEdit.Contains(t.AppUserId)).ToList();
+            context.AssignedTechniciansTasks.RemoveRange(removeTechsAssigned);
+
+            var techsAssignedAdd = techsToAdd
+                            .Select(techId => new AssignedTechnicianTask
+                            {
+                                AppUserId = techId,
+                                MaintananceTaskId = task.Id
+                            })
+                            .ToList();
+            await context.AssignedTechniciansTasks.AddRangeAsync(techsAssignedAdd);
+            await context.SaveChangesAsync();
         }
     }
 }

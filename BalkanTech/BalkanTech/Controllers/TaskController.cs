@@ -51,13 +51,9 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            var model = new TaskAddViewModel()
-            {
-                RoomNumbers = await taskService.LoadRoomsAsync(),
-                Technicians = await taskService.LoadTechniciansAsync(),
-                TaskCategories = await taskService.LoadTaskCategoriesAsync(),
-            };
-            
+            var model = await taskService.LoadTaskAddModel();
+
+
             return View(model);
         }
 
@@ -66,9 +62,7 @@ namespace BalkanTech.Web.Controllers
         {
             if (!ModelState.IsValid) 
             {
-                model.RoomNumbers = await taskService.LoadRoomsAsync();
-                model.Technicians = await taskService.LoadTechniciansAsync();
-                model.TaskCategories = await taskService.LoadTaskCategoriesAsync();
+                model = await taskService.LoadTaskAddModel();
                 return View(model);
             }
             if (!DateTime.TryParseExact(model.DueDate, dateFormat, CultureInfo.InvariantCulture,
@@ -101,62 +95,22 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
-           
-            var task = await context.MaintananceTasks.Include(t => t.AssignedTechniciansTasks).FirstOrDefaultAsync(t => t.Id == id);
 
-            var model = new TaskAddViewModel
-            {
-                Id = id,
-                Name = task.Name,
-                Description = task.Description,
-                RoomId = task.RoomId,
-                TaskCategoryId = task.TaskCategoryId,
-                DueDate = task.DueDate.ToString(dateFormat),
-                RoomNumbers = await taskService.LoadRoomsAsync(),
-                Technicians = await taskService.LoadTechniciansAsync(),
-                TaskCategories = await taskService.LoadTaskCategoriesAsync(),
-                AssignedTechniciansIDs = task.AssignedTechniciansTasks.Select(at => at.AppUserId).ToList()
-            };
+            var model = await taskService.LoadEditTaskAsync(id);
             return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(TaskAddViewModel model)
         {
-            var task = await context.MaintananceTasks.Include(t => t.AssignedTechniciansTasks).FirstOrDefaultAsync(t => t.Id == model.Id);
-            if (task == null)
-            {
-                return NotFound(); 
-            }
+           
             if (!DateTime.TryParseExact(model.DueDate, dateFormat, CultureInfo.InvariantCulture,
               DateTimeStyles.None, out DateTime parsedDueDate))
             {
                 throw new InvalidOperationException("Invalid date format.");
             }
-           
-            task.Name = model.Name;
-            task.Description = model.Description;
-            task.RoomId = model.RoomId;
-            task.TaskCategoryId = model.TaskCategoryId;
-            task.DueDate = parsedDueDate;
-
-            var assignedTechsBeforeEdit = task.AssignedTechniciansTasks.Select(at => at.AppUserId).ToList();
-            var techsToRemoveAfterEdit = assignedTechsBeforeEdit.Except(model.AssignedTechniciansIDs).ToList();
-            var techsToAdd = model.AssignedTechniciansIDs.Except(assignedTechsBeforeEdit).ToList();
-
-            var removeTechsAssigned = task.AssignedTechniciansTasks
-                .Where(t => techsToRemoveAfterEdit.Contains(t.AppUserId)).ToList();
-            context.AssignedTechniciansTasks.RemoveRange(removeTechsAssigned);
-
-            var techsAssignedAdd = techsToAdd
-                            .Select(techId => new AssignedTechnicianTask
-                            {
-                                AppUserId = techId,
-                                MaintananceTaskId = task.Id
-                            })
-                            .ToList();
-            await context.AssignedTechniciansTasks.AddRangeAsync(techsAssignedAdd);
-            await context.SaveChangesAsync();
-            return RedirectToAction("TaskDetails", new { id = task.Id });
+            await taskService.EditTaskAsync(model, parsedDueDate);
+            
+            return RedirectToAction("TaskDetails", new { id = model.Id });
             
         }
      }

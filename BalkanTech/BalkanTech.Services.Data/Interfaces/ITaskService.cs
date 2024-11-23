@@ -12,6 +12,7 @@ namespace BalkanTech.Services.Data.Interfaces
     public interface ITaskService
     {
         Task<TaskViewModel> IndexGetAllTasksAsync(int roomNumber, string category = "All");
+        Task<TaskAddViewModel> LoadTaskAddModel();
         
         Task AddTaskAsync(TaskAddViewModel model, DateTime parsedDate);
         Task<IEnumerable<TaskTechnicianViewModel>> LoadTechniciansAsync();
@@ -22,5 +23,9 @@ namespace BalkanTech.Services.Data.Interfaces
         Task<JsonResult> ChangeTaskStatus(Guid id, string newStatus, DateTime? newDate);
 
         Task<TaskDetailsViewModel> LoadTaskDetailsAsync(Guid id);
+
+        Task<MaintananceTask> LoadMaintananceTaskAsync(Guid id);
+        Task<TaskAddViewModel> LoadEditTaskAsync(Guid Id);
+        Task EditTaskAsync(TaskAddViewModel model, DateTime parsedDate);
     }
 }
