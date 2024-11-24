@@ -8,29 +8,40 @@
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Tasks for Room @Model.RoomNumber</h1>
 
-    <form method="get" action="@Url.Action("Index", "Task")" id="categoryForm">
-        <input type="hidden" name="category" id="categoryInput" value="All" />
-        <input type="hidden" name="roomNumber" value="@Model.RoomNumber" />
-        <div class="btn-group mb-4 d-flex justify-content-center" role="group" aria-label="Category Filter">
-            <button type="button" class="btn btn-secondary btn-sm mx-1" onclick="setCategory('All')">All</button>
-            @foreach (var category in Model.Categories)
-            {
-                <button type="button" class="btn btn-secondary btn-sm mx-1" onclick="setCategory('@category')">@category</button>
-            }
-        </div>
-    </form>
-
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <form method="get" action="@Url.Action("Index", "Task")" id="categoryForm" class="d-flex">
+            <input type="hidden" name="category" id="categoryInput" value="All" />
+            <input type="hidden" name="roomNumber" value="@Model.RoomNumber" />
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle " type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filter By Category
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                    <li><a class="dropdown-item" href="javascript:void(0);" onclick="setCategory('All')">All</a></li>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <li>
+                            <a class="dropdown-item" href="javascript:void(0);" onclick="setCategory('@category')">@category</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </form>
+        <a href="@Url.Action("Add", "Task", new { roomId = Model.RoomId })" class="btn">
+            <i class="bi bi-plus-lg"></i> Create Task
+        </a>
+    </div>
     <div class="task-section mb-5">
         <h4 class="text-warning mb-3"><i class="bi bi-list-task"></i> To Be Completed Tasks</h4>
         <table id="to-be-completed-tasks-table" class="table table-hover shadow-sm">
             <thead class="table-light">
                 <tr>
+                    <th class="text-primary">Task ID</th>
                     <th>Name</th>
                     <th>Due Date</th>
                     <th>Category</th>
                     <th>Status</th>
                     <th>Change Status</th>
-                    <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,55 +50,46 @@
                     @foreach (var task in Model.ToBeCompletedTasks)
                     {
                         <tr id="task-@task.Id">
-                           
+                            <td>
+                                <a href="@Url.Action("TaskDetails", "Task", new { id = task.Id })" class="text-primary" style="text-decoration: none">
+                                    @task.Id.ToString().Substring(0, 8).ToUpper()
+                                </a>
+                            </td>
                             <td>@task.Name</td>
                             <td id="task-date-@task.Id">@task.DueDate.ToString("d")</td>
                             <td>@task.TaskCategory.Name</td>
                             <td>
                                 @if (task.DueDate < DateTime.Now)
                                 {
-                                    <span id="task-passed-@task.Id"class="badge bg-danger text-dark">Due date passed</span>
+                                    <span id="task-passed-@task.Id" class="badge bg-danger text-dark">Due date passed</span>
                                 }
                                 @if (@task.Status == "Pending")
                                 {
                                     <span id="task-status-@task.Id" class="badge bg-warning text-dark">@task.Status</span>
-
                                 }
                                 else if (@task.Status == "In Process")
                                 {
-                                <span id="task-status-@task.Id" class="badge bg-primary text-dark">@task.Status</span>
+                                    <span id="task-status-@task.Id" class="badge bg-primary text-dark">@task.Status</span>
                                 }
                             </td>
                             <td class="text-center">
                                 @if (@task.Status != "In Process")
                                 {
-                                    <button onclick="changeTaskStatus('@task.Id', 'In Process', '@task.CompletedDate')"                     class="btn btn-outline-primary btn-sm">
+                                    <button onclick="changeTaskStatus('@task.Id', 'In Process', '@task.CompletedDate')" class="btn btn-outline-primary btn-sm">
                                         <i class="bi bi-gear"></i> In Process
                                     </button>
                                 }
                                 <button onclick="changeTaskStatus('@task.Id', 'Completed', '@DateTime.Now')" class="btn btn-outline-success btn-sm">
                                     <i class="bi bi-check-all"></i> Complete
                                 </button>
-                                
-                            </td>
-                            <td class="text-center">
-                                <a href="@Url.Action("TaskDetails", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
-                                    Details
-                                </a>
-                                <a href="@Url.Action("Edit", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
-                                    Edit
-                                </a>
-                                <a href="@Url.Action("Delete", "Task", new { id = task.Id })" class="btn btn-outline-danger btn-sm text-white">
-                                    Delete
-                                </a>
                             </td>
                         </tr>
                     }
                 }
                 else
                 {
-                    <tr class="text-attach">
-                        <td colspan="6" class="text-center text-muted">No tasks to be completed.</td>
+                    <tr class="text-muted">
+                        <td colspan="6" class="text-center">No tasks to be completed.</td>
                     </tr>
                 }
             </tbody>
@@ -99,11 +101,11 @@
         <table id="completed-tasks-table" class="table table-hover shadow-sm">
             <thead class="table-light">
                 <tr>
+                    <th class="text-primary">Task ID</th>
                     <th>Name</th>
                     <th>Completed Date</th>
                     <th>Category</th>
                     <th>Status</th>
-                    <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -112,23 +114,22 @@
                     @foreach (var task in Model.CompletedTasks)
                     {
                         <tr id="task-@task.Id">
+                            <td>
+                                <a href="@Url.Action("TaskDetails", "Task", new { id = task.Id })" class="text-primary" style="text-decoration: none">
+                                    @task.Id.ToString().Substring(0, 8).ToUpper()
+                                </a>
+                            </td>
                             <td>@task.Name</td>
                             <td id="task-date-@task.Id">@task.CompletedDate?.ToString("d")</td>
                             <td>@task.TaskCategory.Name</td>
                             <td><span id="task-status-@task.Id" class="badge bg-success text-dark">@task.Status</span></td>
-                            <td class="text-center">
-                                <a id="task-details-@task.Id" href="@Url.Action("TaskDetails", "Task", new { id = task.Id })" class="btn btn-outline-dark btn-sm text-white">
-                                    Details
-                                </a>
-                            </td>
                         </tr>
-                      
                     }
                 }
                 else
                 {
-                    <tr class="text-remove">
-                        <td colspan="5" class="text-center text-muted">No completed tasks available.</td>
+                    <tr class="text-muted">
+                        <td colspan="5" class="text-center">No completed tasks available.</td>
                     </tr>
                 }
             </tbody>
@@ -140,5 +141,5 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
 }
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

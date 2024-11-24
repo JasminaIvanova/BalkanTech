@@ -57,6 +57,7 @@
                             <p class="card-text mb-0">@room.isAvailable</p>
                             <a href="@Url.Action("Index", "Task", new
                             {
+                                roomId = room.Id,
                                 roomNumber = room.RoomNumber
                             }
                             )" class="btn btn-primary btn-sm">View Tasks</a>

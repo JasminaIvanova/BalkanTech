@@ -3,6 +3,8 @@
     document.getElementById("categoryForm").submit();
 }
 
+
+
 function changeTaskStatus(taskId, newStatus, newDate) {
     var url = $('#task-status-url').data('url');
     $.post(url, { id: taskId, newStatus: newStatus, newDate: newDate })

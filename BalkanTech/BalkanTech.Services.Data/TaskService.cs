@@ -11,7 +11,7 @@ using static BalkanTech.Common.Constants;
 
 namespace BalkanTech.Services.Data
 {
-    //fix validations, errors, handle exceptions
+    //fix validations, errors, handle exceptions, simplify remove repeting code, fix mapping 
     public class TaskService : ITaskService
     {
         private readonly UserManager<AppUser> userManager;
@@ -69,9 +69,10 @@ namespace BalkanTech.Services.Data
                               .ToList();
             await context.AssignedTechniciansTasks.AddRangeAsync(tasksAssigned);
             await context.SaveChangesAsync();
+            var rooms = await LoadRoomsAsync();
         }
 
-        public async Task<TaskViewModel> IndexGetAllTasksAsync(int roomNumber, string category = "All")
+        public async Task<TaskViewModel> IndexGetAllTasksAsync(Guid roomId, int roomNumber, string category = "All")
         {
             if (!context.Rooms.Any(r => r.RoomNumber == roomNumber)) 
             {
@@ -80,6 +81,7 @@ namespace BalkanTech.Services.Data
             }
             var model = new TaskViewModel
             {
+                RoomId = roomId,
                 RoomNumber = roomNumber,
                 Categories = await context.TaskCategories.Select(c => c.Name).ToListAsync()
             };
@@ -192,10 +194,11 @@ namespace BalkanTech.Services.Data
             return model;
         }
 
-        public async Task<TaskAddViewModel> LoadTaskAddModel()
+        public async Task<TaskAddViewModel> LoadTaskAddModel(Guid roomId)
         {
            return new TaskAddViewModel()
            {
+               RoomId = roomId,
                RoomNumbers = await LoadRoomsAsync(),
                Technicians = await LoadTechniciansAsync(),
                TaskCategories = await LoadTaskCategoriesAsync(),
@@ -233,6 +236,14 @@ namespace BalkanTech.Services.Data
                             .ToList();
             await context.AssignedTechniciansTasks.AddRangeAsync(techsAssignedAdd);
             await context.SaveChangesAsync();
+        }
+
+        public async Task<int> GetRoomNumberByIdAsync(Guid roomId)
+        {
+            return await context.Rooms
+                .Where(r => r.Id == roomId)
+                .Select(r => r.RoomNumber)
+                .FirstOrDefaultAsync();
         }
     }
 }

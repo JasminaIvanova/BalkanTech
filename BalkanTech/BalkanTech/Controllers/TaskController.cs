@@ -33,7 +33,7 @@ namespace BalkanTech.Web.Controllers
         {
             try
             {
-                var model = await taskService.IndexGetAllTasksAsync(roomNumber, category);
+                var model = await taskService.IndexGetAllTasksAsync(roomId,roomNumber, category);
                 if (model == null)
                 {
                     return NotFound("Room not found.");
@@ -49,9 +49,9 @@ namespace BalkanTech.Web.Controllers
 
         }
         [HttpGet]
-        public async Task<IActionResult> Add()
+        public async Task<IActionResult> Add(Guid roomId)
         {
-            var model = await taskService.LoadTaskAddModel();
+            var model = await taskService.LoadTaskAddModel(roomId);
 
 
             return View(model);
@@ -62,7 +62,7 @@ namespace BalkanTech.Web.Controllers
         {
             if (!ModelState.IsValid) 
             {
-                model = await taskService.LoadTaskAddModel();
+                model = await taskService.LoadTaskAddModel(Guid.Empty);
                 return View(model);
             }
             if (!DateTime.TryParseExact(model.DueDate, dateFormat, CultureInfo.InvariantCulture,
@@ -71,7 +71,9 @@ namespace BalkanTech.Web.Controllers
                 throw new InvalidOperationException("Invalid date format.");
             }
            await taskService.AddTaskAsync(model, parsedDueDate);
-           return RedirectToAction("Index", "Home");
+            var roomNumber = await taskService.GetRoomNumberByIdAsync(model.RoomId);
+
+            return RedirectToAction("Index", "Task", new { roomId = model.RoomId, roomNumber });
 
         }
 

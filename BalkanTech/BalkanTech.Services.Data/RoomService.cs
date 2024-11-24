@@ -49,6 +49,7 @@ namespace BalkanTech.Services.Data
                 .Take(pageSize)
                 .Select(r => new RoomsIndexViewModel
                 {
+                    Id=r.Id,
                     RoomNumber = r.RoomNumber,
                     Floor = r.Floor,
                     isAvailable = r.isAvailable ? "Available" : "Not Available",

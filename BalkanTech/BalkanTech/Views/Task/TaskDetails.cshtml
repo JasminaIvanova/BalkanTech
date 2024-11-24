@@ -1,6 +1,6 @@
 ﻿@using BalkanTech.Web.ViewModels.Task
 @model TaskDetailsViewModel
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 @{
     ViewData["Title"] = "Task Details";
 }
@@ -12,6 +12,17 @@
     </div>
 }
 <div class="container mt-5">
+    <div class="d-flex justify-content-end mb-3">
+        <a href="@Url.Action("Edit", "Task", new { id = Model.Id })"
+           class="btn border border-dark text-dark rounded-3 bg-transparent hover-bg-dark hover-text-white">
+            <i class="fas fa-pencil-alt me-2"></i> Edit Task
+        </a>
+
+        <a href="@Url.Action("Delete", "Task", new { id = Model.Id })"
+           class="btn border border-danger text-danger rounded-3 bg-transparent hover-bg-danger hover-text-white">
+            <i class="fas fa-times me-2"></i> Delete Task
+        </a>
+    </div>
     <div class="card shadow-sm mb-4">
         <div class="card-header bg-light">
             <h5 class="card-title">Task Information</h5>

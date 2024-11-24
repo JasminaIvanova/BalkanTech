@@ -93,4 +93,12 @@ th, td {
 .note-item .d-flex {
     font-weight: bold;
 }
+.hover-bg-dark:hover {
+    background-color: #000 !important; /* Black background */
+    color: #fff !important; /* White text */
+}
 
+.hover-bg-danger:hover {
+    background-color: #dc3545 !important; /* Red background */
+    color: #fff !important; /* White text */
+}

@@ -31,15 +31,11 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="RoomId" class="form-label fw-bold">Room</label>
-                        <select asp-for="RoomId" class="form-select">
-                            @if (Model.RoomNumbers != null)
+                        <select asp-for="RoomId" asp-items="@(new SelectList(Model.RoomNumbers, "Id", "RoomNumber", Model.RoomId))" class="form-select">
+                            @if (Model.RoomId.Equals(Guid.Empty))
                             {
                                 <option value="">--Select Room Number--</option>
-                                @foreach (var room in Model.RoomNumbers)
-                                {
-                                    <option value="@room.Id">Room @room.RoomNumber</option>
-                                }
-                            }
+                            }    
                         </select>
                         <span asp-validation-for="RoomId" class="text-danger"></span>
                     </div>
