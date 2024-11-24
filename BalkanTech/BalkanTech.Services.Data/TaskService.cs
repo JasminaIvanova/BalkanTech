@@ -93,7 +93,7 @@ namespace BalkanTech.Services.Data
 
             if (room != null)
             {
-                var tasks = room.MaintananceTasks.AsQueryable();
+                var tasks = room.MaintananceTasks.Where(t => t.IsDeleted == false).AsQueryable();
                 if (!string.IsNullOrEmpty(category) && category != "All")
                 {
                     tasks = tasks.Where(t => t.TaskCategory != null && t.TaskCategory.Name == category);
@@ -125,6 +125,7 @@ namespace BalkanTech.Services.Data
         public async Task<TaskDetailsViewModel> LoadTaskDetailsAsync(Guid id)
         {
             var task = await context.MaintananceTasks
+                .Where(t => t.IsDeleted == false)
                  .Include(t => t.Room)
                  .Include(t => t.Notes)
                     .ThenInclude(n => n.AppUser)
@@ -166,7 +167,7 @@ namespace BalkanTech.Services.Data
 
         public async Task<MaintananceTask> LoadMaintananceTaskAsync(Guid id)
         {
-           var task = await context.MaintananceTasks.Include(t => t.AssignedTechniciansTasks).FirstOrDefaultAsync(t => t.Id == id);
+           var task = await context.MaintananceTasks.Where(t => t.IsDeleted == false).Include(t => t.AssignedTechniciansTasks).FirstOrDefaultAsync(t => t.Id == id);
             if (task != null) 
             {
                 return task;

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HHqtQyBwDepwTE9zcV7R4MMSOwOAP4oG20sTbtL6Hzs=",
+  "Hash": "cgNwjvPNAcHoa+VgOtrmHm+kiPDLAgz1KbDpN9VzmMY=",
   "Source": "BalkanTech.Web",
   "BasePath": "_content/BalkanTech.Web",
   "Mode": "Default",
@@ -1307,6 +1307,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\sofia-balkan-hotel.png"
+    },
+    {
+      "Identity": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\js\\loadModal.js",
+      "SourceId": "BalkanTech.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\",
+      "BasePath": "_content/BalkanTech.Web",
+      "RelativePath": "js/loadModal.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\loadModal.js"
     },
     {
       "Identity": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\js\\site.js",

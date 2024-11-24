@@ -36,4 +36,3 @@ function changeTaskStatus(taskId, newStatus, newDate) {
         });
 }
 
-

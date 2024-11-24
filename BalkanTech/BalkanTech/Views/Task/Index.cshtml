@@ -12,6 +12,7 @@
         <form method="get" action="@Url.Action("Index", "Task")" id="categoryForm" class="d-flex">
             <input type="hidden" name="category" id="categoryInput" value="All" />
             <input type="hidden" name="roomNumber" value="@Model.RoomNumber" />
+            <input type="hidden" name="roomId" value="@Model.RoomId" />
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle " type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     Filter By Category

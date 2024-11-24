@@ -26,14 +26,14 @@ namespace BalkanTech.Web.Controllers
             context = _context;
             _userManager = userManager;
             taskService = _taskService;
-         
+
         }
         [HttpGet]
-        public async Task<IActionResult> Index( Guid roomId, int roomNumber,string category = "All")
+        public async Task<IActionResult> Index(Guid roomId, int roomNumber, string category = "All")
         {
             try
             {
-                var model = await taskService.IndexGetAllTasksAsync(roomId,roomNumber, category);
+                var model = await taskService.IndexGetAllTasksAsync(roomId, roomNumber, category);
                 if (model == null)
                 {
                     return NotFound("Room not found.");
@@ -42,7 +42,7 @@ namespace BalkanTech.Web.Controllers
             }
             catch (InvalidOperationException roomEx)
             {
-               
+
                 TempData[nameof(ErrorRoomNumber)] = ErrorRoomNumber;
                 return RedirectToAction("Index", "Room");
             }
@@ -60,7 +60,7 @@ namespace BalkanTech.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(TaskAddViewModel model)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 model = await taskService.LoadTaskAddModel(Guid.Empty);
                 return View(model);
@@ -70,7 +70,7 @@ namespace BalkanTech.Web.Controllers
             {
                 throw new InvalidOperationException("Invalid date format.");
             }
-           await taskService.AddTaskAsync(model, parsedDueDate);
+            await taskService.AddTaskAsync(model, parsedDueDate);
             var roomNumber = await taskService.GetRoomNumberByIdAsync(model.RoomId);
 
             return RedirectToAction("Index", "Task", new { roomId = model.RoomId, roomNumber });
@@ -80,14 +80,14 @@ namespace BalkanTech.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangeTaskStatus(Guid id, string newStatus, DateTime? newDate)
         {
-            return await taskService.ChangeTaskStatus(id, newStatus, newDate);  
+            return await taskService.ChangeTaskStatus(id, newStatus, newDate);
         }
 
         [HttpGet]
         public async Task<IActionResult> TaskDetails(Guid id)
         {
             var model = await taskService.LoadTaskDetailsAsync(id);
-            if (model == null) 
+            if (model == null)
             {
                 return NotFound("The task with the specified ID does not exist.");
             }
@@ -104,16 +104,41 @@ namespace BalkanTech.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(TaskAddViewModel model)
         {
-           
+
             if (!DateTime.TryParseExact(model.DueDate, dateFormat, CultureInfo.InvariantCulture,
               DateTimeStyles.None, out DateTime parsedDueDate))
             {
                 throw new InvalidOperationException("Invalid date format.");
             }
             await taskService.EditTaskAsync(model, parsedDueDate);
-            
+
             return RedirectToAction("TaskDetails", new { id = model.Id });
-            
+
         }
-     }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var task = await context.MaintananceTasks.Include(t =>t.Room).FirstOrDefaultAsync(t => t.Id == id);
+            var model = new TaskDeleteViewModel
+            {
+
+                Id = task.Id,
+                Name = task.Name,
+                Description = task.Description,
+                RoomNumber = task.Room.RoomNumber,
+                RoomId = task.RoomId,
+            };
+            return PartialView("_DeletePartial", model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(TaskDeleteViewModel model)
+        {
+            var task = await context.MaintananceTasks.Include(t => t.Room).FirstOrDefaultAsync(t => t.Id == model.Id);
+            task.IsDeleted = true;
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Task", new { roomId = task.RoomId, task.Room.RoomNumber });
+        }
+    }
 }

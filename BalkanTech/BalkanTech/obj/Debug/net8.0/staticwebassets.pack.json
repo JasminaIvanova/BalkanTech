@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\images\\sofia-balkan-hotel.png"
     },
     {
+      "Id": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\js\\loadModal.js",
+      "PackagePath": "staticwebassets\\js\\loadModal.js"
+    },
+    {
       "Id": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
