@@ -14,8 +14,8 @@
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
     <form method="post" action="@Url.Action("Delete", "Task")">
         <input type="hidden" name="id" value="@Model.Id" />
-        <input type="hidden" name="id" value="@Model.RoomId" />
-        <input type="hidden" name="id" value="@Model.RoomNumber" />
+        <input type="hidden" name="roomId" value="@Model.RoomId" />
+        <input type="hidden" name="roomNumber" value="@Model.RoomNumber" />
         <button type="submit" class="btn btn-danger">Delete</button>
     </form>
 </div>

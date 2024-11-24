@@ -28,5 +28,8 @@ namespace BalkanTech.Services.Data.Interfaces
         Task<TaskAddViewModel> LoadEditTaskAsync(Guid Id);
         Task EditTaskAsync(TaskAddViewModel model, DateTime parsedDate);
         Task<int> GetRoomNumberByIdAsync(Guid roomId);
+
+        Task<TaskDeleteViewModel> LoadDeleteViewModelAsync(Guid id);
+        Task DeleteTaskAsync(TaskDeleteViewModel model);
     }
 }

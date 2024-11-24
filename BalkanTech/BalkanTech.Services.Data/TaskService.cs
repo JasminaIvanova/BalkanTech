@@ -167,7 +167,7 @@ namespace BalkanTech.Services.Data
 
         public async Task<MaintananceTask> LoadMaintananceTaskAsync(Guid id)
         {
-           var task = await context.MaintananceTasks.Where(t => t.IsDeleted == false).Include(t => t.AssignedTechniciansTasks).FirstOrDefaultAsync(t => t.Id == id);
+           var task = await context.MaintananceTasks.Where(t => t.IsDeleted == false).Include(t => t.AssignedTechniciansTasks).Include(t => t.Room).FirstOrDefaultAsync(t => t.Id == id);
             if (task != null) 
             {
                 return task;
@@ -245,6 +245,28 @@ namespace BalkanTech.Services.Data
                 .Where(r => r.Id == roomId)
                 .Select(r => r.RoomNumber)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<TaskDeleteViewModel> LoadDeleteViewModelAsync(Guid id)
+        {
+            var task = await LoadMaintananceTaskAsync(id);
+            var model = new TaskDeleteViewModel
+            {
+
+                Id = task.Id,
+                Name = task.Name,
+                Description = task.Description,
+                RoomNumber = task.Room.RoomNumber,
+                RoomId = task.RoomId,
+            };
+            return model;
+        }
+
+        public async Task DeleteTaskAsync(TaskDeleteViewModel model)
+        {
+            var task = await LoadMaintananceTaskAsync(model.Id);
+            task.IsDeleted = true;
+            await context.SaveChangesAsync();
         }
     }
 }

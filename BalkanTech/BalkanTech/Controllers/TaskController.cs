@@ -119,26 +119,15 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var task = await context.MaintananceTasks.Include(t =>t.Room).FirstOrDefaultAsync(t => t.Id == id);
-            var model = new TaskDeleteViewModel
-            {
-
-                Id = task.Id,
-                Name = task.Name,
-                Description = task.Description,
-                RoomNumber = task.Room.RoomNumber,
-                RoomId = task.RoomId,
-            };
+            var model = await taskService.LoadDeleteViewModelAsync(id);
             return PartialView("_DeletePartial", model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(TaskDeleteViewModel model)
         {
-            var task = await context.MaintananceTasks.Include(t => t.Room).FirstOrDefaultAsync(t => t.Id == model.Id);
-            task.IsDeleted = true;
-            await context.SaveChangesAsync();
-            return RedirectToAction("Index", "Task", new { roomId = task.RoomId, task.Room.RoomNumber });
+            await taskService.DeleteTaskAsync(model);
+            return RedirectToAction("Index", "Task", new { roomId = model.RoomId, model.RoomNumber });
         }
     }
 }
