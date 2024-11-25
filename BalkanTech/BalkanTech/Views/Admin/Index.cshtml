@@ -1,0 +1,54 @@
+﻿@using BalkanTech.Web.ViewModels.Admin
+@model IEnumerable<TechsIndexViewModel>
+
+@{
+    ViewData["Title"] = "Workers List";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Workers List</h1>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            No technicians found.
+        </div>
+    }
+    else
+    {
+        <form method="post" asp-action="UpdateRoles">
+            <div class="row">
+                @foreach (var tech in Model)
+                {
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@tech.FirstName @tech.LastName</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@tech.Email</h6>
+
+                                <div class="form-check">
+                                    <input type="radio" name="roles_@tech.Id" value="Technician"
+                                    @(tech.RoleName.Contains("Technician") ? "checked" : "")
+                                           class="form-check-input">
+                                    <label class="form-check-label">Technician</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="roles_@tech.Id" value="Manager"
+                                    @(tech.RoleName.Contains("Manager") ? "checked" : "")
+                                           class="form-check-input">
+                                    <label class="form-check-label">Manager</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <button type="submit" class="btn btn-success mt-4">Save Changes</button>
+        </form>
+    }
+
+    <div class="d-flex justify-content-end mt-4">
+        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-success">Add New Technician</a>
+    </div>
+</div>
