@@ -1,5 +1,6 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
+using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -15,46 +16,27 @@ namespace BalkanTech.Web.Controllers
         private readonly BalkanDbContext context;
         private readonly UserManager<AppUser> userManager;
         private readonly RoleManager<IdentityRole<Guid>> roleManager;
+        private readonly IAdminService adminService;
 
-        public AdminController(BalkanDbContext _context, UserManager<AppUser> _userManager, RoleManager<IdentityRole<Guid>> _roleManager)
+        public AdminController(BalkanDbContext _context, UserManager<AppUser> _userManager, RoleManager<IdentityRole<Guid>> _roleManager, IAdminService _adminService)
         {
             context = _context;
             userManager = _userManager;
             roleManager = _roleManager;
+            adminService = _adminService;
         }
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var adminId = (await userManager.GetUsersInRoleAsync("Admin")).FirstOrDefault()?.Id;
-            var allUsersExceptAdmin = await userManager.Users.Where(u => u.Id != adminId).ToListAsync();
-            var techs = new List<TechsIndexViewModel>();
 
-            foreach (var user in allUsersExceptAdmin)
-            {
-                var roleName = (await userManager.IsInRoleAsync(user, "Technician")) ? "Technician" :
-                               (await userManager.IsInRoleAsync(user, "Manager")) ? "Manager" :
-                               "Unknown";
+            var model = await adminService.IndexGetAllTechsAsync();
 
-                techs.Add(new TechsIndexViewModel
-                {
-                    Id = user.Id,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    RoleName = roleName,
-                    Email = user.Email ?? string.Empty,
-                });
-            }
-
-
-            return View(techs); 
+            return View(model); 
         }
         [HttpPost]
         public async Task<IActionResult> ChangeRole(Guid userId, string role)
         {
-            var user = await userManager.FindByIdAsync(userId.ToString());
-            var currentUserRole = await userManager.GetRolesAsync(user);
-            await userManager.RemoveFromRolesAsync(user, currentUserRole);
-            await userManager.AddToRoleAsync(user, role);
+            await adminService.ChangeRoleOfUserAsync(userId, role);
             return RedirectToAction(nameof(Index));
         }
 
