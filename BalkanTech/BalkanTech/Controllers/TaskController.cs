@@ -49,6 +49,7 @@ namespace BalkanTech.Web.Controllers
 
         }
         [HttpGet]
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Add(Guid roomId)
         {
             var model = await taskService.LoadTaskAddModel(roomId);
@@ -58,6 +59,7 @@ namespace BalkanTech.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Add(TaskAddViewModel model)
         {
             if (!ModelState.IsValid)
@@ -95,6 +97,7 @@ namespace BalkanTech.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Edit(Guid id)
         {
 
@@ -102,6 +105,7 @@ namespace BalkanTech.Web.Controllers
             return View(model);
         }
         [HttpPost]
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Edit(TaskAddViewModel model)
         {
 
@@ -117,6 +121,7 @@ namespace BalkanTech.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var model = await taskService.LoadDeleteViewModelAsync(id);
@@ -124,6 +129,7 @@ namespace BalkanTech.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Manager")]
         public async Task<IActionResult> Delete(TaskDeleteViewModel model)
         {
             await taskService.DeleteTaskAsync(model);
