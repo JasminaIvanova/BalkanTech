@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BalkanTech.Web.Controllers
 {
     [Authorize(Roles = "Admin")]
+    //TODO validations, checkes for nulls etc
     public class AdminController : Controller
     {
         private readonly BalkanDbContext context;
@@ -21,7 +22,7 @@ namespace BalkanTech.Web.Controllers
             userManager = _userManager;
             roleManager = _roleManager;
         }
-
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var adminId = (await userManager.GetUsersInRoleAsync("Admin")).FirstOrDefault()?.Id;
@@ -46,6 +47,15 @@ namespace BalkanTech.Web.Controllers
 
 
             return View(techs); 
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangeRole(Guid userId, string role)
+        {
+            var user = await userManager.FindByIdAsync(userId.ToString());
+            var currentUserRole = await userManager.GetRolesAsync(user);
+            await userManager.RemoveFromRolesAsync(user, currentUserRole);
+            await userManager.AddToRoleAsync(user, role);
+            return RedirectToAction(nameof(Index));
         }
 
     }
