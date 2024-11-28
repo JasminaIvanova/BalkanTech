@@ -12,8 +12,8 @@ namespace BalkanTech.Web.ViewModels.Task
         public Guid Id { get; set; }
         public Guid RoomId { get; set; }
         public int RoomNumber { get; set; }
-        public List<MaintananceTask> ToBeCompletedTasks { get; set; } = new List<MaintananceTask>();
-        public List<MaintananceTask> CompletedTasks { get; set; } = new List<MaintananceTask>();
+        public PaginationIndexViewModel<MaintananceTask> ToBeCompletedTasks { get; set; } = new PaginationIndexViewModel<MaintananceTask>();
+        public PaginationIndexViewModel<MaintananceTask> CompletedTasks { get; set; } = new PaginationIndexViewModel<MaintananceTask>();
         public List<string> Categories { get; set; } = new List<string>();
     }
 }

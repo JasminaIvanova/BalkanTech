@@ -59,7 +59,7 @@ namespace BalkanTech.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ToggleRoomStatus(Guid roomId)
+        public async Task<IActionResult> ChangeRoomStatus(Guid roomId)
         {
             await roomService.ChangeRoomStatus(roomId);
 

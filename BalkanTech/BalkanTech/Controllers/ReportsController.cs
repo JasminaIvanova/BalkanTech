@@ -1,6 +1,7 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
 using BalkanTech.Web.ViewModels.Report;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using System.Security.Claims;
 
 namespace BalkanTech.Web.Controllers
 {
+    [Authorize]
     public class ReportsController : Controller
     {
         private readonly BalkanDbContext context;

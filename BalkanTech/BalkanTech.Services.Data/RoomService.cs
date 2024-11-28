@@ -1,6 +1,7 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
 using BalkanTech.Services.Data.Interfaces;
+using BalkanTech.Web.ViewModels;
 using BalkanTech.Web.ViewModels.Room;
 using Microsoft.EntityFrameworkCore;
 using static BalkanTech.Common.ErrorMessages;
@@ -41,7 +42,7 @@ namespace BalkanTech.Services.Data
             }
             return allRooms;
         }
-        public async Task<RoomsIndexPagedModel<RoomsIndexViewModel>> IndexGetAllRoomsAsync(string search, int page, int pageSize)
+        public async Task<PaginationIndexViewModel<RoomsIndexViewModel>> IndexGetAllRoomsAsync(string search, int page, int pageSize)
         {
             var allRooms = await LoadRoomsBySearch(search);
 
@@ -61,7 +62,7 @@ namespace BalkanTech.Services.Data
 
             var count = await allRooms.CountAsync();
 
-            return new RoomsIndexPagedModel<RoomsIndexViewModel>
+            return new PaginationIndexViewModel<RoomsIndexViewModel>
             {
                 Items = roomsPerPage,
                 TotalItems = count,

@@ -1,4 +1,5 @@
 ﻿using BalkanTech.Data.Models;
+using BalkanTech.Web.ViewModels;
 using BalkanTech.Web.ViewModels.Room;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace BalkanTech.Services.Data.Interfaces
 {
     public interface IRoomService
     {
-        Task<RoomsIndexPagedModel<RoomsIndexViewModel>> IndexGetAllRoomsAsync(string search, int page, int pageSize);
+        Task<PaginationIndexViewModel<RoomsIndexViewModel>> IndexGetAllRoomsAsync(string search, int page, int pageSize);
         Task<IEnumerable<RoomCategoryViewModel>> LoadRoomCategoriesAsync();
 
         Task<bool> AddRoomAsync(RoomAddViewModel model);

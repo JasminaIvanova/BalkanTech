@@ -11,7 +11,7 @@ namespace BalkanTech.Services.Data.Interfaces
 {
     public interface ITaskService
     {
-        Task<TaskViewModel> IndexGetAllTasksAsync(Guid roomId, int roomNumber, string category = "All");
+        Task<TaskViewModel> IndexGetAllTasksAsync(Guid roomId, int roomNumber,  int? completedPage, int? toBeCompletedPage, int pageSize, string category = "All");
         Task<TaskAddViewModel> LoadTaskAddModel(Guid roomId);
         
         Task AddTaskAsync(TaskAddViewModel model, DateTime parsedDate);

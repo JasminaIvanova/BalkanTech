@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BalkanTech.Web.ViewModels.Room
+namespace BalkanTech.Web.ViewModels
 {
-    public class RoomsIndexPagedModel<T>
+    public class PaginationIndexViewModel<T>
     {
         public IEnumerable<T> Items { get; set; }
         public int TotalItems { get; set; }

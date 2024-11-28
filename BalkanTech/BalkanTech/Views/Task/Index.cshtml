@@ -8,11 +8,13 @@
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Tasks for Room @Model.RoomNumber</h1>
 
+    <!-- Category Filter Form (For filtering both sections) -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <form method="get" action="@Url.Action("Index", "Task")" id="categoryForm" class="d-flex">
             <input type="hidden" name="category" id="categoryInput" value="All" />
             <input type="hidden" name="roomNumber" value="@Model.RoomNumber" />
             <input type="hidden" name="roomId" value="@Model.RoomId" />
+            <!-- Dropdown to select category (e.g. Plumbing, Electrical etc.) -->
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle " type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     Filter By Category
@@ -28,13 +30,9 @@
                 </ul>
             </div>
         </form>
-          @if (User.IsInRole("Manager"))
-         {
-            <a href="@Url.Action("Add", "Task", new { roomId = Model.RoomId })" class="btn">
-                <i class="bi bi-plus-lg"></i> Create Task
-            </a>
-         }
     </div>
+
+    <!-- To Be Completed Tasks -->
     <div class="task-section mb-5">
         <h4 class="text-warning mb-3"><i class="bi bi-list-task"></i> To Be Completed Tasks</h4>
         <table id="to-be-completed-tasks-table" class="table table-hover shadow-sm">
@@ -49,9 +47,9 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model.ToBeCompletedTasks.Any())
+                @if (Model.ToBeCompletedTasks.Items.Any())
                 {
-                    @foreach (var task in Model.ToBeCompletedTasks)
+                    @foreach (var task in Model.ToBeCompletedTasks.Items)
                     {
                         <tr id="task-@task.Id">
                             <td>
@@ -98,8 +96,13 @@
                 }
             </tbody>
         </table>
+        @await Html.PartialAsync("_TasksPaginationPartial", Model.ToBeCompletedTasks, new ViewDataDictionary(ViewData)
+        {
+        { "IsCompleted", false }
+        })
     </div>
 
+    <!-- Completed Tasks -->
     <div class="task-section">
         <h4 class="text-success mb-3"><i class="bi bi-check-circle"></i> Completed Tasks</h4>
         <table id="completed-tasks-table" class="table table-hover shadow-sm">
@@ -113,9 +116,9 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model.CompletedTasks.Any())
+                @if (Model.CompletedTasks.Items.Any())
                 {
-                    @foreach (var task in Model.CompletedTasks)
+                    @foreach (var task in Model.CompletedTasks.Items)
                     {
                         <tr id="task-@task.Id">
                             <td>
@@ -138,12 +141,9 @@
                 }
             </tbody>
         </table>
+        @await Html.PartialAsync("_TasksPaginationPartial", Model.CompletedTasks, new ViewDataDictionary(ViewData)
+        {
+        { "IsCompleted", true }
+        })
     </div>
 </div>
-
-@section Scripts {
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
-}
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-

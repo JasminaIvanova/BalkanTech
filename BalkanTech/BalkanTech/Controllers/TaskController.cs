@@ -29,15 +29,21 @@ namespace BalkanTech.Web.Controllers
 
         }
         [HttpGet]
-        public async Task<IActionResult> Index(Guid roomId, int roomNumber, string category = "All")
+        public async Task<IActionResult> Index(Guid roomId, int roomNumber, int? completedPage = 1, int? toBeCompletedPage = 1, int pageSize = 3, string category = "All")
         {
             try
             {
-                var model = await taskService.IndexGetAllTasksAsync(roomId, roomNumber, category);
+                var model = await taskService.IndexGetAllTasksAsync(roomId, roomNumber, completedPage,toBeCompletedPage,pageSize, category);
                 if (model == null)
                 {
                     return NotFound("Room not found.");
                 }
+                ViewData["RoomId"] = roomId;
+                ViewData["RoomNumber"] = roomNumber;
+                ViewData["Category"] = category;
+                ViewData["CompletedPage"] = completedPage ?? 1;
+                ViewData["ToBeCompletedPage"] = toBeCompletedPage ?? 1;
+
                 return View(model);
             }
             catch (InvalidOperationException roomEx)

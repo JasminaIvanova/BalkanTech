@@ -74,13 +74,8 @@ namespace BalkanTech.Services.Data
             var rooms = await LoadRoomsAsync();
         }
 
-        public async Task<TaskViewModel> IndexGetAllTasksAsync(Guid roomId, int roomNumber, string category = "All")
+        public async Task<TaskViewModel> IndexGetAllTasksAsync(Guid roomId, int roomNumber,int? completedPage, int? toBeCompletedPage, int pageSize, string category = "All")
         {
-            if (!context.Rooms.Any(r => r.RoomNumber == roomNumber)) 
-            {
-                throw new InvalidOperationException();
-
-            }
             var model = new TaskViewModel
             {
                 RoomId = roomId,
@@ -100,9 +95,28 @@ namespace BalkanTech.Services.Data
                 {
                     tasks = tasks.Where(t => t.TaskCategory != null && t.TaskCategory.Name == category);
                 }
-                model.ToBeCompletedTasks = tasks.Where(t => t.Status != "Completed").ToList();
-                model.CompletedTasks = tasks.Where(t => t.Status == "Completed").ToList();
+                var toBeCompletedTasks = tasks.Where(t => t.Status != "Completed").ToList();
+                var completedTasks = tasks.Where(t => t.Status == "Completed").ToList();
+
+                model.ToBeCompletedTasks.TotalItems = toBeCompletedTasks.Count();
+                model.ToBeCompletedTasks.TotalPages = (int)Math.Ceiling(toBeCompletedTasks.Count() / (double)pageSize);
+                model.ToBeCompletedTasks.PageSize = pageSize;
+                model.ToBeCompletedTasks.Items = toBeCompletedTasks
+                    .Skip(((toBeCompletedPage ?? 1) - 1) * pageSize)  
+                    .Take(pageSize)
+                    .ToList();
+                model.ToBeCompletedTasks.CurrentPage = toBeCompletedPage ?? 1;
+
+                model.CompletedTasks.TotalItems = completedTasks.Count();
+                model.CompletedTasks.TotalPages = (int)Math.Ceiling(completedTasks.Count() / (double)pageSize);
+                model.CompletedTasks.PageSize = pageSize;
+                model.CompletedTasks.Items = completedTasks
+                    .Skip(((completedPage ?? 1) - 1) * pageSize) 
+                    .Take(pageSize)
+                    .ToList();
+                model.CompletedTasks.CurrentPage = completedPage ?? 1;
             }
+
             return model;
         }
 

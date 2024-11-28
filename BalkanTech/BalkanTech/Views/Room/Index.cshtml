@@ -1,6 +1,7 @@
-﻿@using BalkanTech.Web.ViewModels.Room
-@model RoomsIndexPagedModel<RoomsIndexViewModel>
-@using static BalkanTech.Common.ErrorMessages.Rooms
+﻿@using BalkanTech.Web.ViewModels;
+@using BalkanTech.Web.ViewModels.Room;
+@model PaginationIndexViewModel<RoomsIndexViewModel>;
+@using static BalkanTech.Common.ErrorMessages.Rooms;
 
 @{
     ViewData["Title"] = "Room List";
@@ -70,7 +71,7 @@
                         </p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center card-footer">
-                        <form method="post" asp-action="ToggleRoomStatus" asp-controller="Room">
+                        <form method="post" asp-action="ChangeRoomStatus" asp-controller="Room">
                             <input type="hidden" name="roomId" value="@room.Id" />
                             <button type="submit" class="btn btn-sm btn-primary">
                                 @if (room.isAvailable)
