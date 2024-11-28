@@ -1,0 +1,75 @@
+﻿@using BalkanTech.Web.ViewModels.Report;
+@model TasksPerTechnicianReportViewModel
+
+@{
+    ViewData["Title"] = "Assigned Maintenance Tasks for Technician";
+}
+<div id="task-status-url" data-url="@Url.Action("ChangeTaskStatus", "Task")" style="display:none"></div>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">My assigned tasks</h1>
+    <div class="task-section mb-5">
+        <table class="table table-hover shadow-sm">
+            <thead class="table-light">
+                <tr>
+                    <th class="text-primary">Task ID</th>
+                    <th>Name</th>
+                    <th>Due Date</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.ToBeCompletedTasks.Any())
+                {
+                    @foreach (var task in Model.ToBeCompletedTasks)
+                    {
+                        <tr id="task-@task.Id">
+                            <td>
+                                <a href="@Url.Action("TaskDetails", "Task", new { id = task.Id })" class="text-primary" style="text-decoration: none">
+                                    @task.Id.ToString().Substring(0, 8).ToUpper()
+                                </a>
+                            </td>
+                            <td>@task.Name</td>
+                            <td>@task.DueDate.ToString("yyyy-MM-dd")</td>
+                            <td>@task.TaskCategory.Name</td>
+                            <td>
+                                @if (task.DueDate < DateTime.Now)
+                                {
+                                    <span id="task-passed-@task.Id" class="badge bg-danger text-dark">Due date passed</span>
+                                }
+                                @if (@task.Status == "Pending")
+                                {
+                                    <span id="task-status-@task.Id" class="badge bg-warning text-dark">@task.Status</span>
+                                }
+                                else if (@task.Status == "In Process")
+                                {
+                                    <span id="task-status-@task.Id" class="badge bg-primary text-dark">@task.Status</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                @if (@task.Status != "In Process")
+                                {
+                                    <button onclick="changeTaskStatus('@task.Id', 'In Process', '@task.CompletedDate')" class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-gear"></i> In Process
+                                    </button>
+                                }
+                                <button onclick="changeTaskStatus('@task.Id', 'Completed', '@DateTime.Now')" class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-check-all"></i> Complete
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr class="text-muted">
+                        <td colspan="6" class="text-center">No tasks to be completed.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

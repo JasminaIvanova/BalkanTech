@@ -36,6 +36,10 @@
         {
             <a href="@Url.Action("Add", "Room")" class="btn btn-info">Add Room</a>
         }
+        @if (User.IsInRole("Manager"))
+        {
+            <a href="@Url.Action("Add", "Task")" class="btn btn-info m-3">Add Task</a>
+        }
         <div class="ms-auto">
             <form class="d-flex">
                 <input type="text" name="search" class="form-control me-sm-2" placeholder="Search" value="@ViewBag.SearchQuery">

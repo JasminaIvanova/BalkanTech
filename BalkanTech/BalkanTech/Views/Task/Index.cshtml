@@ -28,7 +28,7 @@
                 </ul>
             </div>
         </form>
-          @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+          @if (User.IsInRole("Manager"))
          {
             <a href="@Url.Action("Add", "Task", new { roomId = Model.RoomId })" class="btn">
                 <i class="bi bi-plus-lg"></i> Create Task

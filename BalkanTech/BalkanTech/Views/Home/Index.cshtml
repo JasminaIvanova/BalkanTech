@@ -10,11 +10,8 @@
             <img src="~/images/sofia-balkan-hotel.png" class="img-fluid rounded shadow" alt="Hotel Technician" style="max-height: 300px;">
         </div>
 
-        <!-- Welcome Heading -->
         <h1 class="display-4 mb-3 font-weight-bold">Welcome to Balkan Tech</h1>
         <p class="lead text-muted mb-4">Your platform for managing maintenance and repairs at the Balkan Hotel</p>
-
-        <!-- Welcome Message Card -->
         <div class="card shadow-sm mx-auto mb-5" style="max-width: 700px;">
             <div class="card-body">
                 <p class="text-muted">
@@ -23,11 +20,9 @@
             </div>
         </div>
 
-        <!-- Navigation Buttons -->
         <div class="d-flex justify-content-center">
             <a asp-controller="Room" asp-action="Index" class="btn btn-primary mx-2">View Rooms</a>
-            <a href="/Tasks" class="btn btn-secondary mx-2">Maintenance Tasks</a>
-            <a href="/Reports" class="btn btn-info mx-2">Repair Reports</a>
+            <a asp-controller="Reports" asp-action="MyTasks" class="btn btn-primary mx-2">Maintenance Tasks</a>
         </div>
 
         <!-- Footer Section -->

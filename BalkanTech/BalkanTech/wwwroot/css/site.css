@@ -102,3 +102,9 @@ th, td {
     background-color: #dc3545 !important; /* Red background */
     color: #fff !important; /* White text */
 }
+footer.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

@@ -23,8 +23,10 @@ namespace BalkanTech.Services.Data
         }
         public async Task<IEnumerable<TaskTechnicianViewModel>> LoadTechniciansAsync()
         {
-            var allTechs = await userManager.GetUsersInRoleAsync("Technician");
-            return allTechs.Select(t => new TaskTechnicianViewModel
+            var allTechnicians = await userManager.GetUsersInRoleAsync("Technician");
+            var allManagers = await userManager.GetUsersInRoleAsync("Manager");
+            var techsAndManager = allTechnicians.Concat(allManagers).ToList();
+            return techsAndManager.Select(t => new TaskTechnicianViewModel
             {
                 Id = t.Id,
                 FirstName = t.FirstName,
