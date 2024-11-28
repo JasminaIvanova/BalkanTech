@@ -13,16 +13,11 @@ namespace BalkanTech.Web.Controllers
     //TODO validations, checkes for nulls etc
     public class AdminController : Controller
     {
-        private readonly BalkanDbContext context;
-        private readonly UserManager<AppUser> userManager;
-        private readonly RoleManager<IdentityRole<Guid>> roleManager;
         private readonly IAdminService adminService;
 
-        public AdminController(BalkanDbContext _context, UserManager<AppUser> _userManager, RoleManager<IdentityRole<Guid>> _roleManager, IAdminService _adminService)
+        public AdminController(IAdminService _adminService)
         {
-            context = _context;
-            userManager = _userManager;
-            roleManager = _roleManager;
+         
             adminService = _adminService;
         }
         [HttpGet]

@@ -58,6 +58,14 @@ namespace BalkanTech.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-      
+        [HttpPost]
+        public async Task<IActionResult> ToggleRoomStatus(Guid roomId)
+        {
+            await roomService.ChangeRoomStatus(roomId);
+
+            return RedirectToAction(nameof(Index)); 
+        }
+
+
     }
 }

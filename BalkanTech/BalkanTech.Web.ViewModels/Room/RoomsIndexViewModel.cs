@@ -14,6 +14,6 @@ namespace BalkanTech.Web.ViewModels.Room
         public int RoomNumber { get; set; }
         public int Floor { get; set; }
         public required string RoomCategory { get; set; }
-        public required string isAvailable { get; set; }
+        public bool isAvailable { get; set; }
     }
 }

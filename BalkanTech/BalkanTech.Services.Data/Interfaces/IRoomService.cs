@@ -16,5 +16,7 @@ namespace BalkanTech.Services.Data.Interfaces
         Task<bool> AddRoomAsync(RoomAddViewModel model);
 
         Task<IQueryable<Room>> LoadRoomsBySearch(string serach);
+
+        Task ChangeRoomStatus(Guid id);
     }
 }

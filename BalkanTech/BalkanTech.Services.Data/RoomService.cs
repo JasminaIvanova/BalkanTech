@@ -3,6 +3,7 @@ using BalkanTech.Data.Models;
 using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels.Room;
 using Microsoft.EntityFrameworkCore;
+using static BalkanTech.Common.ErrorMessages;
 
 namespace BalkanTech.Services.Data
 {
@@ -52,7 +53,8 @@ namespace BalkanTech.Services.Data
                     Id=r.Id,
                     RoomNumber = r.RoomNumber,
                     Floor = r.Floor,
-                    isAvailable = r.isAvailable ? "Available" : "Not Available",
+                   // isAvailable = r.isAvailable ? "Available" : "Not Available",
+                   isAvailable = r.isAvailable,
                     RoomCategory = r.RoomCategory.RoomType.ToString()
                 })
                 .ToListAsync();
@@ -87,5 +89,15 @@ namespace BalkanTech.Services.Data
             return true;
         }
 
+        public async Task ChangeRoomStatus(Guid id)
+        {
+            var room = await context.Rooms.FindAsync(id);
+
+            if (room != null)
+            {
+                room.isAvailable = !room.isAvailable; 
+                await context.SaveChangesAsync();
+            }
+        }
     }
 }

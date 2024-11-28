@@ -36,6 +36,7 @@ builder.Services.AddTransient<SeedData>();
 builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddScoped<ITaskService, TaskService>();
 builder.Services.AddScoped<INoteService, NoteService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 

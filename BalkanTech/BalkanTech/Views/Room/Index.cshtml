@@ -35,7 +35,7 @@
         @if (User.IsInRole("Admin"))
         {
             <a href="@Url.Action("Add", "Room")" class="btn btn-info">Add Room</a>
-         }
+        }
         <div class="ms-auto">
             <form class="d-flex">
                 <input type="text" name="search" class="form-control me-sm-2" placeholder="Search" value="@ViewBag.SearchQuery">
@@ -48,23 +48,46 @@
         @foreach (var room in Model.Items)
         {
             <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
+                <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    <div class="card-body" style="flex-grow: 1;">
                         <h5 class="card-title">Room Number: @room.RoomNumber</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Floor: @room.Floor</h6>
                         <p class="card-text">@room.RoomCategory</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="card-text mb-0">@room.isAvailable</p>
-                            <a href="@Url.Action("Index", "Task", new
+                        <p class="card-text mb-0">
+                            Status:
+                            @if (room.isAvailable)
                             {
-                                roomId = room.Id,
-                                roomNumber = room.RoomNumber
+                                <span class="text-success">Available</span>
                             }
-                            )" class="btn btn-primary btn-sm">View Tasks</a>
-                        </div>
+                            else
+                            {
+                                <span class="text-danger">Occupied</span>
+                            }
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center card-footer">
+                        <form method="post" asp-action="ToggleRoomStatus" asp-controller="Room">
+                            <input type="hidden" name="roomId" value="@room.Id" />
+                            <button type="submit" class="btn btn-sm btn-primary">
+                                @if (room.isAvailable)
+                                {
+                                    <span>Mark as Occupied</span>
+                                }
+                                else
+                                {
+                                    <span>Mark as Available</span>
+                                }
+                            </button>
+                        </form>
+                        <a href="@Url.Action("Index", "Task", new { roomId = room.Id, roomNumber = room.RoomNumber })"
+                           class="btn btn-primary btn-sm">
+                            View Tasks
+                        </a>
                     </div>
                 </div>
             </div>
+
+
         }
     </div>
 
@@ -89,12 +112,12 @@
 
             @if (Model.CurrentPage < Model.TotalPages)
             {
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = Model.CurrentPage + 1, pageSize = Model.PageSize })">Next</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = Model.TotalPages, pageSize = Model.PageSize })">Last</a>
-            </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = Model.CurrentPage + 1, pageSize = Model.PageSize })">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = Model.TotalPages, pageSize = Model.PageSize })">Last</a>
+                </li>
             }
         </ul>
     </nav>
