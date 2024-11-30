@@ -29,5 +29,9 @@ namespace BalkanTech.Common
             public const string AdminSuccess = "AdminSuccess";
             public const string AdminError = "AdminError";
         }
+        public static class Tasks
+        {
+            public const string ErrorData = "Invalid data entered";
+        }
      }
 }

@@ -11,10 +11,11 @@ using System.Globalization;
 using System.Threading.Tasks;
 using static BalkanTech.Common.Constants;
 using static BalkanTech.Common.ErrorMessages.Rooms;
+using static BalkanTech.Common.ErrorMessages.Tasks;
 
 namespace BalkanTech.Web.Controllers
 {
-    //TODO -> validations , redirect after adding task, validation for correct task, pages for tasks
+    //TODO -> validations, validation for correct task
     [Authorize]
     public class TaskController : Controller
     {
@@ -34,33 +35,28 @@ namespace BalkanTech.Web.Controllers
             try
             {
                 var model = await taskService.IndexGetAllTasksAsync(roomId, roomNumber, completedPage,toBeCompletedPage,pageSize, category);
-                if (model == null)
-                {
-                    return NotFound("Room not found.");
-                }
                 ViewData["RoomId"] = roomId;
                 ViewData["RoomNumber"] = roomNumber;
                 ViewData["Category"] = category;
                 ViewData["CompletedPage"] = completedPage ?? 1;
                 ViewData["ToBeCompletedPage"] = toBeCompletedPage ?? 1;
-
                 return View(model);
             }
-            catch (InvalidOperationException roomEx)
+            catch (Exception ex) when (ex is ArgumentException ||
+                            ex is NullReferenceException)
             {
 
-                TempData[nameof(ErrorRoomNumber)] = ErrorRoomNumber;
-                return RedirectToAction("Index", "Room");
+                TempData[nameof(ErrorRoomNumber)] = ex.Message;
             }
+            return RedirectToAction("Index", "Room");
 
         }
         [HttpGet]
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Add(Guid roomId)
         {
+
             var model = await taskService.LoadTaskAddModel(roomId);
-
-
             return View(model);
         }
 
@@ -68,28 +64,32 @@ namespace BalkanTech.Web.Controllers
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Add(TaskAddViewModel model)
         {
-            if (!ModelState.IsValid)
+            try
             {
+                if (!ModelState.IsValid)
+                {
+                    model = await taskService.LoadTaskAddModel(Guid.Empty);
+                    return View(model);
+                }
+                if (!DateTime.TryParseExact(model.DueDate, dateFormat, CultureInfo.InvariantCulture,
+                   DateTimeStyles.None, out DateTime parsedDueDate))
+                {
+                    throw new InvalidOperationException("Invalid date format.");
+                }
+                await taskService.AddTaskAsync(model, parsedDueDate);
+                var roomNumber = await taskService.GetRoomNumberByIdAsync(model.RoomId);
+                return RedirectToAction("Index", "Task", new { roomId = model.RoomId, roomNumber });
+            }
+            catch (Exception ex) when (ex is InvalidOperationException ||
+                             ex is NullReferenceException || ex is ArgumentNullException)
+            {
+                TempData[nameof(ErrorData)] = ex.Message;
                 model = await taskService.LoadTaskAddModel(Guid.Empty);
                 return View(model);
             }
-            if (!DateTime.TryParseExact(model.DueDate, dateFormat, CultureInfo.InvariantCulture,
-               DateTimeStyles.None, out DateTime parsedDueDate))
-            {
-                throw new InvalidOperationException("Invalid date format.");
-            }
-            await taskService.AddTaskAsync(model, parsedDueDate);
-            var roomNumber = await taskService.GetRoomNumberByIdAsync(model.RoomId);
-
-            return RedirectToAction("Index", "Task", new { roomId = model.RoomId, roomNumber });
-
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ChangeTaskStatus(Guid id, string newStatus, DateTime? newDate)
-        {
-            return await taskService.ChangeTaskStatus(id, newStatus, newDate);
-        }
+      
 
         [HttpGet]
         public async Task<IActionResult> TaskDetails(Guid id)

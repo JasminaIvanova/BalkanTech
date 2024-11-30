@@ -6,12 +6,11 @@ using BalkanTech.Web.ViewModels.Task;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Globalization;
 using static BalkanTech.Common.Constants;
 
 namespace BalkanTech.Services.Data
 {
-    //fix validations, errors, handle exceptions, simplify remove repeting code, fix mapping 
+    //fix validations, errors, handle exceptions, simplify remove repeting code, fix bmapping 
     public class TaskService : ITaskService
     {
         private readonly UserManager<AppUser> userManager;
@@ -25,6 +24,10 @@ namespace BalkanTech.Services.Data
         {
             var allTechnicians = await userManager.GetUsersInRoleAsync("Technician");
             var allManagers = await userManager.GetUsersInRoleAsync("Manager");
+            if (allTechnicians == null || allManagers == null)
+            {
+                throw new NullReferenceException("Unable to load users to be assigned");
+            }
             var techsAndManager = allTechnicians.Concat(allManagers).ToList();
             return techsAndManager.Select(t => new TaskTechnicianViewModel
             {
@@ -53,6 +56,10 @@ namespace BalkanTech.Services.Data
         }
         public async Task AddTaskAsync(TaskAddViewModel model, DateTime parsedDueDate)
         {
+            if (model == null) 
+            {
+                throw new NullReferenceException("Model is empty");
+            }
             MaintananceTask myTask = new MaintananceTask
             {
                 Name = model.Name,
@@ -76,6 +83,10 @@ namespace BalkanTech.Services.Data
 
         public async Task<TaskViewModel> IndexGetAllTasksAsync(Guid roomId, int roomNumber,int? completedPage, int? toBeCompletedPage, int pageSize, string category = "All")
         {
+            if (roomId == Guid.Empty || roomNumber <= MinValueRoomNumber) 
+            {
+                throw new ArgumentException("Invalid room details");
+            }
             var model = new TaskViewModel
             {
                 RoomId = roomId,
@@ -88,55 +99,44 @@ namespace BalkanTech.Services.Data
                 .ThenInclude(t => t.TaskCategory)
                 .FirstOrDefaultAsync(r => r.RoomNumber == roomNumber);
 
-            if (room != null)
+
+            if (room == null)
             {
-                var tasks = room.MaintananceTasks.Where(t => t.IsDeleted == false).AsQueryable();
-                if (!string.IsNullOrEmpty(category) && category != "All")
-                {
-                    tasks = tasks.Where(t => t.TaskCategory != null && t.TaskCategory.Name == category);
-                }
-                var toBeCompletedTasks = tasks.Where(t => t.Status != "Completed").ToList();
-                var completedTasks = tasks.Where(t => t.Status == "Completed").ToList();
-
-                model.ToBeCompletedTasks.TotalItems = toBeCompletedTasks.Count();
-                model.ToBeCompletedTasks.TotalPages = (int)Math.Ceiling(toBeCompletedTasks.Count() / (double)pageSize);
-                model.ToBeCompletedTasks.PageSize = pageSize;
-                model.ToBeCompletedTasks.Items = toBeCompletedTasks
-                    .Skip(((toBeCompletedPage ?? 1) - 1) * pageSize)  
-                    .Take(pageSize)
-                    .ToList();
-                model.ToBeCompletedTasks.CurrentPage = toBeCompletedPage ?? 1;
-
-                model.CompletedTasks.TotalItems = completedTasks.Count();
-                model.CompletedTasks.TotalPages = (int)Math.Ceiling(completedTasks.Count() / (double)pageSize);
-                model.CompletedTasks.PageSize = pageSize;
-                model.CompletedTasks.Items = completedTasks
-                    .Skip(((completedPage ?? 1) - 1) * pageSize) 
-                    .Take(pageSize)
-                    .ToList();
-                model.CompletedTasks.CurrentPage = completedPage ?? 1;
+                throw new NullReferenceException($"Room not found.");
             }
+
+
+            var tasks = room.MaintananceTasks.Where(t => t.IsDeleted == false).AsQueryable();
+            if (!string.IsNullOrEmpty(category) && category != "All")
+            {
+                tasks = tasks.Where(t => t.TaskCategory != null && t.TaskCategory.Name == category);
+            }
+            var toBeCompletedTasks = tasks.Where(t => t.Status != "Completed").ToList();
+            var completedTasks = tasks.Where(t => t.Status == "Completed").ToList();
+
+            model.ToBeCompletedTasks.TotalItems = toBeCompletedTasks.Count();
+            model.ToBeCompletedTasks.TotalPages = (int)Math.Ceiling(toBeCompletedTasks.Count() / (double)pageSize);
+            model.ToBeCompletedTasks.PageSize = pageSize;
+            model.ToBeCompletedTasks.Items = toBeCompletedTasks
+                .Skip(((toBeCompletedPage ?? 1) - 1) * pageSize)  
+                .Take(pageSize)
+                .ToList();
+            model.ToBeCompletedTasks.CurrentPage = toBeCompletedPage ?? 1;
+
+            model.CompletedTasks.TotalItems = completedTasks.Count();
+            model.CompletedTasks.TotalPages = (int)Math.Ceiling(completedTasks.Count() / (double)pageSize);
+            model.CompletedTasks.PageSize = pageSize;
+            model.CompletedTasks.Items = completedTasks
+                .Skip(((completedPage ?? 1) - 1) * pageSize) 
+                .Take(pageSize)
+                .ToList();
+            model.CompletedTasks.CurrentPage = completedPage ?? 1;
+            
 
             return model;
         }
 
-        public async Task<JsonResult> ChangeTaskStatus(Guid id, string newStatus, DateTime? newDate)
-        {
-            var task = await context.MaintananceTasks.FindAsync(id);
-            if (task == null)
-            {
-                return new JsonResult(new { success = false, message = "Task not found" });
-            }
-            task.Status = newStatus;
-            if (newStatus == "Completed")
-            {
-                task.CompletedDate = newDate ?? DateTime.Now;
-            }
-
-            await context.SaveChangesAsync();
-
-            return new JsonResult(new { success = true, newStatus = newStatus, taskId = id, newDate = task.CompletedDate?.ToString("MM/dd/yyyy") });
-        }
+        
 
         public async Task<TaskDetailsViewModel> LoadTaskDetailsAsync(Guid id)
         {
@@ -152,7 +152,7 @@ namespace BalkanTech.Services.Data
 
             if (task == null)
             {
-                return null;
+                throw new NullReferenceException("Task not found");
             }
             var model = new TaskDetailsViewModel()
             {
@@ -188,7 +188,7 @@ namespace BalkanTech.Services.Data
             {
                 return task;
             }
-            throw new InvalidOperationException();
+            throw new NullReferenceException("Task not found");
         }
 
         public async Task<TaskAddViewModel> LoadEditTaskAsync(Guid id)
@@ -224,11 +224,11 @@ namespace BalkanTech.Services.Data
 
         public async Task EditTaskAsync(TaskAddViewModel model, DateTime parsedDate)
         {
-            var task = await LoadMaintananceTaskAsync(model.Id);
-            if (task == null)
+            if (model == null)
             {
-                throw new InvalidOperationException();
+                throw new ArgumentNullException("Model is null");
             }
+            var task = await LoadMaintananceTaskAsync(model.Id);
      
             task.Name = model.Name;
             task.Description = model.Description;

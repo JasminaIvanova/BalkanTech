@@ -3,12 +3,9 @@
 @{
     ViewData["Title"] = "Room Tasks Overview";
 }
-
-<div id="task-status-url" data-url="@Url.Action("ChangeTaskStatus", "Task")" style="display:none"></div>
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Tasks for Room @Model.RoomNumber</h1>
 
-    <!-- Category Filter Form (For filtering both sections) -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <form method="get" action="@Url.Action("Index", "Task")" id="categoryForm" class="d-flex">
             <input type="hidden" name="category" id="categoryInput" value="All" />
@@ -34,7 +31,6 @@
         </a>
     </div>
 
-    <!-- To Be Completed Tasks -->
     <div class="task-section mb-5">
         <h4 class="text-warning mb-3"><i class="bi bi-list-task"></i> To Be Completed Tasks</h4>
         <table id="to-be-completed-tasks-table" class="table table-hover shadow-sm">
@@ -45,7 +41,6 @@
                     <th>Due Date</th>
                     <th>Category</th>
                     <th>Status</th>
-                    <th>Change Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,17 +71,7 @@
                                     <span id="task-status-@task.Id" class="badge bg-primary text-dark">@task.Status</span>
                                 }
                             </td>
-                            <td class="text-center">
-                                @if (@task.Status != "In Process")
-                                {
-                                    <button onclick="changeTaskStatus('@task.Id', 'In Process', '@task.CompletedDate')" class="btn btn-outline-primary btn-sm">
-                                        <i class="bi bi-gear"></i> In Process
-                                    </button>
-                                }
-                                <button onclick="changeTaskStatus('@task.Id', 'Completed', '@DateTime.Now')" class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-check-all"></i> Complete
-                                </button>
-                            </td>
+                          
                         </tr>
                     }
                 }
@@ -104,7 +89,6 @@
         })
     </div>
 
-    <!-- Completed Tasks -->
     <div class="task-section">
         <h4 class="text-success mb-3"><i class="bi bi-check-circle"></i> Completed Tasks</h4>
         <table id="completed-tasks-table" class="table table-hover shadow-sm">

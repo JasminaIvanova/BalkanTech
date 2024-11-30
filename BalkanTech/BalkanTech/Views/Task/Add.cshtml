@@ -1,15 +1,22 @@
 ﻿@using BalkanTech.Web.ViewModels.Task
 @model TaskAddViewModel
+@using static BalkanTech.Common.ErrorMessages.Tasks
 
 @{
     ViewData["Title"] = "Add Task";
 }
-
+@if (TempData[nameof(ErrorData)] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        @TempData[nameof(ErrorData)]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 <h2 class="mb-4 mt-4">Add Task</h2>
 
 <div class="card shadow-sm mb-4">
     <div class="card-body">
-        <form asp-action="Add" method="post" class="needs-validation" novalidate>
+        <form asp-action="Add" method="post">
             <div class="form-group">
                 <label asp-for="@Model.Name" class="control-label fw-bold">Task Name</label>
                 <input asp-for="@Model.Name" class="form-control" placeholder="Enter Task Name" />

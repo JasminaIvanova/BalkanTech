@@ -1,13 +1,20 @@
 ﻿@using BalkanTech.Web.ViewModels.Report;
+@using static BalkanTech.Common.Constants;
+@using static BalkanTech.Common.ErrorMessages.Tasks;
 @model TasksPerTechnicianReportViewModel
 
 @{
     ViewData["Title"] = "Assigned Maintenance Tasks for Technician";
 }
-<div id="task-status-url" data-url="@Url.Action("ChangeTaskStatus", "Task")" style="display:none"></div>
-
+@if (TempData[nameof(ErrorData)] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        @TempData[nameof(ErrorData)]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 <div class="container mt-5">
-    <h1 class="text-center mb-4">My assigned tasks</h1>
+    <h1 class="text-center mb-4">My Assigned Tasks</h1>
     <div class="task-section mb-5">
         <table class="table table-hover shadow-sm">
             <thead class="table-light">
@@ -39,25 +46,35 @@
                                 {
                                     <span id="task-passed-@task.Id" class="badge bg-danger text-dark">Due date passed</span>
                                 }
-                                @if (@task.Status == "Pending")
+                                @if (task.Status == "Pending")
                                 {
                                     <span id="task-status-@task.Id" class="badge bg-warning text-dark">@task.Status</span>
                                 }
-                                else if (@task.Status == "In Process")
+                                else if (task.Status == "In Process")
                                 {
                                     <span id="task-status-@task.Id" class="badge bg-primary text-dark">@task.Status</span>
                                 }
                             </td>
                             <td class="text-center">
-                                @if (@task.Status != "In Process")
-                                {
-                                    <button onclick="changeTaskStatus('@task.Id', 'In Process', '@task.CompletedDate')" class="btn btn-outline-primary btn-sm">
-                                        <i class="bi bi-gear"></i> In Process
+                                <!-- Form for changing task status -->
+                                <form method="post" action="@Url.Action("ChangeTaskStatus", "Reports")" class="d-inline-block">
+                                    <input type="hidden" name="taskId" value="@task.Id" />
+                                    <input type="hidden" name="newStatus" value="In Process" />
+                                    @if (task.Status != "In Process")
+                                    {
+                                        <button type="submit" class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-gear"></i> In Process
+                                        </button>
+                                    }
+                                </form>
+                                <form method="post" action="@Url.Action("ChangeTaskStatus", "Reports")" class="d-inline-block">
+                                    <input type="hidden" name="taskId" value="@task.Id" />
+                                    <input type="hidden" name="newStatus" value="Completed" />
+                                    <input type="hidden" name="newDate" value="@DateTime.Now.ToString(dateFormat)" />
+                                    <button type="submit" class="btn btn-outline-success btn-sm">
+                                        <i class="bi bi-check-all"></i> Complete
                                     </button>
-                                }
-                                <button onclick="changeTaskStatus('@task.Id', 'Completed', '@DateTime.Now')" class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-check-all"></i> Complete
-                                </button>
+                                </form>
                             </td>
                         </tr>
                     }
@@ -72,4 +89,3 @@
         </table>
     </div>
 </div>
-
