@@ -15,7 +15,6 @@ using static BalkanTech.Common.ErrorMessages.Tasks;
 
 namespace BalkanTech.Web.Controllers
 {
-    //TODO -> validations, validation for correct task
     [Authorize]
     public class TaskController : Controller
     {

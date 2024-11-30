@@ -16,17 +16,33 @@ namespace BalkanTech.Controllers
 
         public IActionResult Index()
         {
-            return View();
+           return View();
         }
-
-        public IActionResult Privacy()
+        //500 Internal Server Error - testing
+        public IActionResult SomeAction5()
         {
-            return View();
+            try
+            {
+              
+                throw new Exception("Some Exception Occurred");
+            }
+            catch (Exception ex)
+            {
+                return new StatusCodeResult(500);
+            }
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(int? statusCode = null)
         {
+ 
+            if (statusCode == 404)
+            {
+                return this.View("404NotFound");
+            }
+            else if (statusCode == 500)
+            {
+                return this.View("500InternalServerError");
+            }
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

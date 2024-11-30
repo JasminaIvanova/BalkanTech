@@ -49,9 +49,7 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseExceptionHandler("/Home/Error");
-    
-    app.UseHsts();
+   app.UseStatusCodePagesWithReExecute("/Error/{0}");
 }
  //seeding
 using (var scope = app.Services.CreateScope())
@@ -82,11 +80,18 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseStatusCodePages();
+
+app.UseStatusCodePagesWithRedirects("/Home/Error/{0}");
+app.MapControllerRoute(
+               name: "Errors",
+               pattern: "{controller=Home}/{action=Index}/{statusCode?}");
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();
