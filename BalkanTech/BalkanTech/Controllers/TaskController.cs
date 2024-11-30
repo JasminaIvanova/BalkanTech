@@ -94,52 +94,109 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> TaskDetails(Guid id)
         {
-            var model = await taskService.LoadTaskDetailsAsync(id);
-            if (model == null)
+            try
             {
-                return NotFound("The task with the specified ID does not exist.");
+                var model = await taskService.LoadTaskDetailsAsync(id);
+                return View(model);
             }
-            return View(model);
+            catch (NullReferenceException ex)
+            {
+
+                TempData[nameof(ErrorData)] = ex.Message;
+                return RedirectToAction("Index", "Room");
+            }
+
+          
         }
 
         [HttpGet]
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(Guid id)
         {
+            try
+            {
+                var model = await taskService.LoadEditTaskAsync(id);
+                return View(model);
+            }
+            catch (NullReferenceException ex)
+            {
 
-            var model = await taskService.LoadEditTaskAsync(id);
-            return View(model);
+                TempData[nameof(ErrorData)] = ex.Message;
+                return RedirectToAction("Index", "Room");
+            }
+
+            
         }
         [HttpPost]
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(TaskAddViewModel model)
         {
-
-            if (!DateTime.TryParseExact(model.DueDate, dateFormat, CultureInfo.InvariantCulture,
-              DateTimeStyles.None, out DateTime parsedDueDate))
+            try
             {
-                throw new InvalidOperationException("Invalid date format.");
+                if (!ModelState.IsValid)
+                {
+                    model = await taskService.LoadEditTaskAsync(Guid.Empty);
+                    return View(model);
+                }
+                if (!DateTime.TryParseExact(model.DueDate, dateFormat, CultureInfo.InvariantCulture,
+           DateTimeStyles.None, out DateTime parsedDueDate))
+                {
+                    throw new InvalidOperationException("Invalid date format.");
+                }
+                await taskService.EditTaskAsync(model, parsedDueDate);
+
+                return RedirectToAction("TaskDetails", new { id = model.Id });
             }
-            await taskService.EditTaskAsync(model, parsedDueDate);
-
-            return RedirectToAction("TaskDetails", new { id = model.Id });
-
+            catch (Exception ex) when (ex is InvalidOperationException ||
+                              ex is NullReferenceException || ex is ArgumentNullException)
+            {
+                TempData[nameof(ErrorData)] = ex.Message;
+                model = await taskService.LoadEditTaskAsync(model.Id);
+                return View(model);
+            }
         }
 
         [HttpGet]
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var model = await taskService.LoadDeleteViewModelAsync(id);
-            return PartialView("_DeletePartial", model);
+            try
+            {
+                var model = await taskService.LoadDeleteViewModelAsync(id);
+                return PartialView("_DeletePartial", model);
+            }
+            catch (NullReferenceException ex)
+            {
+
+                TempData[nameof(ErrorData)] = ex.Message;
+                return RedirectToAction("Index", "Room");
+            }
+
         }
 
         [HttpPost]
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(TaskDeleteViewModel model)
         {
-            await taskService.DeleteTaskAsync(model);
+            try
+            {
+                var result = await taskService.DeleteTaskAsync(model);
+                if (result == true)
+                {
+                    TempData[nameof(SuccessData)] = SuccessfullyDeletedTask;
+                }
+                else
+                {
+                    TempData[nameof(ErrorData)] = ErrorDeleteTask;
+                }
+                
+            }
+            catch (NullReferenceException ex)
+            {
+                TempData[nameof(ErrorData)] = ex.Message;
+            }
             return RedirectToAction("Index", "Task", new { roomId = model.RoomId, model.RoomNumber });
+
         }
     }
 }

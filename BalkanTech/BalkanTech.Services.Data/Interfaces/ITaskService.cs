@@ -27,6 +27,6 @@ namespace BalkanTech.Services.Data.Interfaces
         Task<int> GetRoomNumberByIdAsync(Guid roomId);
 
         Task<TaskDeleteViewModel> LoadDeleteViewModelAsync(Guid id);
-        Task DeleteTaskAsync(TaskDeleteViewModel model);
+        Task<bool> DeleteTaskAsync(TaskDeleteViewModel model);
     }
 }

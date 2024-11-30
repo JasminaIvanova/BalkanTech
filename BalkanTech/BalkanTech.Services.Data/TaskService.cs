@@ -278,11 +278,12 @@ namespace BalkanTech.Services.Data
             return model;
         }
 
-        public async Task DeleteTaskAsync(TaskDeleteViewModel model)
+        public async Task<bool> DeleteTaskAsync(TaskDeleteViewModel model)
         {
             var task = await LoadMaintananceTaskAsync(model.Id);
             task.IsDeleted = true;
             await context.SaveChangesAsync();
+            return true;
         }
     }
 }

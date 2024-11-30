@@ -32,6 +32,9 @@ namespace BalkanTech.Common
         public static class Tasks
         {
             public const string ErrorData = "Invalid data entered";
+            public const string SuccessData = "Success";
+            public const string SuccessfullyDeletedTask = "Successfully deleted task";
+            public const string ErrorDeleteTask = "Error occured while trying to delete the task";
         }
      }
 }
