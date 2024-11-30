@@ -1,4 +1,6 @@
-﻿using BalkanTech.Web.ViewModels.Admin;
+﻿using BalkanTech.Data.Models;
+using BalkanTech.Web.ViewModels.Admin;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,9 @@ namespace BalkanTech.Services.Data.Interfaces
     public interface IAdminService
     {
         Task<List<TechsIndexViewModel>> IndexGetAllTechsAsync();
-        Task ChangeRoleOfUserAsync(Guid userId, string role);
+        Task<IdentityResult> ChangeRoleOfUserAsync(Guid userId, string role);
+        Task<AppUser> FindAppUserByIdAsync(Guid userId);
+
+        Task<IdentityResult> DeleteUserAsync(Guid userId);
     }
 }

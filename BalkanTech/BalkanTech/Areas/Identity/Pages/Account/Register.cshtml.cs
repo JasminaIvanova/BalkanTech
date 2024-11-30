@@ -162,8 +162,9 @@ namespace BalkanTech.Web.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                       // await _signInManager.SignInAsync(user, isPersistent: false);
+                        // return LocalRedirect(returnUrl);
+                        return RedirectToAction("Index", "Admin");
                     }
                 }
                 foreach (var error in result.Errors)

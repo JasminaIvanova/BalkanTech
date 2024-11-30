@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static BalkanTech.Common.ErrorMessages.Admin;
 
 namespace BalkanTech.Web.Controllers
 {
     [Authorize(Roles = "Admin")]
-    //TODO validations, checkes for nulls etc
     public class AdminController : Controller
     {
         private readonly IAdminService adminService;
@@ -31,7 +31,49 @@ namespace BalkanTech.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangeRole(Guid userId, string role)
         {
-            await adminService.ChangeRoleOfUserAsync(userId, role);
+            try
+            {
+                var result = await adminService.ChangeRoleOfUserAsync(userId, role);
+                if (result.Succeeded)
+                {
+                    TempData[nameof(AdminSuccess)] = ChangeRoleSuccess;
+                }
+                else
+                {
+                    TempData[nameof(AdminError)] = ErrorChangingRoleUser;
+                }
+            }
+            catch (Exception ex) when (ex is KeyNotFoundException ||
+                           ex is NullReferenceException ||
+                           ex is InvalidOperationException)
+            {
+                TempData[nameof(AdminError)] = ex.Message;
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPost]
+
+        public async Task<IActionResult> DeleteUser(Guid userId) 
+        {
+            try
+            {
+                var result = await adminService.DeleteUserAsync(userId);
+                if (result.Succeeded)
+                {
+                    TempData[nameof(AdminSuccess)] = UserDeletedSuccess;
+                }
+                else
+                {
+                    TempData[nameof(AdminError)] = ErrorDeletingUser;
+                }
+            }
+            catch (Exception ex) when (ex is KeyNotFoundException ||
+                ex is NullReferenceException)
+            {
+                TempData[nameof(AdminError)] = ex.Message;
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

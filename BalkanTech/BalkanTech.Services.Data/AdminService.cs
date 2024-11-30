@@ -10,10 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BalkanTech.Services.Data
 {
-    //TODO validations, checkes for nulls etc
     public class AdminService : IAdminService
     {
         private readonly BalkanDbContext context;
@@ -49,13 +50,50 @@ namespace BalkanTech.Services.Data
             }
             return techsModel;
         }
-        public async Task ChangeRoleOfUserAsync(Guid userId, string role)
+        public async Task<AppUser> FindAppUserByIdAsync(Guid userId)
         {
+            if (string.IsNullOrWhiteSpace(userId.ToString())) 
+            {
+                throw new NullReferenceException("User ID cannot be empty");
+            }
             var user = await userManager.FindByIdAsync(userId.ToString());
+
+            if (user == null) 
+            {
+                throw new KeyNotFoundException($"User could not be found.");
+
+            }
+            return user;
+        }
+        public async Task<IdentityResult> ChangeRoleOfUserAsync(Guid userId, string role)
+        {
+            if (string.IsNullOrEmpty(role)) 
+            {
+                throw new NullReferenceException("Role cannot be null or empty");
+            }
+            var user = await FindAppUserByIdAsync(userId);
+            if (!await roleManager.RoleExistsAsync(role)) 
+            {
+                throw new InvalidOperationException($"The role does not exist.");
+            }
             var currentUserRole = await userManager.GetRolesAsync(user);
+            if (currentUserRole == null) 
+            {
+                throw new InvalidOperationException($"No roles assigned to this user.");
+            }
             await userManager.RemoveFromRolesAsync(user, currentUserRole);
-            await userManager.AddToRoleAsync(user, role);
+            var result = await userManager.AddToRoleAsync(user, role);
+            return result;
+
         }
 
+        public async Task<IdentityResult> DeleteUserAsync(Guid userId)
+        {
+            var user = await FindAppUserByIdAsync(userId);
+            var result = await userManager.DeleteAsync(user);
+            return result;
+        }
+
+       
     }
 }

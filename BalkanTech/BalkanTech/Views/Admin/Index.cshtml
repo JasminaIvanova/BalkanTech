@@ -1,10 +1,26 @@
-﻿@using BalkanTech.Web.ViewModels.Admin
+﻿@using BalkanTech.Web.ViewModels.Admin;
+@using static BalkanTech.Common.ErrorMessages.Admin;
 @model IEnumerable<TechsIndexViewModel>
 
 @{
     ViewData["Title"] = "Technicians Index";
 }
+<script src="~/js/loadModal.js"></script>
+@if (TempData[nameof(AdminSuccess)] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        @TempData[nameof(AdminSuccess)]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
+@if (TempData[nameof(AdminError)] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        @TempData[nameof(AdminError)]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 <div class="container mt-5">
     <h1 class="mb-4">Workers list</h1>
 
@@ -26,7 +42,7 @@
                             <h6 class="card-subtitle mb-2 text-muted">@tech.Email</h6>
 
                             <form method="post" asp-controller="Admin" asp-action="ChangeRole">
-                                <input type="hidden" name="userId" value="@tech.Id.ToString()" />
+                                <input type="hidden" name="userId" value="@tech.Id" />
 
                                 <div class="form-check">
                                     <input type="radio" id="technician-@tech.Id" name="role" value="Technician"
@@ -43,9 +59,13 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-primary position-absolute bottom-0 end-0 m-3 btn-sm">
-                                    Save
+                                    Save Role
                                 </button>
                             </form>
+
+                            <button class="btn btn-danger btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-user-id="@tech.Id" data-user-name="@tech.FirstName @tech.LastName">
+                                Delete User
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -57,3 +77,25 @@
         <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-success">Add New Technician</a>
     </div>
 </div>
+
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong id="userFullName"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteUserForm" method="post" asp-controller="Admin" asp-action="DeleteUser">
+                    <input type="hidden" name="userId" id="deleteUserId" value="" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

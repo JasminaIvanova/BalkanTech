@@ -12,3 +12,19 @@
             .catch(error => console.error('Error loading modal:', error));
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const deleteModal = document.getElementById('confirmDeleteModal');
+    const deleteForm = document.getElementById('deleteUserForm');
+    const userIdInput = document.getElementById('deleteUserId');
+    const userFullNameElement = document.getElementById('userFullName');
+
+    deleteModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget; 
+        const userId = button.getAttribute('data-user-id'); 
+        const userName = button.getAttribute('data-user-name');
+        userFullNameElement.textContent = userName;
+        userIdInput.value = userId;
+    });
+});

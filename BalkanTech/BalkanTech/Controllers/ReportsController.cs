@@ -10,6 +10,7 @@ using System.Security.Claims;
 namespace BalkanTech.Web.Controllers
 {
     [Authorize]
+    [Authorize(Roles = "Technician, Manager")]
     public class ReportsController : Controller
     {
         private readonly BalkanDbContext context;

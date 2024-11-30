@@ -16,6 +16,18 @@ namespace BalkanTech.Common
                 "We couldn't find any matches for your search";
             public const string ErrorRoomNumber =
                 "Unexpected error occurred! Make sure room with this number exists!";
+            
         }
-    }
+        public static class Admin
+        {
+            public const string UserDeletedSuccess = "User deleted successfully.";
+            public const string ErrorDeletingUser = "Error occurred while trying to delete the user.";
+
+            public const string ChangeRoleSuccess = "User role changed successfully.";
+            public const string ErrorChangingRoleUser = "Error occurred while trying to change the role of the user.";
+
+            public const string AdminSuccess = "AdminSuccess";
+            public const string AdminError = "AdminError";
+        }
+     }
 }
