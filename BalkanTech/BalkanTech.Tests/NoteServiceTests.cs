@@ -6,7 +6,7 @@ using NUnit.Framework.Legacy;
 
 namespace BalkanTech.Tests
 {
-    public class Tests
+    public class NoteServiceTests
     {
         private BalkanDbContext context;
         private NoteService noteService;
