@@ -22,14 +22,13 @@ namespace BalkanTech.Web.Controllers
             try
             {
                 var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-                await noteService.AddNoteAsync(noteComment, taskId, userId);
-                return RedirectToAction("TaskDetails", "Task", new { id = taskId });
+                await noteService.AddNoteAsync(noteComment, taskId, userId); 
             }
             catch (ArgumentException ex)
             {
                 TempData["Error"] = ex.Message;
-                return RedirectToAction("TaskDetails", "Task", new { id = taskId });
             }
+            return RedirectToAction("TaskDetails", "Task", new { id = taskId });
         }
     }
 }

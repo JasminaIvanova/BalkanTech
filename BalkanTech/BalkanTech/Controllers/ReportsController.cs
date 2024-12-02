@@ -28,36 +28,36 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> MyTasks()
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (Guid.TryParse(userId, out Guid parsedUserId))
+           
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
+            
+            try
             {
-                var tasksForUser = await context.AssignedTechniciansTasks.Where(tt => tt.AppUserId == parsedUserId)
-                    .Include(t => t.MaintananceTask)
-                    .ThenInclude(t => t.Room)
-                    .Include(t => t.MaintananceTask)
-                    .ThenInclude(t => t.TaskCategory).Select(t => t.MaintananceTask).Where(t => t.Status != "Completed" && t.IsDeleted == false).ToListAsync();
-                var model = new TasksPerTechnicianReportViewModel
-                {
-                    ToBeCompletedTasks = tasksForUser
-
-                };
+                var model = await reportService.ListAssignedTasks(userId);
                 return View(model);
             }
-            else
+            catch (Exception ex) when (ex is NullReferenceException || ex is ArgumentNullException || ex is ArgumentException)
             {
-                return NotFound();
+                TempData[nameof(ErrorData)] = ex.Message;
+                return RedirectToAction("Index", "Home");
             }
            
+
         }
         [HttpPost]
         public async Task<IActionResult> ChangeTaskStatus(Guid taskId, string newStatus, DateTime? newDate)
         {
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
+            bool isUserManager = User.IsInRole("Manager");
             try
             {
-                await reportService.ChangeTaskStatus(taskId, newStatus, newDate);
+                await reportService.ChangeTaskStatus(taskId, newStatus, newDate, userId, isUserManager);
             }
             catch (Exception ex) when (
-                 ex is NullReferenceException || ex is ArgumentNullException)
+                 ex is NullReferenceException 
+                 || ex is ArgumentNullException 
+                 || ex is UnauthorizedAccessException 
+                 || ex is ArgumentException)
             {
 
                 TempData[nameof(ErrorData)] = ex.Message;

@@ -10,8 +10,7 @@ namespace BalkanTech.Services.Data.Interfaces
 {
     public interface IReportService
     {
-        Task ChangeTaskStatus(Guid taskId, string newStatus, DateTime? newDate);
-
-        Task<OverdueTaskIndexViewModel> ListOverdueTasksAsync();
+        Task ChangeTaskStatus(Guid taskId, string newStatus, DateTime? newDate, string userId, bool isManager);
+        Task<TasksPerTechnicianReportViewModel> ListAssignedTasks(string userId);
     }
 }

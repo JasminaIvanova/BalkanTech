@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BalkanTech.Web.ViewModels")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b44572983df5e3d59120d7ef2b2ea02f671c5386")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8997a0e4e1318af6cf5c96ddac7f36531b38089d")]
 [assembly: System.Reflection.AssemblyProductAttribute("BalkanTech.Web.ViewModels")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BalkanTech.Web.ViewModels")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
