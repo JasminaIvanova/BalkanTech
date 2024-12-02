@@ -1,16 +1,18 @@
 ﻿using BalkanTech.Data;
 using BalkanTech.Data.Models;
 using BalkanTech.Services.Data.Interfaces;
+using BalkanTech.Web.ViewModels;
 using BalkanTech.Web.ViewModels.Note;
 using BalkanTech.Web.ViewModels.Task;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using static BalkanTech.Common.Constants;
+using static BalkanTech.Common.ErrorMessages;
 
 namespace BalkanTech.Services.Data
 {
-    //fix validations, errors, handle exceptions, simplify remove repeting code, fix bmapping 
     public class TaskService : ITaskService
     {
         private readonly UserManager<AppUser> userManager;
@@ -20,43 +22,50 @@ namespace BalkanTech.Services.Data
             context = _context;
             userManager = _userManager;
         }
-        public async Task<IEnumerable<TaskTechnicianViewModel>> LoadTechniciansAsync()
+        public async Task<TaskViewModel> IndexGetAllTasksAsync(Guid roomId, int roomNumber, int? completedPage, int? toBeCompletedPage, int pageSize, string category = "All")
         {
-            var allTechnicians = await userManager.GetUsersInRoleAsync("Technician");
-            var allManagers = await userManager.GetUsersInRoleAsync("Manager");
-            if (allTechnicians == null || allManagers == null)
+            if (roomId == Guid.Empty || roomNumber <= MinValueRoomNumber)
             {
-                throw new NullReferenceException("Unable to load users to be assigned");
+                throw new ArgumentException("Invalid room details");
             }
-            var techsAndManager = allTechnicians.Concat(allManagers).ToList();
-            return techsAndManager.Select(t => new TaskTechnicianViewModel
-            {
-                Id = t.Id,
-                FirstName = t.FirstName,
-                LastName = t.LastName,
-            }).ToList();
+            var room = await context.Rooms
+                .Include(r => r.MaintananceTasks)
+                .ThenInclude(t => t.TaskCategory)
+                .FirstOrDefaultAsync(r => r.RoomNumber == roomNumber);
 
-        }
-        public async Task<IEnumerable<TaskAddRoomViewModel>> LoadRoomsAsync()
-        {
-            return await context.Rooms.Select(r => new TaskAddRoomViewModel
+            if (room == null)
             {
-                Id = r.Id,
-                RoomNumber = r.RoomNumber,
-            }).ToListAsync();
-        }
+                throw new NullReferenceException($"Room not found.");
+            }
+            var tasks = room.MaintananceTasks.Where(t => t.IsDeleted == false);
 
-        public async Task<IEnumerable<TaskCategoryViewModel>> LoadTaskCategoriesAsync()
-        {
-            return await context.TaskCategories.Select(tc => new TaskCategoryViewModel
+            if (!string.IsNullOrEmpty(category) && category != "All")
             {
-                Id = tc.Id,
-                TaskCategoryName = tc.Name
-            }).ToListAsync();
+                tasks = tasks.Where(t => t.TaskCategory != null && t.TaskCategory.Name == category);
+            }
+            var model = new TaskViewModel
+            {
+                RoomId = roomId,
+                RoomNumber = roomNumber,
+                Categories = await context.TaskCategories.Select(c => c.Name).ToListAsync(),
+                ToBeCompletedTasks = PaginateTasks(tasks.Where(t => t.Status != "Completed"), toBeCompletedPage, pageSize),
+                CompletedTasks = PaginateTasks(tasks.Where(t => t.Status == "Completed"), completedPage, pageSize),
+            };
+            return model;
+        }
+        public async Task<TaskAddViewModel> LoadTaskAddModel(Guid roomId)
+        {
+            return new TaskAddViewModel()
+            {
+                RoomId = roomId,
+                RoomNumbers = await LoadRoomsAsync(),
+                Technicians = await LoadTechniciansAsync(),
+                TaskCategories = await LoadTaskCategoriesAsync(),
+            };
         }
         public async Task AddTaskAsync(TaskAddViewModel model, DateTime parsedDueDate)
         {
-            if (model == null) 
+            if (model == null)
             {
                 throw new NullReferenceException("Model is empty");
             }
@@ -69,75 +78,32 @@ namespace BalkanTech.Services.Data
                 DueDate = parsedDueDate,
             };
             await context.MaintananceTasks.AddAsync(myTask);
-            var tasksAssigned = model.AssignedTechniciansIDs
-                              .Select(techId => new AssignedTechnicianTask
-                              {
-                                  AppUserId = techId,
-                                  MaintananceTaskId = myTask.Id
-                              })
-                              .ToList();
-            await context.AssignedTechniciansTasks.AddRangeAsync(tasksAssigned);
-            await context.SaveChangesAsync();
+            await AssignTechniciansToTask(myTask.Id, model.AssignedTechniciansIDs);
             var rooms = await LoadRoomsAsync();
         }
-
-        public async Task<TaskViewModel> IndexGetAllTasksAsync(Guid roomId, int roomNumber,int? completedPage, int? toBeCompletedPage, int pageSize, string category = "All")
+        public async Task<TaskDeleteViewModel> LoadDeleteViewModelAsync(Guid id)
         {
-            if (roomId == Guid.Empty || roomNumber <= MinValueRoomNumber) 
+            var task = await LoadMaintananceTaskAsync(id);
+            var model = new TaskDeleteViewModel
             {
-                throw new ArgumentException("Invalid room details");
-            }
-            var model = new TaskViewModel
-            {
-                RoomId = roomId,
-                RoomNumber = roomNumber,
-                Categories = await context.TaskCategories.Select(c => c.Name).ToListAsync()
+
+                Id = task.Id,
+                Name = task.Name,
+                Description = task.Description,
+                RoomNumber = task.Room.RoomNumber,
+                RoomId = task.RoomId,
             };
-
-            var room = await context.Rooms
-                .Include(r => r.MaintananceTasks)
-                .ThenInclude(t => t.TaskCategory)
-                .FirstOrDefaultAsync(r => r.RoomNumber == roomNumber);
-
-
-            if (room == null)
-            {
-                throw new NullReferenceException($"Room not found.");
-            }
-
-
-            var tasks = room.MaintananceTasks.Where(t => t.IsDeleted == false).AsQueryable();
-            if (!string.IsNullOrEmpty(category) && category != "All")
-            {
-                tasks = tasks.Where(t => t.TaskCategory != null && t.TaskCategory.Name == category);
-            }
-            var toBeCompletedTasks = tasks.Where(t => t.Status != "Completed").ToList();
-            var completedTasks = tasks.Where(t => t.Status == "Completed").ToList();
-
-            model.ToBeCompletedTasks.TotalItems = toBeCompletedTasks.Count();
-            model.ToBeCompletedTasks.TotalPages = (int)Math.Ceiling(toBeCompletedTasks.Count() / (double)pageSize);
-            model.ToBeCompletedTasks.PageSize = pageSize;
-            model.ToBeCompletedTasks.Items = toBeCompletedTasks
-                .Skip(((toBeCompletedPage ?? 1) - 1) * pageSize)  
-                .Take(pageSize)
-                .ToList();
-            model.ToBeCompletedTasks.CurrentPage = toBeCompletedPage ?? 1;
-
-            model.CompletedTasks.TotalItems = completedTasks.Count();
-            model.CompletedTasks.TotalPages = (int)Math.Ceiling(completedTasks.Count() / (double)pageSize);
-            model.CompletedTasks.PageSize = pageSize;
-            model.CompletedTasks.Items = completedTasks
-                .Skip(((completedPage ?? 1) - 1) * pageSize) 
-                .Take(pageSize)
-                .ToList();
-            model.CompletedTasks.CurrentPage = completedPage ?? 1;
-            
-
             return model;
         }
 
-        
-
+        public async Task<bool> DeleteTaskAsync(TaskDeleteViewModel model)
+        {
+            var task = await LoadMaintananceTaskAsync(model.Id);
+            task.IsDeleted = true;
+            await context.SaveChangesAsync();
+            return true;
+        }
+      
         public async Task<TaskDetailsViewModel> LoadTaskDetailsAsync(Guid id)
         {
             var task = await context.MaintananceTasks
@@ -181,19 +147,14 @@ namespace BalkanTech.Services.Data
             return model;
         }
 
-        public async Task<MaintananceTask> LoadMaintananceTaskAsync(Guid id)
-        {
-           var task = await context.MaintananceTasks.Where(t => t.IsDeleted == false).Include(t => t.AssignedTechniciansTasks).Include(t => t.Room).FirstOrDefaultAsync(t => t.Id == id);
-            if (task != null) 
-            {
-                return task;
-            }
-            throw new NullReferenceException("Task not found");
-        }
-
+      
         public async Task<TaskAddViewModel> LoadEditTaskAsync(Guid id)
         {
             var task = await LoadMaintananceTaskAsync(id);
+            if (task.Status == "Completed") 
+            {
+                throw new ArgumentException("Task cannot be edited when it is already completed");
+            }
 
             var model = new TaskAddViewModel
             {
@@ -209,17 +170,6 @@ namespace BalkanTech.Services.Data
                 AssignedTechniciansIDs = task.AssignedTechniciansTasks.Select(at => at.AppUserId).ToList()
             };  
             return model;
-        }
-
-        public async Task<TaskAddViewModel> LoadTaskAddModel(Guid roomId)
-        {
-           return new TaskAddViewModel()
-           {
-               RoomId = roomId,
-               RoomNumbers = await LoadRoomsAsync(),
-               Technicians = await LoadTechniciansAsync(),
-               TaskCategories = await LoadTaskCategoriesAsync(),
-           };
         }
 
         public async Task EditTaskAsync(TaskAddViewModel model, DateTime parsedDate)
@@ -244,15 +194,7 @@ namespace BalkanTech.Services.Data
                 .Where(t => techsToRemoveAfterEdit.Contains(t.AppUserId)).ToList();
             context.AssignedTechniciansTasks.RemoveRange(removeTechsAssigned);
 
-            var techsAssignedAdd = techsToAdd
-                            .Select(techId => new AssignedTechnicianTask
-                            {
-                                AppUserId = techId,
-                                MaintananceTaskId = task.Id
-                            })
-                            .ToList();
-            await context.AssignedTechniciansTasks.AddRangeAsync(techsAssignedAdd);
-            await context.SaveChangesAsync();
+             await AssignTechniciansToTask(task.Id, techsToAdd);
         }
 
         public async Task<int> GetRoomNumberByIdAsync(Guid roomId)
@@ -263,27 +205,74 @@ namespace BalkanTech.Services.Data
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<TaskDeleteViewModel> LoadDeleteViewModelAsync(Guid id)
+        private async Task<MaintananceTask> LoadMaintananceTaskAsync(Guid id)
         {
-            var task = await LoadMaintananceTaskAsync(id);
-            var model = new TaskDeleteViewModel
+            var task = await context.MaintananceTasks.Where(t => t.IsDeleted == false).Include(t => t.AssignedTechniciansTasks).Include(t => t.Room).FirstOrDefaultAsync(t => t.Id == id);
+            if (task != null)
             {
-
-                Id = task.Id,
-                Name = task.Name,
-                Description = task.Description,
-                RoomNumber = task.Room.RoomNumber,
-                RoomId = task.RoomId,
-            };
-            return model;
+                return task;
+            }
+            throw new NullReferenceException("Task not found");
         }
 
-        public async Task<bool> DeleteTaskAsync(TaskDeleteViewModel model)
+        private async Task<IEnumerable<TaskTechnicianViewModel>> LoadTechniciansAsync()
         {
-            var task = await LoadMaintananceTaskAsync(model.Id);
-            task.IsDeleted = true;
+            var allTechsAndManager = await userManager.GetUsersInRoleAsync("Technician");
+            allTechsAndManager = allTechsAndManager.Concat(await userManager.GetUsersInRoleAsync("Manager")).ToList();
+            if (allTechsAndManager == null)
+            {
+                throw new NullReferenceException("Unable to load users to be assigned");
+            }
+            return allTechsAndManager.Select(t => new TaskTechnicianViewModel
+            {
+                Id = t.Id,
+                FirstName = t.FirstName,
+                LastName = t.LastName,
+            }).ToList();
+
+        }
+        private async Task<IEnumerable<TaskAddRoomViewModel>> LoadRoomsAsync()
+        {
+            return await context.Rooms.Select(r => new TaskAddRoomViewModel
+            {
+                Id = r.Id,
+                RoomNumber = r.RoomNumber,
+            }).ToListAsync();
+        }
+
+        private async Task<IEnumerable<TaskCategoryViewModel>> LoadTaskCategoriesAsync()
+        {
+            return await context.TaskCategories.Select(tc => new TaskCategoryViewModel
+            {
+                Id = tc.Id,
+                TaskCategoryName = tc.Name
+            }).ToListAsync();
+        }
+        private async Task AssignTechniciansToTask(Guid id, List<Guid> assignedTechniciansIDs)
+        {
+            var assigned = assignedTechniciansIDs
+                               .Select(techId => new AssignedTechnicianTask
+                               {
+                                   AppUserId = techId,
+                                   MaintananceTaskId = id
+                               })
+                               .ToList();
+            await context.AssignedTechniciansTasks.AddRangeAsync(assigned);
             await context.SaveChangesAsync();
-            return true;
+        }
+        private PaginationIndexViewModel<MaintananceTask> PaginateTasks(IEnumerable<MaintananceTask> tasks, int? page, int pageSize)
+        {
+            var pageIndex = (page ?? 1) - 1;
+            var items = tasks.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+
+            return new PaginationIndexViewModel<MaintananceTask>
+            {
+                Items = items,
+                CurrentPage = page ?? 1,
+                PageSize = pageSize,
+                TotalItems = tasks.Count(),
+                TotalPages = (int)Math.Ceiling((double)tasks.Count() / pageSize),
+            };
         }
     }
 }

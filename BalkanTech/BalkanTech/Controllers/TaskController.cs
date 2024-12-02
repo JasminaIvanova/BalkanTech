@@ -117,7 +117,7 @@ namespace BalkanTech.Web.Controllers
                 var model = await taskService.LoadEditTaskAsync(id);
                 return View(model);
             }
-            catch (NullReferenceException ex)
+            catch (Exception ex) when (ex is NullReferenceException || ex is ArgumentException)
             {
 
                 TempData[nameof(ErrorData)] = ex.Message;

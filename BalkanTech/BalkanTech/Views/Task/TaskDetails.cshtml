@@ -23,11 +23,14 @@
     @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
     {
         <div class="d-flex justify-content-end mb-3">
-            <a href="@Url.Action("Edit", "Task", new { id = Model.Id })"
-               class="btn border border-dark text-dark rounded-3 bg-transparent hover-bg-dark hover-text-white">
-                <i class="fas fa-pencil-alt me-2"></i> Edit Task
-            </a>
+            @if (Model.Status != "Completed")
+            {
+                <a href="@Url.Action("Edit", "Task", new { id = Model.Id })"
+                   class="btn border border-dark text-dark rounded-3 bg-transparent hover-bg-dark hover-text-white">
+                    <i class="fas fa-pencil-alt me-2"></i> Edit Task
+                </a>
 
+            }
             <a href="javascript:void(0);"
                class="btn border border-danger text-danger rounded-3 bg-transparent hover-bg-danger hover-text-white"
                data-bs-toggle="modal"

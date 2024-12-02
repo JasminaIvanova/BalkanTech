@@ -9,7 +9,8 @@
 
 <div class="card shadow-sm mb-4">
     <div class="card-body">
-        <form asp-action="Edit" method="post" class="needs-validation" novalidate>
+        <form asp-action="Edit" method="post" >
+            <input type="hidden" name="Id" value="@Model.Id" />
             <div class="form-group">
                 <label asp-for="@Model.Name" class="control-label fw-bold">Task Name</label>
                 <input asp-for="@Model.Name" class="form-control" placeholder="Enter Task Name" />

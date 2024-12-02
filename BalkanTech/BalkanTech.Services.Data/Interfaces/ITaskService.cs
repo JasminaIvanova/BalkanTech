@@ -15,13 +15,7 @@ namespace BalkanTech.Services.Data.Interfaces
         Task<TaskAddViewModel> LoadTaskAddModel(Guid roomId);
         
         Task AddTaskAsync(TaskAddViewModel model, DateTime parsedDate);
-        Task<IEnumerable<TaskTechnicianViewModel>> LoadTechniciansAsync();
-        Task<IEnumerable<TaskAddRoomViewModel>> LoadRoomsAsync();
-
-        Task<IEnumerable<TaskCategoryViewModel>> LoadTaskCategoriesAsync();
         Task<TaskDetailsViewModel> LoadTaskDetailsAsync(Guid id);
-
-        Task<MaintananceTask> LoadMaintananceTaskAsync(Guid id);
         Task<TaskAddViewModel> LoadEditTaskAsync(Guid Id);
         Task EditTaskAsync(TaskAddViewModel model, DateTime parsedDate);
         Task<int> GetRoomNumberByIdAsync(Guid roomId);

@@ -34,7 +34,7 @@ namespace BalkanTech.Tests
             doubleRoomId = Guid.NewGuid();
             SuitRoomId = Guid.NewGuid();
 
-        var categories = new List<RoomCategory>() {
+            var categories = new List<RoomCategory>() {
                 new RoomCategory(){ Id = doubleRoomCategoryId, RoomType = "DoubleRoom"},
                 new RoomCategory(){ Id = SuitRoomCategoryId, RoomType = "Suit"}
             };
