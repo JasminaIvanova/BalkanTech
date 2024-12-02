@@ -54,9 +54,12 @@ namespace BalkanTech.Services.Data
                     Id=r.Id,
                     RoomNumber = r.RoomNumber,
                     Floor = r.Floor,
-                   // isAvailable = r.isAvailable ? "Available" : "Not Available",
                    isAvailable = r.isAvailable,
-                    RoomCategory = r.RoomCategory.RoomType.ToString()
+                    RoomCategory = r.RoomCategory.RoomType.ToString(),
+                    PendingTasks = r.MaintananceTasks.Where(t => t.Status == "Pending").Where(t => t.IsDeleted == false).Count(),
+                    CompletedTasks = r.MaintananceTasks.Where(t => t.Status == "Completed").Where(t => t.IsDeleted == false).Count(),
+                    InProcessTasks = r.MaintananceTasks.Where(t => t.Status == "In Process").Where(t => t.IsDeleted == false).Count(),
+
                 })
                 .ToListAsync();
 

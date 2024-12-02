@@ -15,5 +15,8 @@ namespace BalkanTech.Web.ViewModels.Room
         public int Floor { get; set; }
         public required string RoomCategory { get; set; }
         public bool isAvailable { get; set; }
+        public int PendingTasks { get; set; }
+        public int InProcessTasks { get; set; }
+        public int CompletedTasks { get; set; }
     }
 }

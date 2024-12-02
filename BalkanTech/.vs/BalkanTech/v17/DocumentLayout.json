@@ -3,24 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\views\\room\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\views\\room\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech.services.data\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|solutionrelative:balkantech.services.data\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech.services.data\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|solutionrelative:balkantech.services.data\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech.services.data\\interfaces\\iroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|solutionrelative:balkantech.services.data\\interfaces\\iroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3930448-98EB-4572-AA0A-3C5A79FFF5CD}|BalkanTech.Web.ViewModels\\BalkanTech.Web.ViewModels.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech.web.viewmodels\\room\\roomsindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3930448-98EB-4572-AA0A-3C5A79FFF5CD}|BalkanTech.Web.ViewModels\\BalkanTech.Web.ViewModels.csproj|solutionrelative:balkantech.web.viewmodels\\room\\roomsindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech.services.data\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|solutionrelative:balkantech.services.data\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{34B83ED1-088B-46AD-ABB5-E413BAE36A40}|BalkanTech.Common\\BalkanTech.Common.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech.common\\errormessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,10 +91,6 @@
       "RelativeMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|solutionrelative:balkantech.services.data\\interfaces\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\views\\room\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\views\\room\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\views\\reports\\mytasks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\views\\reports\\mytasks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -115,10 +127,6 @@
       "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\views\\task\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech.services.data\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|solutionrelative:balkantech.services.data\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\views\\task\\taskdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\views\\task\\taskdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -147,10 +155,6 @@
       "RelativeMoniker": "D:0:0:{CE5E3E38-D672-4EB2-AFBA-E2E6E2D7B432}|BalkanTech.Data.Models\\BalkanTech.Data.Models.csproj|solutionrelative:balkantech.data.models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3930448-98EB-4572-AA0A-3C5A79FFF5CD}|BalkanTech.Web.ViewModels\\BalkanTech.Web.ViewModels.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech.web.viewmodels\\room\\roomsindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3930448-98EB-4572-AA0A-3C5A79FFF5CD}|BalkanTech.Web.ViewModels\\BalkanTech.Web.ViewModels.csproj|solutionrelative:balkantech.web.viewmodels\\room\\roomsindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -173,10 +177,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9F3985C4-220B-49EC-9E98-EDB591384F2D}|BalkanTech\\BalkanTech.Web.csproj|solutionrelative:balkantech\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech.services.data\\interfaces\\iroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84F8C35A-E75D-4B2C-B524-87548A2250A7}|BalkanTech.Services.Data\\BalkanTech.Services.Data.csproj|solutionrelative:balkantech.services.data\\interfaces\\iroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D3930448-98EB-4572-AA0A-3C5A79FFF5CD}|BalkanTech.Web.ViewModels\\BalkanTech.Web.ViewModels.csproj|c:\\users\\juj4i\\source\\repos\\csharpweb_balkantech\\balkantech\\balkantech.web.viewmodels\\paginationindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -445,17 +445,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "TaskService.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\TaskService.cs",
               "RelativeDocumentMoniker": "BalkanTech.Services.Data\\TaskService.cs",
               "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\TaskService.cs",
               "RelativeToolTip": "BalkanTech.Services.Data\\TaskService.cs",
-              "ViewState": "AQIAAL8AAAAAAAAAAAAYwMMAAAAMAAAA",
+              "ViewState": "AQIAALgAAAAAAAAAAAAYwMcAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-09T14:32:54.462Z",
               "IsPinned": true,
@@ -463,7 +463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "TaskController.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Controllers\\TaskController.cs",
               "RelativeDocumentMoniker": "BalkanTech\\Controllers\\TaskController.cs",
@@ -477,59 +477,84 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Program.cs",
               "RelativeDocumentMoniker": "BalkanTech\\Program.cs",
               "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Program.cs",
               "RelativeToolTip": "BalkanTech\\Program.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAAAC4AAAABAAAA",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAAACoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-11T13:33:38.327Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\appsettings.json",
+              "RelativeDocumentMoniker": "BalkanTech\\appsettings.json",
+              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\appsettings.json",
+              "RelativeToolTip": "BalkanTech\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-11T14:27:41.667Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "BalkanTech\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "BalkanTech\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAowBQAAAAIAAAA",
+              "Title": "RoomService.cs",
+              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\RoomService.cs",
+              "RelativeDocumentMoniker": "BalkanTech.Services.Data\\RoomService.cs",
+              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\RoomService.cs",
+              "RelativeToolTip": "BalkanTech.Services.Data\\RoomService.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAgwD4AAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T13:38:25.966Z",
+              "WhenOpened": "2024-11-03T16:52:07.838Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Error.cshtml",
-              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Shared\\Error.cshtml",
-              "RelativeDocumentMoniker": "BalkanTech\\Views\\Shared\\Error.cshtml",
-              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Shared\\Error.cshtml",
-              "RelativeToolTip": "BalkanTech\\Views\\Shared\\Error.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAwAAABCAAAA",
+              "DocumentIndex": 4,
+              "Title": "RoomsIndexViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\Room\\RoomsIndexViewModel.cs",
+              "RelativeDocumentMoniker": "BalkanTech.Web.ViewModels\\Room\\RoomsIndexViewModel.cs",
+              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\Room\\RoomsIndexViewModel.cs",
+              "RelativeToolTip": "BalkanTech.Web.ViewModels\\Room\\RoomsIndexViewModel.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABAAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T13:32:14.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Room\\Index.cshtml",
+              "RelativeDocumentMoniker": "BalkanTech\\Views\\Room\\Index.cshtml",
+              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Room\\Index.cshtml*",
+              "RelativeToolTip": "BalkanTech\\Views\\Room\\Index.cshtml*",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAswE4AAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-11T13:40:34.44Z",
+              "WhenOpened": "2024-10-24T13:29:55.172Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Constants.cs",
-              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\Constants.cs",
-              "RelativeDocumentMoniker": "BalkanTech.Common\\Constants.cs",
-              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\Constants.cs",
-              "RelativeToolTip": "BalkanTech.Common\\Constants.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAArAAAA",
+              "DocumentIndex": 3,
+              "Title": "IRoomService.cs",
+              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\Interfaces\\IRoomService.cs",
+              "RelativeDocumentMoniker": "BalkanTech.Services.Data\\Interfaces\\IRoomService.cs",
+              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\Interfaces\\IRoomService.cs",
+              "RelativeToolTip": "BalkanTech.Services.Data\\Interfaces\\IRoomService.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAABQAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T13:44:21.629Z",
+              "WhenOpened": "2024-11-03T17:04:45.623Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "ErrorMessages.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\ErrorMessages.cs",
               "RelativeDocumentMoniker": "BalkanTech.Common\\ErrorMessages.cs",
@@ -537,29 +562,47 @@
               "RelativeToolTip": "BalkanTech.Common\\ErrorMessages.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAYwCMAAABWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-03T20:29:06.752Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-03T20:29:06.752Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\appsettings.json",
-              "RelativeDocumentMoniker": "BalkanTech\\appsettings.json",
-              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\appsettings.json",
-              "RelativeToolTip": "BalkanTech\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-11T14:27:41.667Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "DocumentIndex": 10,
+              "Title": "Constants.cs",
+              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\Constants.cs",
+              "RelativeDocumentMoniker": "BalkanTech.Common\\Constants.cs",
+              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Common\\Constants.cs",
+              "RelativeToolTip": "BalkanTech.Common\\Constants.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T13:44:21.629Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "BalkanTech\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "BalkanTech\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAwAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-11T13:40:34.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "BalkanTech\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "BalkanTech\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAswBcAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T13:38:25.966Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "BalkanTech.Web.ViewModels\\ErrorViewModel.cs",
@@ -567,12 +610,11 @@
               "RelativeToolTip": "BalkanTech.Web.ViewModels\\ErrorViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T13:37:38.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T13:37:38.713Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "RoomController.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Controllers\\RoomController.cs",
               "RelativeDocumentMoniker": "BalkanTech\\Controllers\\RoomController.cs",
@@ -580,12 +622,11 @@
               "RelativeToolTip": "BalkanTech\\Controllers\\RoomController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAD8AAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T15:11:10.911Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T15:11:10.911Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Home\\Index.cshtml",
@@ -593,12 +634,11 @@
               "RelativeToolTip": "BalkanTech\\Views\\Home\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAABvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-24T12:19:32.175Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-24T12:19:32.175Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "404NotFound.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Shared\\404NotFound.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Shared\\404NotFound.cshtml",
@@ -606,12 +646,11 @@
               "RelativeToolTip": "BalkanTech\\Views\\Shared\\404NotFound.cshtml",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-30T20:12:18.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T20:12:18.024Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "500InternalServerError.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Shared\\500InternalServerError.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Shared\\500InternalServerError.cshtml",
@@ -619,12 +658,11 @@
               "RelativeToolTip": "BalkanTech\\Views\\Shared\\500InternalServerError.cshtml",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-30T20:16:53.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T20:16:53.089Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Shared\\_Layout.cshtml",
@@ -632,12 +670,11 @@
               "RelativeToolTip": "BalkanTech\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAACgAAAAAAAAAAAAAADwAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-11T15:09:06.613Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T15:09:06.613Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "BalkanTech\\Controllers\\AdminController.cs",
@@ -645,12 +682,11 @@
               "RelativeToolTip": "BalkanTech\\Controllers\\AdminController.cs",
               "ViewState": "AQIAADIAAAAAAAAAAAAgwEQAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T14:55:34.519Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T14:55:34.519Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "ReportsController.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Controllers\\ReportsController.cs",
               "RelativeDocumentMoniker": "BalkanTech\\Controllers\\ReportsController.cs",
@@ -658,12 +694,11 @@
               "RelativeToolTip": "BalkanTech\\Controllers\\ReportsController.cs",
               "ViewState": "AQIAADgAAAAAAAAAAAAgwD8AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-28T15:53:52.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-28T15:53:52.713Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "ITaskService.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\Interfaces\\ITaskService.cs",
               "RelativeDocumentMoniker": "BalkanTech.Services.Data\\Interfaces\\ITaskService.cs",
@@ -671,12 +706,11 @@
               "RelativeToolTip": "BalkanTech.Services.Data\\Interfaces\\ITaskService.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAA3wBoAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T19:09:46.649Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T19:09:46.649Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "IAdminService.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\Interfaces\\IAdminService.cs",
               "RelativeDocumentMoniker": "BalkanTech.Services.Data\\Interfaces\\IAdminService.cs",
@@ -684,12 +718,11 @@
               "RelativeToolTip": "BalkanTech.Services.Data\\Interfaces\\IAdminService.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T17:20:46.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T17:20:46.709Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "MyTasks.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Reports\\MyTasks.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Reports\\MyTasks.cshtml",
@@ -697,12 +730,11 @@
               "RelativeToolTip": "BalkanTech\\Views\\Reports\\MyTasks.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-28T17:53:18.018Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-28T17:53:18.018Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Admin\\Index.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Admin\\Index.cshtml",
@@ -710,25 +742,11 @@
               "RelativeToolTip": "BalkanTech\\Views\\Admin\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-25T15:33:48.054Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T15:33:48.054Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Room\\Index.cshtml",
-              "RelativeDocumentMoniker": "BalkanTech\\Views\\Room\\Index.cshtml",
-              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Room\\Index.cshtml",
-              "RelativeToolTip": "BalkanTech\\Views\\Room\\Index.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABUAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-24T13:29:55.172Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "site.js",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "BalkanTech\\wwwroot\\js\\site.js",
@@ -736,12 +754,11 @@
               "RelativeToolTip": "BalkanTech\\wwwroot\\js\\site.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-11-09T20:27:51.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-09T20:27:51.092Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "ReportService.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\ReportService.cs",
               "RelativeDocumentMoniker": "BalkanTech.Services.Data\\ReportService.cs",
@@ -749,12 +766,11 @@
               "RelativeToolTip": "BalkanTech.Services.Data\\ReportService.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAAwCAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T19:06:16.858Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T19:06:16.858Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "IReportService.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\Interfaces\\IReportService.cs",
               "RelativeDocumentMoniker": "BalkanTech.Services.Data\\Interfaces\\IReportService.cs",
@@ -762,12 +778,11 @@
               "RelativeToolTip": "BalkanTech.Services.Data\\Interfaces\\IReportService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T19:05:51.085Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T19:05:51.085Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "loadModal.js",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\wwwroot\\js\\loadModal.js",
               "RelativeDocumentMoniker": "BalkanTech\\wwwroot\\js\\loadModal.js",
@@ -775,12 +790,11 @@
               "RelativeToolTip": "BalkanTech\\wwwroot\\js\\loadModal.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-11-24T20:06:11.26Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-24T20:06:11.26Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Task\\Index.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Task\\Index.cshtml",
@@ -788,12 +802,11 @@
               "RelativeToolTip": "BalkanTech\\Views\\Task\\Index.cshtml",
               "ViewState": "AQIAABoAAAAAAAAAAAAAACoAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-04T21:47:24.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T21:47:24.79Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Add.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Task\\Add.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Task\\Add.cshtml",
@@ -801,25 +814,11 @@
               "RelativeToolTip": "BalkanTech\\Views\\Task\\Add.cshtml",
               "ViewState": "AQIAABUAAAAAAAAAAAAAAAcAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-05T17:04:22.827Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-05T17:04:22.827Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 28,
-              "Title": "RoomService.cs",
-              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\RoomService.cs",
-              "RelativeDocumentMoniker": "BalkanTech.Services.Data\\RoomService.cs",
-              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\RoomService.cs",
-              "RelativeToolTip": "BalkanTech.Services.Data\\RoomService.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAArwF4AAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-03T16:52:07.838Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
               "Title": "TaskAddViewModel.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\Task\\TaskAddViewModel.cs",
               "RelativeDocumentMoniker": "BalkanTech.Web.ViewModels\\Task\\TaskAddViewModel.cs",
@@ -827,12 +826,11 @@
               "RelativeToolTip": "BalkanTech.Web.ViewModels\\Task\\TaskAddViewModel.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAqwCEAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T16:56:48.007Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-05T16:56:48.007Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "TaskDetails.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Task\\TaskDetails.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Task\\TaskDetails.cshtml",
@@ -840,12 +838,11 @@
               "RelativeToolTip": "BalkanTech\\Views\\Task\\TaskDetails.cshtml",
               "ViewState": "AQIAAEwAAAAAAAAAAAAvwFoAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-10T16:51:57.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T16:51:57.037Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "AdminService.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\AdminService.cs",
               "RelativeDocumentMoniker": "BalkanTech.Services.Data\\AdminService.cs",
@@ -853,12 +850,11 @@
               "RelativeToolTip": "BalkanTech.Services.Data\\AdminService.cs",
               "ViewState": "AQIAAEAAAAAAAAAAAAAgwFMAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T17:21:53.316Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T17:21:53.316Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "TaskTechnicianViewModel.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\Task\\TaskTechnicianViewModel.cs",
               "RelativeDocumentMoniker": "BalkanTech.Web.ViewModels\\Task\\TaskTechnicianViewModel.cs",
@@ -866,12 +862,11 @@
               "RelativeToolTip": "BalkanTech.Web.ViewModels\\Task\\TaskTechnicianViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T18:17:27.618Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T18:17:27.618Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "Add.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Room\\Add.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Room\\Add.cshtml",
@@ -879,12 +874,11 @@
               "RelativeToolTip": "BalkanTech\\Views\\Room\\Add.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T18:47:45.286Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T18:47:45.286Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "TaskCategory.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data.Models\\TaskCategory.cs",
               "RelativeDocumentMoniker": "BalkanTech.Data.Models\\TaskCategory.cs",
@@ -892,12 +886,11 @@
               "RelativeToolTip": "BalkanTech.Data.Models\\TaskCategory.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAoAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T22:12:28.291Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T22:12:28.291Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "NoteService.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\NoteService.cs",
               "RelativeDocumentMoniker": "BalkanTech.Services.Data\\NoteService.cs",
@@ -905,12 +898,11 @@
               "RelativeToolTip": "BalkanTech.Services.Data\\NoteService.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T15:15:47.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-17T15:15:47.357Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "AppUser.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Data.Models\\AppUser.cs",
               "RelativeDocumentMoniker": "BalkanTech.Data.Models\\AppUser.cs",
@@ -918,25 +910,11 @@
               "RelativeToolTip": "BalkanTech.Data.Models\\AppUser.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAYwBIAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T14:57:58.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T14:57:58.313Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "RoomsIndexViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\Room\\RoomsIndexViewModel.cs",
-              "RelativeDocumentMoniker": "BalkanTech.Web.ViewModels\\Room\\RoomsIndexViewModel.cs",
-              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\Room\\RoomsIndexViewModel.cs",
-              "RelativeToolTip": "BalkanTech.Web.ViewModels\\Room\\RoomsIndexViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-24T13:32:14.658Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "Register.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "RelativeDocumentMoniker": "BalkanTech\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
@@ -944,12 +922,11 @@
               "RelativeToolTip": "BalkanTech\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "ViewState": "AQIAAKMAAAAAAAAAAAAqwKgAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-24T12:17:50.966Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-24T12:17:50.966Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
@@ -957,12 +934,11 @@
               "RelativeToolTip": "BalkanTech\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-24T12:17:17.756Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-24T12:17:17.756Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "Logout.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
@@ -970,12 +946,11 @@
               "RelativeToolTip": "BalkanTech\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-24T12:17:13.741Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-24T12:17:13.741Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "_TasksPaginationPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Shared\\_TasksPaginationPartial.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Shared\\_TasksPaginationPartial.cshtml",
@@ -987,7 +962,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "TaskViewModel.cs",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Web.ViewModels\\Task\\TaskViewModel.cs",
               "RelativeDocumentMoniker": "BalkanTech.Web.ViewModels\\Task\\TaskViewModel.cs",
@@ -999,7 +974,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "BalkanTech\\Views\\Shared\\_LoginPartial.cshtml",
@@ -1008,18 +983,6 @@
               "ViewState": "AQIAAAMAAAAAAAAAAAAAABYAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-24T12:22:22.051Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "IRoomService.cs",
-              "DocumentMoniker": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\Interfaces\\IRoomService.cs",
-              "RelativeDocumentMoniker": "BalkanTech.Services.Data\\Interfaces\\IRoomService.cs",
-              "ToolTip": "C:\\Users\\juj4i\\source\\repos\\CSharpWeb_BalkanTech\\BalkanTech\\BalkanTech.Services.Data\\Interfaces\\IRoomService.cs",
-              "RelativeToolTip": "BalkanTech.Services.Data\\Interfaces\\IRoomService.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAAABQAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-03T17:04:45.623Z"
             },
             {
               "$type": "Document",
@@ -1798,6 +1761,10 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2024-10-11T15:06:48.568Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
