@@ -12,10 +12,6 @@ namespace BalkanTech.Services.Data.Interfaces
     public interface IReportService
     {
         Task ChangeTaskStatus(Guid taskId, string newStatus, DateTime? newDate, string userId, bool isManager);
-       // Task<TasksPerTechnicianReportViewModel> ListAssignedTasks(string userId);
-        //Task<List<TasksForUserViewModel>> ListAssignedTasksByTechnicianAsync();
-        //Task ApproveTaskCompletionAsync(Guid taskId, string userId);
-
         Task<IEnumerable<TaskTechnicianViewModel>> GetAllTechUsersAsync();
         Task<TasksPerTechnicianReportViewModel> GetTasksForUserAsync(string userId);
     }

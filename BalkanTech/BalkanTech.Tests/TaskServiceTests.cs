@@ -11,7 +11,6 @@ using static BalkanTech.Common.Constants;
 
 namespace BalkanTech.Tests
 {
-    //TO DO GET TECHNICIANS METHOD CHANGED
     public class TaskServiceTests
     {
         private BalkanDbContext context;
@@ -92,7 +91,7 @@ namespace BalkanTech.Tests
             await taskService.AddTaskAsync(model, parsedDueDate);
             var taskFound = await context.MaintananceTasks.FirstOrDefaultAsync(t => t.Name == model.Name);
             Assert.That(taskFound, Is.Not.Null);
-            Assert.That(context.MaintananceTasks.Count, Is.EqualTo(2));
+            Assert.That(context.MaintananceTasks.Count, Is.EqualTo(3));
 
         }
 

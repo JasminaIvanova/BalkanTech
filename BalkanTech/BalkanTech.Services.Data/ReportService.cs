@@ -4,6 +4,7 @@ using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels.Report;
 using BalkanTech.Web.ViewModels.Task;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 
 namespace BalkanTech.Services.Data
@@ -87,8 +88,5 @@ namespace BalkanTech.Services.Data
                 ToBeCompletedTasks = tasks.Where(t => t.Status != "Completed").ToList(),
             };
         }
-
-
-
-    }
+        }
 }
