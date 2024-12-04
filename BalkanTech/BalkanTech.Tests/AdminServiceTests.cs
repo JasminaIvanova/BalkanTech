@@ -2,6 +2,7 @@
 using BalkanTech.Data.Models;
 using BalkanTech.Services.Data;
 using BalkanTech.Services.Data.Interfaces;
+using BalkanTech.Web.ViewModels.Admin;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MockQueryable;
@@ -20,6 +21,7 @@ namespace BalkanTech.Tests
         private List<IdentityRole<Guid>> roles;
 
         private Guid userId;
+        private Guid categoryId;
 
         [SetUp]
         public void Setup()
@@ -86,6 +88,21 @@ namespace BalkanTech.Tests
                                          user.UserName == "manager" ? new List<string> { "Manager" } :
                                          new List<string> { "Admin" });
             }
+            categoryId = Guid.NewGuid();
+            var roomCategories = new List<RoomCategory>
+            {
+                new RoomCategory { Id = categoryId, RoomType = "Apartment test" },
+                new RoomCategory { Id = Guid.NewGuid(), RoomType = "Standard test" }
+            };
+            var taskCategories = new List<TaskCategory>
+            {
+                new TaskCategory { Id = categoryId, Name = "Electrical test" },
+                new TaskCategory { Id = Guid.NewGuid(), Name = "HVAC test" }
+            };
+
+            context.RoomCategories.AddRange(roomCategories);
+            context.TaskCategories.AddRange(taskCategories);
+            context.SaveChanges();
         }
 
 
@@ -126,6 +143,85 @@ namespace BalkanTech.Tests
             var result = await adminService.DeleteUserAsync(userId);
             Assert.That(result.Succeeded);
 
+        }
+        [Test]
+        public async Task ListRoomCategoriesAsyncShouldBeSuccessfullWithAllCategories()
+        {
+            var result = await adminService.ListRoomCategoriesAsync();
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Categories.Count, Is.EqualTo(2));
+        }
+        [Test]
+        public async Task AddRoomCategoryAsyncShouldBeSuccessfull()
+        {
+            var newCat = new CategoryIndexViewModel 
+            {
+                Name = "New Added" 
+            };
+            await adminService.AddRoomCategoryAsycn(newCat);
+            var allCategories = await context.RoomCategories.ToListAsync();
+            Assert.That(allCategories, Is.Not.Null);
+            Assert.That(allCategories.Count, Is.EqualTo(3));
+        }
+        [Test]
+        public async Task AddRoomCategoryAsyncShouldThrowExceptionWhenNull()
+        {
+            Assert.ThrowsAsync<NullReferenceException>(async () => await adminService.AddRoomCategoryAsycn(null));
+        }
+        [Test]
+        public async Task DeleteRoomCategoryAsyncShouldBeSuccessfull()
+        {
+           
+            await adminService.DeleteRoomCategoryAsync(categoryId);
+
+            var categories = await context.RoomCategories.ToListAsync();
+            Assert.That(categories.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async Task DeleteRoomCategoryAsyncShouldThrowExceptionForNotFound()
+        {
+            Assert.ThrowsAsync<NullReferenceException>(async () => await adminService.DeleteRoomCategoryAsync(Guid.NewGuid()));
+        }
+
+        [Test]
+        public async Task ListTaskCategoriesAsyncShouldBeSuccessfullWithAllCategories()
+        {
+            var result = await adminService.ListTaskCategoriesAsync();
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Categories.Count, Is.EqualTo(2));
+        }
+        [Test]
+        public async Task AdTaskCategoryAsyncShouldBeSuccessfull()
+        {
+            var newCat = new CategoryIndexViewModel
+            {
+                Name = "New Added Task Category"
+            };
+            await adminService.AddTaskCategoryAsycn(newCat);
+            var allCategories = await context.TaskCategories.ToListAsync();
+            Assert.That(allCategories, Is.Not.Null);
+            Assert.That(allCategories.Count, Is.EqualTo(3));
+        }
+        [Test]
+        public async Task AdTaskCategoryAsyncShouldThrowExceptionWhenNull()
+        {
+            Assert.ThrowsAsync<NullReferenceException>(async () => await adminService.AddTaskCategoryAsycn(null));
+        }
+        [Test]
+        public async Task DeleteTaskCategoryAsyncShouldBeSuccessfull()
+        {
+
+            await adminService.DeleteTaskCategoryAsync(categoryId);
+
+            var categories = await context.TaskCategories.ToListAsync();
+            Assert.That(categories.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async Task DeleteTaskCategoryAsyncShouldThrowExceptionForNotFound()
+        {
+            Assert.ThrowsAsync<NullReferenceException>(async () => await adminService.DeleteTaskCategoryAsync(Guid.NewGuid()));
         }
         [TearDown]
         public void TearDown()
