@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Data;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BalkanTech.Services.Data
 {
@@ -94,6 +96,104 @@ namespace BalkanTech.Services.Data
             return result;
         }
 
-       
-    }
+        public async Task<ManageCategoriesViewModel> ListRoomCategoriesAsync()
+        {
+            var roomCategories = await context.RoomCategories.
+                Select(rc => new CategoryIndexViewModel
+                {
+                    Id = rc.Id,
+                    Name = rc.RoomType
+                }).ToListAsync();
+            var model = new ManageCategoriesViewModel
+            {
+                Title = "Manage Room Categories",
+                AddCategoryAction = "AddRoomCategory",
+                DeleteCategoryAction = "DeleteRoomCategory",
+                Categories = roomCategories
+            };
+            return model;
+        }
+
+      
+        public async Task AddRoomCategoryAsycn(CategoryIndexViewModel model)
+        {
+            if (model != null) 
+            {
+                var roomCategory = new RoomCategory
+                {
+                    RoomType = model.Name
+                };
+                await context.RoomCategories.AddAsync(roomCategory);
+                context.SaveChanges();
+
+            }  
+            else
+            {
+                throw new NullReferenceException("Invalid data");
+            }
+        }
+        public async Task DeleteRoomCategoryAsync(Guid categoryId) 
+        {
+            var category = await context.RoomCategories.FirstOrDefaultAsync(rc => rc.Id == categoryId);
+            if (category != null)
+            {
+                context.RoomCategories.Remove(category);
+                await context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new NullReferenceException("Room category not found");
+            }
+        }
+
+        public async Task AddTaskCategoryAsycn(CategoryIndexViewModel model)
+        {
+            if (model != null)
+            {
+                var taskCategory = new TaskCategory
+                {
+                    Name = model.Name
+                };
+                await context.TaskCategories.AddAsync(taskCategory);
+                context.SaveChanges();
+
+            }
+            else
+            {
+                throw new NullReferenceException("Invalid data");
+            }
+        }
+
+        public async Task<ManageCategoriesViewModel> ListTaskCategoriesAsync()
+        {
+            var taskCategories = await context.TaskCategories.
+                Select(rc => new CategoryIndexViewModel
+                {
+                    Id = rc.Id,
+                    Name = rc.Name
+                }).ToListAsync();
+            var model = new ManageCategoriesViewModel
+            {
+                Title = "Manage Task Categories",
+                AddCategoryAction = "AddTaskCategory",
+                DeleteCategoryAction = "DeleteTaskCategory",
+                Categories = taskCategories
+            };
+            return model;
+        }
+
+        public async Task DeleteTaskCategoryAsync(Guid categoryId)
+        {
+            var category = await context.TaskCategories.FirstOrDefaultAsync(rc => rc.Id == categoryId);
+            if (category != null)
+            {
+                context.TaskCategories.Remove(category);
+                await context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new NullReferenceException("Task category not found");
+            }
+        }
+   }
 }

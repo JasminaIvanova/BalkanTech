@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BalkanTech.Common")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d944e85263c4b1f97ad162f9a49773e8026b05ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c995ccb0c1200d4cf936e1efd0dc272cc5b1fe2")]
 [assembly: System.Reflection.AssemblyProductAttribute("BalkanTech.Common")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BalkanTech.Common")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

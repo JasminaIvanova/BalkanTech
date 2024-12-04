@@ -1,0 +1,54 @@
+﻿@model BalkanTech.Web.ViewModels.Admin.ManageCategoriesViewModel
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb-4 text-center">@Model.Title</h2>
+        </div>
+    </div>
+    <!-- Add Category Form -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title text-center mb-3">Add a New Category</h5>
+            <form asp-action="@Model.AddCategoryAction" method="post" class="d-flex justify-content-center">
+                <input type="text" name="Name" class="form-control w-50 me-2" placeholder="Enter Category Name" required />
+                <button type="submit" class="btn btn-success px-4">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Categories Table -->
+    <div class="table-responsive shadow-sm">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>Category Name</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Categories.Any())
+                {
+                    @foreach (var category in Model.Categories)
+                    {
+                        <tr>
+                            <td>@category.Name</td>
+                            <td class="text-center">
+                                <form asp-action="@Model.DeleteCategoryAction" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="@category.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2" class="text-center text-muted">No categories found.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

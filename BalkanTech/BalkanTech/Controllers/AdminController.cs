@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static BalkanTech.Common.ErrorMessages.Admin;
+using static BalkanTech.Common.ErrorMessages;
 
 namespace BalkanTech.Web.Controllers
 {
@@ -75,6 +76,101 @@ namespace BalkanTech.Web.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ManageRoomCategories()
+        {
+            var model = await adminService.ListRoomCategoriesAsync();
+            return View("ManageCategories", model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddRoomCategory(CategoryIndexViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    TempData[nameof(ErrorData)] = "Invalid input.";
+                    return RedirectToAction(nameof(ManageRoomCategories));
+                }
+                await adminService.AddRoomCategoryAsycn(model);
+                TempData[nameof(SuccessData)] = "Room category added successfully.";
+                
+            }
+            catch (Exception ex) when (ex is NullReferenceException)
+            {
+
+                TempData[nameof(ErrorData)] = ex.Message;
+            }
+            return RedirectToAction(nameof(ManageRoomCategories));
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteRoomCategory(Guid id)
+        {
+            try
+            {
+                await adminService.DeleteRoomCategoryAsync(id);
+                TempData[nameof(SuccessData)] = "Room category deleted successfully.";
+
+            }
+            catch(Exception ex) when(
+               ex is NullReferenceException)
+            {
+                TempData[nameof(ErrorData)] = ex.Message;
+            }
+
+            return RedirectToAction(nameof(ManageRoomCategories));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ManageTaskCategories()
+        {
+            var model = await adminService.ListTaskCategoriesAsync();
+            return View("ManageCategories", model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddTaskCategory(CategoryIndexViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    TempData[nameof(ErrorData)] = "Invalid input.";
+                    return RedirectToAction(nameof(ManageTaskCategories));
+                }
+                await adminService.AddTaskCategoryAsycn(model);
+                TempData[nameof(SuccessData)] = "Task category added successfully.";
+
+            }
+            catch (Exception ex) when (ex is NullReferenceException)
+            {
+
+                TempData[nameof(ErrorData)] = ex.Message;
+            }
+            return RedirectToAction(nameof(ManageTaskCategories));
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteTaskCategory(Guid id)
+        {
+            try
+            {
+                await adminService.DeleteTaskCategoryAsync(id);
+                TempData[nameof(SuccessData)] = "Task category deleted successfully.";
+
+            }
+            catch (Exception ex) when (
+               ex is NullReferenceException)
+            {
+                TempData[nameof(ErrorData)] = ex.Message;
+            }
+
+            return RedirectToAction(nameof(ManageTaskCategories));
         }
 
     }

@@ -16,5 +16,12 @@ namespace BalkanTech.Services.Data.Interfaces
         Task<AppUser> FindAppUserByIdAsync(Guid userId);
 
         Task<IdentityResult> DeleteUserAsync(Guid userId);
+        Task AddRoomCategoryAsycn(CategoryIndexViewModel model);
+        Task<ManageCategoriesViewModel> ListRoomCategoriesAsync();
+        Task DeleteRoomCategoryAsync(Guid categoryId);
+
+        Task AddTaskCategoryAsycn(CategoryIndexViewModel model);
+        Task<ManageCategoriesViewModel> ListTaskCategoriesAsync();
+        Task DeleteTaskCategoryAsync(Guid categoryId);
     }
 }

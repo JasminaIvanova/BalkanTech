@@ -1,4 +1,4 @@
-﻿@using static BalkanTech.Common.ErrorMessages.Tasks;
+﻿@using static BalkanTech.Common.ErrorMessages;
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +42,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin       Panel</a>
                                 </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ManageRoomCategories">Manage Categories</a>
+                            </li>
+                                <li><a asp-controller="Admin" asp-action="ManageTaskCategories">Manage Task Categories</a></li>
+                            
                             }
 
                               @if (User.IsInRole("Manager"))

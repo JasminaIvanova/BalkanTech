@@ -11,7 +11,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using static BalkanTech.Common.Constants;
 using static BalkanTech.Common.ErrorMessages.Rooms;
-using static BalkanTech.Common.ErrorMessages.Tasks;
+using static BalkanTech.Common.ErrorMessages;
 
 namespace BalkanTech.Web.Controllers
 {

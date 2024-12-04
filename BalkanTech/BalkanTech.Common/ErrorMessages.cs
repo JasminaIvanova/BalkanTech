@@ -29,12 +29,11 @@ namespace BalkanTech.Common
             public const string AdminSuccess = "AdminSuccess";
             public const string AdminError = "AdminError";
         }
-        public static class Tasks
-        {
-            public const string ErrorData = "Invalid data entered";
-            public const string SuccessData = "Success";
-            public const string SuccessfullyDeletedTask = "Successfully deleted task";
-            public const string ErrorDeleteTask = "Error occured while trying to delete the task";
-        }
+        
+        public const string ErrorData = "Invalid data entered";
+        public const string SuccessData = "Success";
+        public const string SuccessfullyDeletedTask = "Successfully deleted task";
+        public const string ErrorDeleteTask = "Error occured while trying to delete the task";
+        
      }
 }
