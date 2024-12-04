@@ -22,6 +22,22 @@ namespace BalkanTech.Services.Data
             context = _context;
             userManager = _userManager;
         }
+
+        public async Task<IEnumerable<TaskTechnicianViewModel>> LoadTechniciansAsync()
+        {
+            var allTechs = await userManager.GetUsersInRoleAsync("Technician");
+            if (allTechs == null)
+            {
+                throw new NullReferenceException("Unable to load users to be assigned");
+            }
+            return allTechs.Select(t => new TaskTechnicianViewModel
+            {
+                Id = t.Id,
+                FirstName = t.FirstName,
+                LastName = t.LastName,
+            }).ToList();
+
+        }
         public async Task<TaskViewModel> IndexGetAllTasksAsync(Guid roomId, int roomNumber, int? completedPage, int? toBeCompletedPage, int pageSize, string category = "All")
         {
             if (roomId == Guid.Empty || roomNumber <= MinValueRoomNumber)
@@ -215,22 +231,7 @@ namespace BalkanTech.Services.Data
             throw new NullReferenceException("Task not found");
         }
 
-        private async Task<IEnumerable<TaskTechnicianViewModel>> LoadTechniciansAsync()
-        {
-            var allTechsAndManager = await userManager.GetUsersInRoleAsync("Technician");
-            allTechsAndManager = allTechsAndManager.Concat(await userManager.GetUsersInRoleAsync("Manager")).ToList();
-            if (allTechsAndManager == null)
-            {
-                throw new NullReferenceException("Unable to load users to be assigned");
-            }
-            return allTechsAndManager.Select(t => new TaskTechnicianViewModel
-            {
-                Id = t.Id,
-                FirstName = t.FirstName,
-                LastName = t.LastName,
-            }).ToList();
-
-        }
+       
         private async Task<IEnumerable<TaskAddRoomViewModel>> LoadRoomsAsync()
         {
             return await context.Rooms.Select(r => new TaskAddRoomViewModel

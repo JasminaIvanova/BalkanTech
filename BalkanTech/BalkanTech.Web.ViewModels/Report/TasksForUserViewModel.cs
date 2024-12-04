@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace BalkanTech.Web.ViewModels.Report
 {
-    public class TasksPerTechnicianReportViewModel
+    public class TasksForUserViewModel
     {
-        public Guid Id { get; set; }
-
         public Guid UserId { get; set; }
         public string Name { get; set; }
-        public List<MaintananceTask> ToBeCompletedTasks { get; set; } = new List<MaintananceTask>();
+        public List<TaskReportViewModel> Tasks { get; set; } = new List<TaskReportViewModel>();
     }
 }

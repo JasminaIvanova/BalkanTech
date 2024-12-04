@@ -70,6 +70,10 @@
                                 {
                                     <span id="task-status-@task.Id" class="badge bg-primary text-dark">@task.Status</span>
                                 }
+                                else if (task.Status == "Pending Manager Approval")
+                                {
+                                    <span id="task-status-@task.Id" class="badge bg-info text-dark">@task.Status</span>
+                                }
                             </td>
                           
                         </tr>

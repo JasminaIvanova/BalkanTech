@@ -22,5 +22,7 @@ namespace BalkanTech.Services.Data.Interfaces
 
         Task<TaskDeleteViewModel> LoadDeleteViewModelAsync(Guid id);
         Task<bool> DeleteTaskAsync(TaskDeleteViewModel model);
+
+        Task<IEnumerable<TaskTechnicianViewModel>> LoadTechniciansAsync();
     }
 }

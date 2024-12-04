@@ -28,3 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         userIdInput.value = userId;
     });
 });
+
+ //document.addEventListener("DOMContentLoaded", function () {
+ //       var modalElement = new bootstrap.Modal(document.getElementById('userSelectionModal'));
+ //       modalElement.show();
+ //   });

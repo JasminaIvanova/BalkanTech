@@ -29,9 +29,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Room" asp-action="Index">Rooms</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="MyTasks">My Tasks</a>
-                        </li>
+                          @if (User.IsInRole("Technician"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="TechTasks">My Tasks</a>
+                            </li>
+                        }
+
                       
                           @if (User.IsInRole("Admin"))
                             {
@@ -39,6 +43,15 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin       Panel</a>
                                 </li>
                             }
+
+                              @if (User.IsInRole("Manager"))
+
+                            {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="ChooseReportTech"> Tasks Report</a>
+                            </li>
+                                                    
+                            } 
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

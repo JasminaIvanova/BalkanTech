@@ -3,12 +3,16 @@ using BalkanTech.Data.Models;
 using BalkanTech.Services.Data;
 using BalkanTech.Services.Data.Interfaces;
 using BalkanTech.Web.ViewModels.Report;
+using BalkanTech.Web.ViewModels.Task;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
+using System.Globalization;
 using System.Security.Claims;
 using static BalkanTech.Common.ErrorMessages.Tasks;
+using static BalkanTech.Common.Constants;
 
 namespace BalkanTech.Web.Controllers
 {
@@ -25,15 +29,15 @@ namespace BalkanTech.Web.Controllers
             userManager = _userManager;
             reportService = _reportService;
         }
+
         [HttpGet]
-        public async Task<IActionResult> MyTasks()
+        public async Task<IActionResult> TechTasks()
         {
-           
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
-            
+
             try
             {
-                var model = await reportService.ListAssignedTasks(userId);
+                var model = await reportService.GetTasksForUserAsync(userId);
                 return View(model);
             }
             catch (Exception ex) when (ex is NullReferenceException || ex is ArgumentNullException || ex is ArgumentException)
@@ -41,30 +45,73 @@ namespace BalkanTech.Web.Controllers
                 TempData[nameof(ErrorData)] = ex.Message;
                 return RedirectToAction("Index", "Home");
             }
-           
-
         }
         [HttpPost]
-        public async Task<IActionResult> ChangeTaskStatus(Guid taskId, string newStatus, DateTime? newDate)
+        public async Task<IActionResult> ChangeTaskStatus(Guid taskId, string newStatus, DateTime? newDate, string? userId)
         {
-            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
             bool isUserManager = User.IsInRole("Manager");
+
+            if (!isUserManager)
+            {
+                userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
+            }
+
             try
             {
                 await reportService.ChangeTaskStatus(taskId, newStatus, newDate, userId, isUserManager);
+                TempData[nameof(SuccessData)] = "Task status successfully changed";
             }
             catch (Exception ex) when (
-                 ex is NullReferenceException 
-                 || ex is ArgumentNullException 
-                 || ex is UnauthorizedAccessException 
+                 ex is NullReferenceException
+                 || ex is ArgumentNullException
+                 || ex is UnauthorizedAccessException
+                 || ex is ArgumentException
+                 || ex is InvalidOperationException)
+            {
+                TempData[nameof(ErrorData)] = ex.Message;
+            }
+
+            if (isUserManager)
+            {
+                return RedirectToAction(nameof(UserTasks), new { userId = userId });
+            }
+
+            return RedirectToAction(nameof(TechTasks));
+        }
+
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> ChooseReportTech()
+        {
+            var users = await reportService.GetAllTechUsersAsync();
+            return View(new ManagerReportViewModel { Users = users });
+        }
+
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> UserTasks(string userId)
+        { 
+           try
+            {
+                var tasks = await reportService.GetTasksForUserAsync(userId);
+                return View(nameof(TechTasks), tasks);
+
+            }
+            catch (Exception ex) when (
+                 ex is NullReferenceException
+                 || ex is ArgumentNullException
                  || ex is ArgumentException)
             {
 
                 TempData[nameof(ErrorData)] = ex.Message;
+                return RedirectToAction(nameof(ChooseReportTech));
             }
-            return RedirectToAction(nameof(MyTasks));
 
+           
 
+         
+
+          
         }
+
+
     }
 }

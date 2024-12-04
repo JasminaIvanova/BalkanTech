@@ -1,0 +1,38 @@
+﻿@using BalkanTech.Web.ViewModels.Report;
+@using BalkanTech.Web.ViewModels.Task;
+@model ManagerReportViewModel;
+
+<div class="modal fade" id="userSelectionModal" tabindex="-1" aria-labelledby="userSelectionModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userSelectionModalLabel">Select User</h5>
+            </div>
+            <div class="modal-body">
+                <form method="get" action="@Url.Action("UserTasks", "Reports")">
+                    <div class="form-group">
+                        <label for="userSelect">Technicians</label>
+                        <select id="userSelect" name="userId" class="form-control">
+                            <option value="" selected disabled>---Choose Technician---</option>
+                            @foreach (var user in Model.Users)
+                            {
+                                <option value="@user.Id">@user.FirstName @user.LastName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">View Tasks</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var modalElement = new bootstrap.Modal(document.getElementById('userSelectionModal'));
+        modalElement.show();
+    });</script>

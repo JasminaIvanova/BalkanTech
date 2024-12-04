@@ -66,8 +66,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/juj4i/source/repos/CSharpWeb_BalkanTech/BalkanTech/BalkanTech/Views/Reports/MyTasks.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xNeVRhc2tzLmNzaHRtbA==
+[C:/Users/juj4i/source/repos/CSharpWeb_BalkanTech/BalkanTech/BalkanTech/Views/Reports/ChooseReportTech.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xDaG9vc2VSZXBvcnRUZWNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/juj4i/source/repos/CSharpWeb_BalkanTech/BalkanTech/BalkanTech/Views/Reports/TechTasks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xUZWNoVGFza3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/juj4i/source/repos/CSharpWeb_BalkanTech/BalkanTech/BalkanTech/Views/Room/Add.cshtml]
