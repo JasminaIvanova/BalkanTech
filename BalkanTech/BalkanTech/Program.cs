@@ -58,6 +58,9 @@ using (var scope = app.Services.CreateScope())
     seeder.Seed("roomCategories.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().RoomCategories);
     seeder.Seed("rooms.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().Rooms);
     seeder.Seed("taskCategories.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().TaskCategories);
+    seeder.Seed("tasks.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().MaintananceTasks);
+    seeder.Seed("assignedTechniciansTasks.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().AssignedTechniciansTasks);
+    await SeedUsers.SeedUsersAsync(scope.ServiceProvider);
 }
 //roles
 using (var scope = app.Services.CreateScope())

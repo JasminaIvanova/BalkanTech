@@ -1,0 +1,30 @@
+[
+
+  {
+    "Id": "1e8ffbfa-4b75-4a23-a9ee-6d6df19d5c14",
+    "Name": "Fix AC in Room 101",
+    "Description": "The air conditioning unit in room 101 needs to be repaired.",
+    "TaskCategoryId": "F6B9267E-13A3-40D7-A8F3-3E0D7E5D2B10",
+    "RoomId": "F4122ECF-9CD6-48EF-DAC4-08DCFC2D6432",
+    "Status": "Pending",
+    "DueDate": "2024-11-11"
+  },
+  {
+    "Id": "a7cc8724-9e33-4ea2-b99f-2e122c9b06ed",
+    "Name": "Install New Wi-Fi Router",
+    "Description": "Install and configure a new Wi-Fi router for the common area.",
+    "TaskCategoryId": "B133E3E8-7634-4BFB-97E1-8C65A7B8B3C4",
+    "RoomId": "F4122ECF-9CD6-48EF-DAC4-08DCFC2D6432",
+    "Status": "Pending",
+    "DueDate": "2024-12-20"
+  },
+  {
+    "Id": "cbb8a8a5-3d7d-4b16-8b6f-7cfb2bdb342e",
+    "Name": "Paint Walls in Conference Room",
+    "Description": "Repaint the walls in the conference room with the chosen color.",
+    "TaskCategoryId": "E4E2D5D2-F4C5-4D28-89C3-713D9B2F173D",
+    "RoomId": "F4122ECF-9CD6-48EF-DAC4-08DCFC2D6432",
+    "Status": "Pending",
+    "DueDate": "2024-12-10"
+  }
+]

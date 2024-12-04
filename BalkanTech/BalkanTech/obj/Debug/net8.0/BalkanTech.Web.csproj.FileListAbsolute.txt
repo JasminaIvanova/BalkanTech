@@ -609,3 +609,5 @@ C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\bin\Debug
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\bin\Debug\net8.0\BalkanTech.Services.Data.pdb
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\bin\Debug\net8.0\Datasets\taskCategories.json
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\bin\Debug\net8.0\System.ClientModel.dll
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\bin\Debug\net8.0\Datasets\Tasks.json
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech\bin\Debug\net8.0\Datasets\assignedTechniciansTasks.json

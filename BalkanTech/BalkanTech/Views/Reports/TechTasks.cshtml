@@ -89,7 +89,7 @@
                                     </form>
 
                                 }
-                                else
+                                else if (User.IsInRole("Manager") && task.Status != "Pending Manager Approval")
                                 {
                                     
                                 <span>Not available</span>

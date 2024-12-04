@@ -40,3 +40,5 @@ C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Data\obj\
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Data\bin\Debug\net8.0\Datasets\roomCategories.json
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Data\bin\Debug\net8.0\Datasets\rooms.json
 C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Data\bin\Debug\net8.0\Datasets\taskCategories.json
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Data\bin\Debug\net8.0\Datasets\Tasks.json
+C:\Users\juj4i\source\repos\CSharpWeb_BalkanTech\BalkanTech\BalkanTech.Data\bin\Debug\net8.0\Datasets\assignedTechniciansTasks.json

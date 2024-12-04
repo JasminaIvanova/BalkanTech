@@ -24,10 +24,15 @@ namespace BalkanTech.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            return View(); 
+        }
+        [HttpGet]
+        public async Task<IActionResult> ManageUsers()
+        {
 
             var model = await adminService.IndexGetAllTechsAsync();
 
-            return View(model); 
+            return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> ChangeRole(Guid userId, string role)
@@ -51,7 +56,7 @@ namespace BalkanTech.Web.Controllers
                 TempData[nameof(AdminError)] = ex.Message;
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(ManageUsers));
         }
         [HttpPost]
 
