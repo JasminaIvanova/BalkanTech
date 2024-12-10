@@ -26,9 +26,13 @@
                 </ul>
             </div>
         </form>
-        <a href="@Url.Action("Add", "Task", new { roomId = Model.RoomId })" class="btn">
-            <i class="bi bi-plus-lg"></i> Create Task
-        </a>
+        @if (User.IsInRole("Manager"))
+        {
+            <a href="@Url.Action("Add", "Task", new { roomId = Model.RoomId })" class="btn">
+                <i class="bi bi-plus-lg"></i> Create Task
+            </a>
+        }
+       
     </div>
 
     <div class="task-section mb-5">
