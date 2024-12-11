@@ -20,7 +20,7 @@
 </div>
 
 <div class="container mt-5">
-    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+    @if (User.IsInRole("Manager"))
     {
         <div class="d-flex justify-content-end mb-3">
             @if (Model.Status != "Completed")

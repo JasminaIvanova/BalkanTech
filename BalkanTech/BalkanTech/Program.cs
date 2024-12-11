@@ -51,21 +51,9 @@ else
 {
    app.UseStatusCodePagesWithReExecute("/Error/{0}");
 }
- //seeding
 using (var scope = app.Services.CreateScope())
 {
-    var seeder = scope.ServiceProvider.GetRequiredService<SeedData>();
-    seeder.Seed("roomCategories.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().RoomCategories);
-    seeder.Seed("rooms.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().Rooms);
-    seeder.Seed("taskCategories.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().TaskCategories);
-    seeder.Seed("tasks.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().MaintananceTasks);
-    seeder.Seed("assignedTechniciansTasks.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().AssignedTechniciansTasks);
-    await SeedUsers.SeedUsersAsync(scope.ServiceProvider);
-}
-//roles
-using (var scope = app.Services.CreateScope())
-{
-   
+
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
     var roles = new[] { "Admin", "Manager", "Technician" };
 
@@ -76,6 +64,16 @@ using (var scope = app.Services.CreateScope())
             await roleManager.CreateAsync(new IdentityRole<Guid>(role));
         }
     }
+}
+using (var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider.GetRequiredService<SeedData>();
+    seeder.Seed("roomCategories.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().RoomCategories);
+    seeder.Seed("rooms.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().Rooms);
+    seeder.Seed("taskCategories.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().TaskCategories);
+    seeder.Seed("tasks.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().MaintananceTasks);
+    await SeedUsers.SeedUsersAsync(scope.ServiceProvider);
+    seeder.Seed("assignedTechniciansTasks.json", scope.ServiceProvider.GetRequiredService<BalkanDbContext>().AssignedTechniciansTasks);
 }
 
 app.UseHttpsRedirection();

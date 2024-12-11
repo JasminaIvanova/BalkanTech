@@ -3,70 +3,70 @@
       "Id": "f7a49e1f-6d3f-487b-9c69-3a95d3cf5ad5",
       "RoomNumber": 101,
       "Floor": 1,
-      "RoomCategoryId": "d71f5618-f3e5-4938-9e36-17fa0e2ee17f", // DoubleRoom
+      "RoomCategoryId": "d71f5618-f3e5-4938-9e36-17fa0e2ee17f", 
       "isAvailable": true
     },
     {
       "Id": "b3a6e054-bd67-4e66-9b18-e65b6b354c37",
       "RoomNumber": 102,
       "Floor": 1,
-      "RoomCategoryId": "d71f5618-f3e5-4938-9e36-17fa0e2ee17f", // DoubleRoom
+      "RoomCategoryId": "d71f5618-f3e5-4938-9e36-17fa0e2ee17f", 
       "isAvailable": false
     },
     {
       "Id": "ef8b0e27-5b83-429c-8129-4f4f64cf68f7",
       "RoomNumber": 201,
       "Floor": 2,
-      "RoomCategoryId": "a25916a3-b06a-44c3-bd44-6d5e5600f78a", // Suite
+      "RoomCategoryId": "a25916a3-b06a-44c3-bd44-6d5e5600f78a", 
       "isAvailable": true
     },
     {
       "Id": "2a2f1b76-c6e8-41d1-8c1c-42ec13cf59cf",
       "RoomNumber": 301,
       "Floor": 3,
-      "RoomCategoryId": "ecf802de-6578-4de6-8e9a-1f8d1a0e05b6", // SingleRoom
+      "RoomCategoryId": "ecf802de-6578-4de6-8e9a-1f8d1a0e05b6", 
       "isAvailable": true
     },
     {
       "Id": "8a37994b-d0e9-42e0-a00f-e7fcf5c9bfa3",
       "RoomNumber": 401,
       "Floor": 4,
-      "RoomCategoryId": "f3e0b538-dcc6-4fa4-b448-9298f7f0a28f", // KingRoom
+      "RoomCategoryId": "f3e0b538-dcc6-4fa4-b448-9298f7f0a28f", 
       "isAvailable": false
     },
     {
       "Id": "6d8260a4-3a76-4bcf-83b8-0c5a9cb2d399",
       "RoomNumber": 501,
       "Floor": 5,
-      "RoomCategoryId": "c05c3b6b-9883-4481-8332-456f4c90b0ff", // QueenRoom
+      "RoomCategoryId": "c05c3b6b-9883-4481-8332-456f4c90b0ff", 
       "isAvailable": true
     },
     {
       "Id": "20e8b6af-12d7-4732-b90c-7e028b86a0be",
       "RoomNumber": 601,
       "Floor": 6,
-      "RoomCategoryId": "f379c8e1-57d2-4593-8bc6-5e59cb4db3aa", // PresidentialSuite
+      "RoomCategoryId": "f379c8e1-57d2-4593-8bc6-5e59cb4db3aa", 
       "isAvailable": true
     },
     {
       "Id": "f3a0d11e-9265-4e45-815f-bd586cdb4423",
       "RoomNumber": 701,
       "Floor": 7,
-      "RoomCategoryId": "ecf802de-6578-4de6-8e9a-1f8d1a0e05b6", // SingleRoom
+      "RoomCategoryId": "ecf802de-6578-4de6-8e9a-1f8d1a0e05b6", 
       "isAvailable": false
     },
     {
       "Id": "b6e97014-e2d6-411b-b86a-f43253c6f5bc",
       "RoomNumber": 102,
       "Floor": 1,
-      "RoomCategoryId": "dc2a36f5-4854-4f3f-8c65-1245af803bcf", // TripleRoom
+      "RoomCategoryId": "dc2a36f5-4854-4f3f-8c65-1245af803bcf", 
       "isAvailable": true
     },
     {
       "Id": "3c87b8d2-83ae-4938-9e4c-ff501d4f2443",
       "RoomNumber": 103,
       "Floor": 1,
-      "RoomCategoryId": "d77f0a2c-01a4-4696-bbb9-482c5a39b1a6", // Quad
+      "RoomCategoryId": "d77f0a2c-01a4-4696-bbb9-482c5a39b1a6", 
       "isAvailable": true
     }
   ]

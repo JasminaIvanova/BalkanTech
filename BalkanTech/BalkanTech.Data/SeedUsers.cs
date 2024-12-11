@@ -29,6 +29,7 @@ namespace BalkanTech.Data
             var users = new List<AppUser>{
             new AppUser
             {
+                Id = Guid.Parse("8b05e03d-9517-4ba2-a26f-f2db760bbb35"),
                 UserName = "admin@admin",
                 Email = "admin@admin",
                 FirstName = "admin",
@@ -36,6 +37,7 @@ namespace BalkanTech.Data
             },
             new AppUser
             {
+                Id = Guid.Parse("908d91a2-57ee-4dba-b7ee-713bdd9a04fd"),
                 UserName = "tech1@tech",
                 Email = "tech1@tech",
                 FirstName = "Zhorzh",
@@ -43,6 +45,7 @@ namespace BalkanTech.Data
             },
             new AppUser
             {
+                Id = Guid.Parse("457d8bc3-55dd-4d44-a330-8ab5f907b9d0"),
                 UserName = "tech2@tech",
                 Email = "tech2@tech",
                 FirstName = "Jasmina",
@@ -50,6 +53,7 @@ namespace BalkanTech.Data
             },
              new AppUser
             {
+                Id = Guid.Parse("95432210-7ab2-4c75-b5ef-c05d0f2617ad"),
                 UserName = "tech3@tech",
                 Email = "tech3@tech",
                 FirstName = "Kristiana",
