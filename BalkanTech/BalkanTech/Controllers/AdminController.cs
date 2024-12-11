@@ -80,7 +80,7 @@ namespace BalkanTech.Web.Controllers
                 TempData[nameof(AdminError)] = ex.Message;
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(ManageUsers));
         }
 
         [HttpGet]
